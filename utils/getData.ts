@@ -1,5 +1,3 @@
-
-// @ts-expect-error Async Server Component
 export const getData = async (query: string) => {
 	//@ts-ignore
 	const res = await fetch(process.env.NODE_API, {

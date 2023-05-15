@@ -1,11 +1,13 @@
 import Section, { SectionHowWeWork, SectionPitch, SectionProblems, SectionScreen, SectionTechStack, SectionWhatWeAlsoDo } from "@/Components/Section";
 import { mainPage } from "@/utils/queries";
 import { getData } from "@/utils/getData";
+import React, { ReactElement } from "react";
 
-const Page = ({page}) => {
+//@ts-ignore
+const Page = ({ page: { attributes } }: {page: {attributes: any}}):ReactElement<any, any>[] => {
   // console.log(page.attributes.sections.data)
-  const allSections = []
-  page.attributes.sections.data.forEach(section => {
+  const allSections:any[] = [];
+  attributes.sections.data.forEach((section:any) => {
     let a = section.attributes.Type;
     switch (a) {
       case 'screen' as string:
@@ -37,18 +39,16 @@ const Page = ({page}) => {
 
     }
   })
+  // @ts-ignore
   return [allSections]
 
 }
 export default async function Home() {
 	const { data } =  await getData(mainPage);
 	console.log(data)
-
-	return (
-        <>
-        <Page page={data.page.data} />
-        </>
+  // @ts-ignore
+	return <Page page={data.page.data} />
 
 
-	)
+
 }

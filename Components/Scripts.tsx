@@ -8,15 +8,15 @@ export default function DefaultScripts(){
 			<Script src={`${process.env.NODE_FRONT}/assets/js/counter.js`}/>
 			<Script src={`${process.env.NODE_FRONT}/assets/js/gsap.min.js`}/>
 			<Script src={`${process.env.NODE_FRONT}/assets/js/jquery-3.6.0.min.js`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollTrigger.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollToPlugin.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollSmoother.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/SplitText.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/chroma.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/mixitup.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/vanilla-tilt.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/jquery.meanmenu.min.j`}/>
-			<Script src={`${process.env.NODE_FRONT}/assets/js/main.j`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollTrigger.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollToPlugin.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/ScrollSmoother.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/SplitText.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/chroma.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/mixitup.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/vanilla-tilt.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/jquery.meanmenu.min.js`}/>
+			<Script src={`${process.env.NODE_FRONT}/assets/js/main.js`}/>
 		</>
 	);
 }

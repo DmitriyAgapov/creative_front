@@ -4,30 +4,7 @@ export const mainPage:string = `query Page {
       id
       attributes {
         Title
-        Section {
-          id
-          Title
-          Uptitle
-          Type
-          Card {
-            id
-            Title
-            Uptitle
-            Description
-            Image {
-              data {
-                id
-                attributes {
-                  alternativeText
-                  url
-                  width
-                  height
-                }
-              }
-            }
-          }
-          Description
-        }
+      
         sections {
           data {
             id

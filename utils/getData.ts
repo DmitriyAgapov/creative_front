@@ -1,6 +1,11 @@
+
 export const getData = async (query: string) => {
+
+	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : 'http://localhost:1336/graphql';
 	//@ts-ignore
-	const res = await fetch(process.env.NODE_API, {
+	const res = await fetch(uri, {
+		next: { revalidate: 10 },
+		cache: 'no-store',
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json"

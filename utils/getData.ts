@@ -2,7 +2,7 @@
 // @ts-expect-error Async Server Component
 export const getData = async (query: string) => {
 	//@ts-ignore
-	const res = await fetch('http://localhost:1337/graphql', {
+	const res = await fetch(process.env.NODE_API, {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json"

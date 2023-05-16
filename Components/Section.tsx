@@ -123,29 +123,7 @@ export const SectionProblems = ({ title, description, link, Items, Uptitle }:Sec
 
 		<section className="career__benefits">
 			<div className="container  g-0 pt-100 pb-100">
-				<a href="https://www.old.benjamineye.com//assets/videos/myopia.ogg"
-					className="video-cover"><img src="https://www.old.benjamineye.com/assets/img/video-covers/video-19.jpg"
-					alt=""/></a>
-				<div className="flex-video vimeo widescreen mb-50">
-					<var style={{width: "100%", paddingBottom: 0, display: "block"}}
-						data-presentation="3fd2c6a7-4cb6-41c8-4c95-4ae54b7b4623"
-						data-loaded="true"><a href="http://fyi.rendia.com/Cps9a"
-						style={{display:"none"}}>View Video</a>
-						<div style={{paddingBottom: "56.25%", position: "relative"}}>
-							<iframe src="https://share.rendia.com/whitelabel/load/aHR0cHM6Ly93d3cub2xkLmJlbmphbWluZXllLmNvbS9leWUtaGVhbHRoL2NvbmRpdGlvbnMvaHlwZXJvcGlhLw/3fd2c6a7-4cb6-41c8-4c95-4ae54b7b4623"
-								frameBorder="0"
-								title="Embed - Hyperopia: Overview"
-								aria-label="Embed - Hyperopia: Overview"
-								// onLoad={this.style.visibility = visible}
-								scrolling="no"
-								width="100%"
-								height="100%"
-								style={{position: "absolute", top: 0, left: 0, border: "none", background: "url(&quot;https://content.rendia.com/leo/rendia_embed_r.png&quot;) center center no-repeat rgb(245, 245, 245)", visibility: "visible"}}></iframe>
-						</div>
-					</var>
-					<script type="text/javascript"
-						src="//rendia.com/whitelabel/embed_js"></script>
-				</div><a href="http://fyi.rendia.com/Cps9a" style={{display:"none"}}>View Video</a>
+
 				<span className="line-3"></span>
 
 				<div className="row">

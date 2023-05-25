@@ -81,6 +81,7 @@ interface SectionProps {
 	}
 	Items?: any[]
 	Uptitle?: string
+	className?:string
 }
 
 export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:SectionProps) => {
@@ -118,10 +119,10 @@ export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:Se
 		</section>
 	)
 }
-export const SectionProblems = ({ title, description, link, Items, Uptitle }:SectionProps) => {
+export const SectionProblems = ({ title, description, link, Items, Uptitle, className = "" }:SectionProps) => {
 	return (
 
-		<section className="career__benefits">
+		<section className={`career__benefits ${className}` }>
 			<div className="container  g-0 pt-100 pb-100">
 
 				<span className="line-3"></span>
@@ -250,8 +251,12 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 						<div className="content-wrapper">
 							<div className="left-content">
 								<ul className="service__list-6">
-									{Items?.map((item, index) => <li key={item.id}
-										className={item.id == 0 ? 'active' : ''}><a href={`#service_${item.id}`}>{item.Title.split(" ")[0]} <br/>{item.Title.split(" ")[1]}</a></li>)}
+									{Items?.map((item, index) => {
+										console.log(item)
+										return(
+										<li key={item.id}
+											className={item.id == 0 ? 'active' : ''}><a href={`#service_${item.id}`}>{item.Title.split(" ")[0]} <br/>{item.Title.split(" ")[1]}</a></li>
+										)})}
 								</ul>
 							</div>
 
@@ -319,4 +324,27 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 		</section>
 	)
 }
+
+export const SectionSLider = ({ sections }) => {
+	console.log(sections)
+	const cl = [
+		'portfolio__hero-area portfolio-section',
+		'portfolio-section portfolio__about pt-140 pb-150',
+		'portfolio-section portfolio__project'
+	]
+	return (
+		<div className="portfolio__page">
+			<div className="swiper portfolio__main-slider">
+				<div className="swiper-wrapper portfolio__main-wrapper">
+					{sections.map((section, index) => <div key={index} className="swiper-slide">
+						<SectionProblems {...section} className={cl[index]}/>
+					</div>)}
+
+				</div>
+				<div className="swiper-pagination circle-pagination-2"></div>
+			</div>
+		</div>
+)
+}
 export default Section
+

@@ -325,6 +325,7 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 	)
 }
 
+// @ts-ignore
 export const SectionSLider = ({ sections }) => {
 	console.log(sections)
 	const cl = [

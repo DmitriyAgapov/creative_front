@@ -337,7 +337,7 @@ export const SectionSLider = ({ sections }) => {
 		<div className="portfolio__page">
 			<div className="swiper portfolio__main-slider">
 				<div className="swiper-wrapper portfolio__main-wrapper">
-					{sections.map((section, index) => <div key={index} className="swiper-slide">
+					{sections.map((section:{}, index:number) => <div key={index} className="swiper-slide">
 						<SectionProblems {...section} className={cl[index]}/>
 					</div>)}
 

@@ -20,7 +20,7 @@ export const Offcanvas = () => {
 			<div className="offcanvas__body">
 				<div className="offcanvas__left">
 					<div className="offcanvas__logo">
-						<a href="index.html"><img src="assets/imgs/logo/site-logo-white-2.png"
+						<a href="index.html"><img src="/assets/imgs/logo/site-logo-white-2.png"
 							alt="Offcanvas Logo"/></a>
 					</div>
 					<div className="offcanvas__social">
@@ -210,12 +210,12 @@ export const Offcanvas = () => {
 							<li>230 Norman Street New York, QC (USA) H8R 1A1</li>
 						</ul>
 					</div>
-					<img src="assets/imgs/shape/11.png"
+					<img src="/assets/imgs/shape/11.png"
 						alt="shape"
 						className="shape-1"/>
-						<img src="assets/imgs/shape/12.png"
-							alt="shape"
-							className="shape-2"/>
+					<img src="/assets/imgs/shape/12.png"
+						alt="shape"
+						className="shape-2"/>
 				</div>
 				<div className="offcanvas__close">
 					<button type="button"
@@ -223,23 +223,23 @@ export const Offcanvas = () => {
 				</div>
 			</div>
 		</div>
-)
+	)
 }
 function Header() {
 	return <header className="header__area">
 		<div className="header__inner">
 			<div className="header__logo">
-				<a href="index.html">
+				<a href="/">
 					<img className="logo-primary"
-						src="assets/imgs/logo/site-logo-white.png"
+						src="/assets/imgs/logo/site-logo-white.png"
 						alt="Site Logo"/>
 					<img className="logo-secondary"
-						src="assets/imgs/logo/site-logo-white-2.png"
+						src="/assets/imgs/logo/site-logo-white-2.png"
 						alt="Moibile Logo"/>
 				</a>
 			</div>
 			<div className="header__nav-icon">
-				<button id="open_offcanvas"><img src="assets/imgs/icon/menu-white.png"
+				<button id="open_offcanvas"><img src="/assets/imgs/icon/menu-white.png"
 					alt="Menubar Icon"/></button>
 			</div>
 			<div className="header__support">

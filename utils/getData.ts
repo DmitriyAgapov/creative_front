@@ -1,5 +1,5 @@
 
-export const getData = async (query: string) => {
+export const getData = async (query: string, variables: {} = {}) => {
 
 	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : 'http://localhost:1336/graphql';
 	console.log(uri)
@@ -11,7 +11,8 @@ export const getData = async (query: string) => {
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify({
-			query: query as string
+			query: query as string,
+			variables: variables
 		})
 	})
 	// The return value is *not* serialized

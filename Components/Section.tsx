@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { ReactElement } from "react";
+import { parseHtml } from "@/utils/utils";
 
 export const SectionTechStack = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 	return (
@@ -82,6 +83,7 @@ interface SectionProps {
 	Items?: any[]
 	Uptitle?: string
 	className?:string
+	children?: React.ReactElement;
 }
 
 export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:SectionProps) => {
@@ -119,7 +121,142 @@ export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:Se
 		</section>
 	)
 }
+
+export function SectionAboutUsFirstItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
+
+	const brTitle = props.title?.split(" ");
+
+	return <div className="choose-wrapper wf_panel">
+		<div className="container">
+			<div className="row">
+				<div className="col-xxl-12">
+					<div className="choose-title-wrapper">
+						<h2 className="choose-title title-anim">{brTitle.shift()}<br/>{brTitle}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>;
+}
+
+export function SectionAboutUsSecondItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
+	const brUptitle = props.Uptitle?.split(" ");
+
+	return <div className="research__area wf_panel pt-150">
+		<div className="container inner_content">
+			<div className="row">
+				<div className="col-xxl-6 col-xl-6 col-lg-6">
+					<div className="sec-title-wrapper">
+						<h2 className="sec-sub-title">{brUptitle.shift()}<br/>{brUptitle.map((item, index) =>  {
+							if (index % 2  == 0) {
+								return item
+							} else {
+								return " " + item
+							}})}</h2>
+						<h3 className="sec-title">{props.title}</h3>
+						{parseHtml(props.description)}
+					</div>
+
+				</div>
+				<div className="col-xxl-6 col-xl-6 col-lg-6">
+					<div className="research__list">
+						{props.Items?.map(item => {
+
+							return (
+								<div className="research__item" key={item.index}>
+									<div className="research__number">
+										<span>{item.Uptitle}</span>
+									</div>
+									<div className="research__info">
+										<h4 className="research__title">{item.Title}</h4>
+										{parseHtml(item.Description)}
+									</div>
+								</div>)
+						})}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>;
+}
+
+export function SectionAboutUsFThirdItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
+	const brTitle = props.Uptitle?.split(" ");
+	return <div className="counter__area-3 wf_panel">
+		<div className="container">
+			<div className="row">
+				<div className="col-xxl-12">
+					<div className="sec-title-wrapper">
+						<h2 className="sec-sub-title">{brTitle.shift()}<br/>{brTitle.map((item, index) =>  {
+							if (index % 2  == 0) {
+								return item
+							} else {
+								return " " + item
+							}})}</h2>
+					</div>
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
+					<div className="counter__wrapper-3">
+						{props.Items?.map(item => {
+
+							return (
+								<div className="counter__item-3" key={item.index}>
+									<h2 className="counter__number">{item.Title}</h2>
+									{parseHtml(item.Description)}
+								</div>
+							)
+						})}
+
+
+					</div>
+				</div>
+				<div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
+					<div className="counter__img-3">
+						<img src="assets/imgs/thumb/counter-3.png"
+							alt="Counter Image"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>;
+}
+
+export function SectionAboutUsFourthItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
+	return <div className="cta__area-3 wf_panel">
+		<div className="container pt-150 pb-150">
+			<div className="row">
+				<div className="col-xxl-12">
+					<div className="cta__content-3">
+						<p className="cta__sub-title-2">{props.Uptitle}</p>
+						<h2 className="cta__title-2">{props.title}</h2>
+						<div className="btn_wrapper">
+							<a href="contact.html"
+								className="wc-btn-black btn-hover btn-item"><span></span>Contact <br/>with
+								us <i className="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>;
+}
+
+export const SectionAboutUs = ({ title, description, link, Items, Uptitle, className = "" , children}:SectionProps) => {
+
+	return (
+		<section className="workflow__area-3">
+			<div className="workflow__wrapper-3">
+				{children}
+
+			</div>
+		</section>
+	)
+};
 export const SectionProblems = ({ title, description, link, Items, Uptitle, className = "" }:SectionProps) => {
+
 	return (
 
 		<section className={`career__benefits ${className}` }>
@@ -150,6 +287,7 @@ export const SectionProblems = ({ title, description, link, Items, Uptitle, clas
 	)
 }
 export const SectionPitch = ({ title, description, link, Items, Uptitle }:SectionProps) => {
+
 	return (
 		<section className="about__area">
 			<div className="container line g-0 pt-140 pb-130">
@@ -243,6 +381,7 @@ export const SectionScreen = ({ title, description, link, Items, Uptitle }:Secti
 
 
 const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
+
 	return (
 		<section className="service__area-6">
 			<div className="container">
@@ -251,12 +390,8 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 						<div className="content-wrapper">
 							<div className="left-content">
 								<ul className="service__list-6">
-									{Items?.map((item, index) => {
-										console.log(item)
-										return(
-										<li key={item.id}
-											className={item.id == 0 ? 'active' : ''}><a href={`#service_${item.id}`}>{item.Title.split(" ")[0]} <br/>{item.Title.split(" ")[1]}</a></li>
-										)})}
+									{Items?.map((item, index) => <li key={item.id}
+										className={item.id == 0 ? 'active' : ''}><a href={`#service_${item.id}`}>{item.Title.split(" ")[0]} <br/>{item.Title.split(" ")[1]}</a></li>)}
 								</ul>
 							</div>
 
@@ -289,31 +424,31 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 
 							<div className="right-content">
 								<div className="service__items-6">
-									{Items?.map((item, index) =>
-										<div key={item.id}
-											className={`service__item-6 ${item.id == 0 ? 'has__service_animation' : ''}`}
-											id={`service_${item.id}`}
-											data-secid={item.id}>
-											<div className="image-tab">
-												<img src="assets/imgs/service/1.jpg"
-													alt="Service Image"/>
-											</div>
-
-											<div className="animation__service_page">
-												<h2 className="service__title-6">{item.Title}</h2>
-												<div dangerouslySetInnerHTML={{ __html: item.Description }}/>
-												<ul>
-													{item.List_item.map((item:{id: any, Title:string}):JSX.Element => <li key={item.id}>+ {item.Title}</li>)}
-												</ul>
-												<div className="btn_wrapper">
-													<a href="#"
-														className="wc-btn-secondary btn-item btn-hover"><span></span>Get
-														free
-														<br/>qoutes <i className="fa-solid fa-arrow-right"></i></a>
+									{Items?.map((item, index) => {
+										console.log(item)
+										return (
+											<div key={item.id}
+												className={`service__item-6 ${item.id == 0 ? 'has__service_animation' : ''}`}
+												id={`service_${item.id}`}
+												data-secid={item.id}>
+												<div className="image-tab">
+													<img src="assets/imgs/service/1.jpg"
+														alt="Service Image"/>
 												</div>
 
-											</div>
-										</div>)}
+												<div className="animation__service_page">
+													<h2 className="service__title-6">{item.Title}</h2>
+													{ parseHtml(item.Description) }
+													<ul>
+														{item.List_item.map((item:{id: any, Title:string}):JSX.Element => <li key={item.id}>+ {item.Title}</li>)}
+													</ul>
+													{item.Link.length > 0 && <div className="btn_wrapper">
+														<a href={item.Link[0].url || "#"}
+															className="wc-btn-secondary btn-item btn-hover"><span></span>{item.Link[0].Text || 'text none'}<i className="fa-solid fa-arrow-right"></i></a>
+													</div>}
+
+												</div>
+											</div>)})}
 								</div>
 
 							</div>
@@ -325,9 +460,49 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 	)
 }
 
-// @ts-ignore
-export const SectionSLider = ({ sections }) => {
-	console.log(sections)
+export const SectionTeam = (props:SectionProps) => {
+	console.log(props)
+	return (
+		<section className="team__area-7">
+			<h2 className="team__title-7 title-anim">{props.title}</h2>
+			<div className="container">
+				<div className="row">
+					<div className="col-xxl-12">
+						<div className="sec-text pb-100 text-anim">
+							{parseHtml(props.description)}
+						</div>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xxl-12">
+						<div className="team__items-7">
+							{props.Items && props.Items?.length > 0 && props.Items?.map((item,index) => <a key={item.id} href="#">
+								<div className="team__item-7 fade_bottom_3">
+									<div className="team__name-wrap-7">
+										<p className="tm-serial">0{index + 1}</p>
+
+										<h3 className="tm-name">{item.FullName}</h3>
+									</div>
+									<h4 className="tm-role">{item.Position}</h4>
+									<div className="tm-link"><i className="fa-solid fa-arrow-right"></i></div>
+									<div className="team__hover-7"
+										style={{backgroundImage: 'url(assets/imgs/team/1.jpg)'}}></div>
+								</div>
+							</a>)}
+
+
+							<div className="team7__img-wrap">
+								<div className="team7__img"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
+export const SectionSLider = ({ sections }:any|[]) => {
+	// console.log(sections)
 	const cl = [
 		'portfolio__hero-area portfolio-section',
 		'portfolio-section portfolio__about pt-140 pb-150',
@@ -345,7 +520,7 @@ export const SectionSLider = ({ sections }) => {
 				<div className="swiper-pagination circle-pagination-2"></div>
 			</div>
 		</div>
-)
+	)
 }
 export default Section
 

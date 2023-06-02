@@ -19,8 +19,8 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):ReactElement<
         allSections.push(<SectionPitch title={section.attributes.Title} description={section.attributes.Description}/>);
         break;
       case 'problem' as string:
-        // problems.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
-        problems.push({ title:section.attributes.Title, description:section.attributes.Description, Items:section.attributes.Items});
+        allSections.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
+        // problems.push({ title:section.attributes.Title, description:section.attributes.Description, Items:section.attributes.Items});
         break;
       case 'how_we_work' as string:
         allSections.push(<SectionHowWeWork title={section.attributes.Title} description={section.attributes.Description} Uptitle={section.attributes.Uptitle} Items={section.attributes.Items}/>);
@@ -41,7 +41,7 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):ReactElement<
     }
   });
 
-  allSections.push(<SectionSLider sections={problems}/>)
+  // allSections.push(<SectionSLider sections={problems}/>)
   // @ts-ignore
   return [allSections]
 

@@ -186,6 +186,8 @@ export const solutionPage:string = `query Page($id: ID) {
               Title
               Uptitle
               Description
+			  price
+              price_period
               Items {
                 ... on ComponentCardsCardDefault {
                   id

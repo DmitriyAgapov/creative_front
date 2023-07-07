@@ -1,6 +1,6 @@
-import Section, { SectionHowWeWork, SectionPitch, SectionProblems, SectionScreen, SectionSLider, SectionTechStack, SectionWhatWeAlsoDo } from "@/Components/Section";
+import Section, { SectionHowWeWork, SectionPitch, SectionProblems, SectionScreen, SectionSLider, SectionSolutionPage, SectionTechStack, SectionWhatWeAlsoDo } from "@/Components/Section";
 import { mainPage } from "@/utils/queries";
-import { getData } from "@/utils/getData";
+import getData from "@/utils/getData";
 import React, { ReactElement } from "react";
 
 //@ts-ignore
@@ -35,6 +35,7 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):ReactElement<
       case 'solutions' as string:
         allSections.push(<Section Items={section.attributes.Items}/>);
         break;
+
 
       default:
           break;

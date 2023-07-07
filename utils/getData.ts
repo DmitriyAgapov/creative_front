@@ -1,7 +1,7 @@
 
 export const getData = async (query: string, variables: {} = {}) => {
 
-	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : 'http://localhost:1336/graphql';
+	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : process.env.NODE_API;
 	console.log(uri)
 	//@ts-ignore
 	const res = await fetch(uri, {
@@ -25,3 +25,4 @@ export const getData = async (query: string, variables: {} = {}) => {
 	}
 	return res.json();
 }
+export default getData

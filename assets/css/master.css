@@ -16559,6 +16559,14 @@ img {
   -ms-grid-columns: 310px auto;
   grid-template-columns: 310px auto;
 }
+
+.development__wrapper ul {
+  grid-template-columns: 1fr;
+}
+.development__wrapper ul {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--black-3);
+}
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .development__wrapper ul {
     -ms-grid-columns: 1fr;

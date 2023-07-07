@@ -1,0 +1,105 @@
+.portfolio-section .sec-title {
+	opacity: 1;
+}
+.about__area-3 .sec-text-wrapper {
+	padding-left: 0;
+}
+.about__area-3 .sec-text p {
+	max-width: initial;
+}
+.service__area  .service__top-text  p, .service__area-3  .service__top-text  p, .service-v4  .service__top-text  p   {
+	max-width: initial;
+}
+.service__area .service__item .service__text {
+	max-width: initial;
+}
+.service__area .service__item {
+	grid-template-columns: 0.3fr .7fr 2.5fr .5fr;
+	align-items: start;
+}
+.service__area .sec-title-wrapper,  .service-v4 .sec-title-wrapper  {
+	display: block;
+}
+.service__area  .service__top-text  p:first-child, .service-v4  .service__top-text  p:first-child  {
+	margin-bottom: 1.5rem;
+}
+.service__area  .service__top-text, .service-v4  .service__top-text {
+	display: initial;
+}
+.solution__area-4 p {
+	max-width: initial;
+	color: var(--gray-2);
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.4;
+	margin: 1.5rem 0;
+}
+.solution__area-4 {
+	overflow: hidden;
+	background-color: #1E2024;
+
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 36%;
+	padding: 179px 0px 170px;
+	position: relative;
+}
+
+.service__list  li::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	content: "+";
+}
+.service__list {
+	margin-top: 1rem;
+}
+.service__list li {
+	font-size: 18px;
+	color: var(--white);
+	font-weight: 400;
+	position: relative;
+	padding-left: 15px;
+	margin-bottom: 5px;
+
+}
+.workflow__area-4 p {
+	margin: 1rem 0;
+}
+.workflow__area-4 p:first-child {
+	margin-top: 3rem;
+}
+
+.service__item-3 {
+	display: -ms-grid;
+	display: grid;
+	grid-template-columns: 20% 65% 15%;
+	border-bottom: 1px solid var(--white-2);
+	padding: 55px 0 50px;
+	position: relative;
+}
+.service__content-3 {
+	max-width: 90%;
+}
+
+.development__wrapper ul {
+	margin-bottom: 30px;
+	border-bottom: 1px solid var(--black-3);
+}
+.development__wrapper ul:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+.development__wrapper ul {
+	grid-template-columns: 1fr;
+}
+
+.price__amount p {
+	display: inline-block;
+	border-top: 1px solid var(--gray-5);
+	margin-top: 2rem;
+	padding-top: 20px;
+	font-size: 1.5rem;
+}

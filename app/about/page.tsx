@@ -15,7 +15,7 @@ import React, { ReactElement } from "react";
 
 //@ts-ignore
 const PageAbout = ({ page: { attributes } }: {page: {attributes: any}}):ReactElement<any, any>[] => {
-  console.log(attributes.sections.data)
+  // console.log(attributes.sections.data)
   const allSections:any[] = [];
   const aboutslider:any[] = [];
 

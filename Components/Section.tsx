@@ -80,12 +80,69 @@ interface SectionProps {
 		text: string
 		link: string
 	}
+
 	Items?: any[]
 	Uptitle?: string
 	className?:string
 	children?: React.ReactElement;
 }
+interface SectionSolutionPage extends SectionProps {
+	price?: number
+	price_period?: string
+}
+export const SectionSolutionPage = ({ title, description, link, Items, Uptitle, price, price_period }:SectionSolutionPage) => {
 
+	const Card = ({ Title, List_item,  Description }:{List_item?:[{Title:string, id:number}], Title?: string, Description?: any}) =>
+		<>
+			<h4 className="pb-4">{Title}</h4>
+			{Description}
+			<ul>
+				{List_item && List_item.map((item) => <li key={item.id}>+ {item.Title}</li>)}
+			</ul>
+		</>;
+
+	return (
+		<section className="development__area section_solution_page">
+			<div className="container g-0  pt-130 pb-150">
+				<div className="line-3"></div>
+				<div className="row">
+					<div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+						<div className="sec-title-wrapper">
+							<h3 className="sec-sub-title title-anim">Solution:</h3>
+							<h2 className="sec-title animation__char_come ">{title}</h2>
+							<div className="price__amount pt-4 d-inline">
+								<p>{price_period}: ${price}</p>
+							</div>
+
+						</div>
+					</div>
+					<div className="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
+						<div className="development__wrapper">
+							<div className="development__content" 	dangerouslySetInnerHTML={{ __html: description }}/>
+
+							{Items?.map((item, index) => <Card key={index}
+								Title={item.Title}
+								Description={item.Description} List_item={item.List_item} />)}
+
+
+						</div>
+					</div>
+					{/*<div className="col-xxl-8 col-xl-8 col-lg-8 col-md-8">*/}
+					{/*	<div className="development__img">*/}
+					{/*		<img src="assets/imgs/thumb/dev-1.jpg" alt="Development Image" data-speed="auto"/>*/}
+					{/*	</div>*/}
+					{/*</div>*/}
+					{/*<div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">*/}
+					{/*	<div className="development__img">*/}
+					{/*		<img src="assets/imgs/thumb/dev-2.jpg" alt="Development Image"/>*/}
+					{/*	</div>*/}
+					{/*</div>*/}
+				</div>
+			</div>
+		</section>
+
+)
+}
 export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 	const Card = ({ num, title, description }:{num: number, title: string, description: any}) => <div className="swiper-slide workflow__slide fade_left">
 		<h4 className="workflow__step">step 0{num}</h4>
@@ -94,7 +151,7 @@ export const SectionHowWeWork = ({ title, description, link, Items, Uptitle }:Se
 		<div dangerouslySetInnerHTML={{ __html: description }}/>
 	</div>
 	return (
-		<section className="workflow__area">
+		<section className="workflow__area section_how_we_work">
 			<div className="container g-0 line pt-140 pb-140">
 				<div className="line-3"></div>
 				<div className="row">
@@ -126,7 +183,7 @@ export function SectionAboutUsFirstItem(props:{title:string, description: any | 
 
 	const brTitle = props.title?.split(" ");
 
-	return <div className="choose-wrapper wf_panel">
+	return <div className="choose-wrapper wf_panel section_about_us_first_item">
 		<div className="container">
 			<div className="row">
 				<div className="col-xxl-12">
@@ -142,7 +199,7 @@ export function SectionAboutUsFirstItem(props:{title:string, description: any | 
 export function SectionAboutUsSecondItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
 	const brUptitle = props.Uptitle?.split(" ");
 
-	return <div className="research__area wf_panel pt-150">
+	return <div className="research__area wf_panel pt-150 section_about_us_second_item">
 		<div className="container inner_content">
 			<div className="row">
 				<div className="col-xxl-6 col-xl-6 col-lg-6">
@@ -183,7 +240,7 @@ export function SectionAboutUsSecondItem(props:{title:string, description: any |
 
 export function SectionAboutUsFThirdItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
 	const brTitle = props.Uptitle?.split(" ");
-	return <div className="counter__area-3 wf_panel">
+	return <div className="counter__area-3 wf_panel section_about_us_third_item">
 		<div className="container">
 			<div className="row">
 				<div className="col-xxl-12">
@@ -225,7 +282,7 @@ export function SectionAboutUsFThirdItem(props:{title:string, description: any |
 }
 
 export function SectionAboutUsFourthItem(props:{title:string, description: any | string | ReactElement, Items?: any[], Uptitle:string}) {
-	return <div className="cta__area-3 wf_panel">
+	return <div className="cta__area-3 wf_panel section_about_us_fourth_item">
 		<div className="container pt-150 pb-150">
 			<div className="row">
 				<div className="col-xxl-12">
@@ -247,7 +304,7 @@ export function SectionAboutUsFourthItem(props:{title:string, description: any |
 export const SectionAboutUs = ({ title, description, link, Items, Uptitle, className = "" , children}:SectionProps) => {
 
 	return (
-		<section className="workflow__area-3">
+		<section className="workflow__area-3 section_about_us">
 			<div className="workflow__wrapper-3">
 				{children}
 
@@ -259,7 +316,7 @@ export const SectionProblems = ({ title, description, link, Items, Uptitle, clas
 
 	return (
 
-		<section className={`career__benefits ${className}` }>
+		<section className={`career__benefits section_problems ${className}` }>
 			<div className="container  g-0 pt-100 pb-100">
 
 				<span className="line-3"></span>
@@ -340,7 +397,7 @@ export const SectionPitch = ({ title, description, link, Items, Uptitle }:Sectio
 export const SectionScreen = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 
 	return (
-		<section className="service__hero-2">
+		<section className="service__hero-2 section_screen">
 			<div className="container">
 				<div className="row">
 					<div className="col-xxl-12">
@@ -380,10 +437,10 @@ export const SectionScreen = ({ title, description, link, Items, Uptitle }:Secti
 }
 
 
-const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
+const Section = ({ title, description, link, Items, Uptitle, }:SectionProps) => {
 
 	return (
-		<section className="service__area-6">
+		<section className="service__area-6 section_default">
 			<div className="container">
 				<div className="row inherit-row">
 					<div className="col-xxl-12">
@@ -463,7 +520,7 @@ const Section = ({ title, description, link, Items, Uptitle }:SectionProps) => {
 export const SectionTeam = (props:SectionProps) => {
 	console.log(props)
 	return (
-		<section className="team__area-7">
+		<section className="team__area-7 section_team">
 			<h2 className="team__title-7 title-anim">{props.title}</h2>
 			<div className="container">
 				<div className="row">
@@ -509,7 +566,7 @@ export const SectionSLider = ({ sections }:any|[]) => {
 		'portfolio-section portfolio__project'
 	]
 	return (
-		<div className="portfolio__page">
+		<div className="portfolio__page section_slider">
 			<div className="swiper portfolio__main-slider">
 				<div className="swiper-wrapper portfolio__main-wrapper">
 					{sections.map((section:{}, index:number) => <div key={index} className="swiper-slide">

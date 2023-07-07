@@ -7,7 +7,11 @@ const nextConfig = {
 				hostname: 'localhost'
 			},
 			{
-				hostname: 'b.tdural1.ru'
+				hostname: 'theonebureau.design'
+			},
+
+			{
+				hostname: 'a.theonebureau.design'
 			},
 
 			{

@@ -129,12 +129,12 @@ export const SectionSolutionPage = ({ title, description, link, Items, Uptitle, 
 					</div>
 					{/*<div className="col-xxl-8 col-xl-8 col-lg-8 col-md-8">*/}
 					{/*	<div className="development__img">*/}
-					{/*		<img src="assets/imgs/thumb/dev-1.jpg" alt="Development Image" data-speed="auto"/>*/}
+					{/*		<img src="/assets/imgs/thumb/dev-1.jpg" alt="Development Image" data-speed="auto"/>*/}
 					{/*	</div>*/}
 					{/*</div>*/}
 					{/*<div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">*/}
 					{/*	<div className="development__img">*/}
-					{/*		<img src="assets/imgs/thumb/dev-2.jpg" alt="Development Image"/>*/}
+					{/*		<img src="/assets/imgs/thumb/dev-2.jpg" alt="Development Image"/>*/}
 					{/*	</div>*/}
 					{/*</div>*/}
 				</div>
@@ -272,7 +272,7 @@ export function SectionAboutUsFThirdItem(props:{title:string, description: any |
 				</div>
 				<div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
 					<div className="counter__img-3">
-						<img src="assets/imgs/thumb/counter-3.png"
+						<img src="/assets/imgs/thumb/counter-3.png"
 							alt="Counter Image"/>
 					</div>
 				</div>
@@ -358,13 +358,13 @@ export const SectionPitch = ({ title, description, link, Items, Uptitle }:Sectio
 						<div className="about__content-wrapper">
 							<div className="about__img">
 								<div className="img-anim">
-									<img src="assets/imgs/about/1/1.jpg"
+									<img src="/assets/imgs/about/1/1.jpg"
 										alt="About Image"
 										data-speed="0.3"/>
 								</div>
 
 								<div className="about__img-right">
-									<img src="assets/imgs/about/1/2.jpg"
+									<img src="/assets/imgs/about/1/2.jpg"
 										alt="About Image Right"
 										data-speed="0.5"/>
 									<div className="shape">
@@ -403,16 +403,16 @@ export const SectionScreen = ({ title, description, link, Items, Uptitle }:Secti
 					<div className="col-xxl-12">
 						<div className="service__hero-inner-2">
 							<div className="service__hero-left-2">
-								<img src="assets/imgs/home-7/sh-1.jpg"
+								<img src="/assets/imgs/home-7/sh-1.jpg"
 									alt="Image"
 									className="image-1"/>
-								<img src="assets/imgs/home-7/sh-2.jpg"
+								<img src="/assets/imgs/home-7/sh-2.jpg"
 									alt="Image"
 									className="image-2"/>
-								<img src="assets/imgs/home-7/sh-3.jpg"
+								<img src="/assets/imgs/home-7/sh-3.jpg"
 									alt="Image"
 									className="image-3"/>
-								<img src="assets/imgs/home-7/sh-4.jpg"
+								<img src="/assets/imgs/home-7/sh-4.jpg"
 									alt="Image"
 									className="image-4"/>
 							</div>
@@ -420,7 +420,7 @@ export const SectionScreen = ({ title, description, link, Items, Uptitle }:Secti
 								<h1 className="title creative">{title?.split(" ")[0]} <span className="solution">{title?.split(" ")[1]}</span></h1>
 								<div className="animate_content"
 									dangerouslySetInnerHTML={{ __html: description }}/>
-								<img src="assets/imgs/home-7/scroll.png"
+								<img src="/assets/imgs/home-7/scroll.png"
 									alt="scroll Image"
 									className="scroll"/>
 							</div>
@@ -429,7 +429,7 @@ export const SectionScreen = ({ title, description, link, Items, Uptitle }:Secti
 				</div>
 			</div>
 
-			<img src="assets/imgs/home-7/shape-6.png"
+			<img src="/assets/imgs/home-7/shape-6.png"
 				alt="Shape Image"
 				className="shape-1"/>
 		</section>
@@ -454,27 +454,27 @@ const Section = ({ title, description, link, Items, Uptitle, }:SectionProps) => 
 
 							<div className="mid-content">
 								<div className="service__image">
-									<img src="assets/imgs/service/1.jpg"
+									<img src="/assets/imgs/service/1.jpg"
 										alt="Service Image"/>
 								</div>
 								<div className="service__image">
-									<img src="assets/imgs/service/2.jpg"
+									<img src="/assets/imgs/service/2.jpg"
 										alt="Service Image"/>
 								</div>
 								<div className="service__image">
-									<img src="assets/imgs/service/3.jpg"
+									<img src="/assets/imgs/service/3.jpg"
 										alt="Service Image"/>
 								</div>
 								<div className="service__image">
-									<img src="assets/imgs/service/4.jpg"
+									<img src="/assets/imgs/service/4.jpg"
 										alt="Service Image"/>
 								</div>
 								<div className="service__image">
-									<img src="assets/imgs/service/5.jpg"
+									<img src="/assets/imgs/service/5.jpg"
 										alt="Service Image"/>
 								</div>
 								<div className="service__image">
-									<img src="assets/imgs/service/4.jpg"
+									<img src="/assets/imgs/service/4.jpg"
 										alt="Service Image"/>
 								</div>
 							</div>
@@ -489,7 +489,7 @@ const Section = ({ title, description, link, Items, Uptitle, }:SectionProps) => 
 												id={`service_${item.id}`}
 												data-secid={item.id}>
 												<div className="image-tab">
-													<img src="assets/imgs/service/1.jpg"
+													<img src="/assets/imgs/service/1.jpg"
 														alt="Service Image"/>
 												</div>
 
@@ -543,7 +543,7 @@ export const SectionTeam = (props:SectionProps) => {
 									<h4 className="tm-role">{item.Position}</h4>
 									<div className="tm-link"><i className="fa-solid fa-arrow-right"></i></div>
 									<div className="team__hover-7"
-										style={{backgroundImage: 'url(assets/imgs/team/1.jpg)'}}></div>
+										style={{backgroundImage: 'url(/assets/imgs/team/1.jpg)'}}></div>
 								</div>
 							</a>)}
 

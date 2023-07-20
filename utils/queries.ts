@@ -258,6 +258,15 @@ export const solutionPage:string = `query Page($id: ID) {
   }
 }
 `
+export const pagesUrl:string = `query AllPages {
+  pages {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+}`
 export const pagesQuery:string = `query Page($url: String!) {
   pages(
     filters: {

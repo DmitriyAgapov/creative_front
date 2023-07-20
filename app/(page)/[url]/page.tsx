@@ -10,9 +10,10 @@ import Section, {
 	SectionTechStack,
 	SectionWhatWeAlsoDo
 } from "@/Components/Section";
-import { mainPage, pagesQuery } from "@/utils/queries";
+import { mainPage, pagesQuery, pagesUrl } from "@/utils/queries";
 import getData from "@/utils/getData";
 import React, { ReactElement } from "react";
+import { attribute } from "postcss-selector-parser";
 
 //@ts-ignore
 const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
@@ -72,9 +73,18 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
 export default async function Pages({ params: {url} }) {
 
 	const { data: {pages} }  =  await getData(pagesQuery, url );
-
+	console.log(pages)
 	// @ts-ignore
 	return 	<Page page={pages.data[0]} />
 }
 // export const runtime = "edge";
 export const revalidate = 60;
+
+// @ts-ignore
+export async function generateStaticParams({ params: {url} }) {
+	const { data: {pages} }  =  await getData(pagesUrl);
+	console.log(pages)
+	return pages.data.map((page) => ({
+		url: page.attributes.url,
+	}))
+}

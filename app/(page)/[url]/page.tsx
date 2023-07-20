@@ -84,7 +84,7 @@ export const revalidate = 60;
 export async function generateStaticParams({ params: {url} }) {
 	const { data: {pages} }  =  await getData(pagesUrl);
 	console.log(pages)
-	return pages.data.map((page) => ({
+	return pages.data.map((page:any) => ({
 		url: page.attributes.url,
 	}))
 }

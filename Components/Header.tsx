@@ -31,7 +31,7 @@ export const Offcanvas = async () => {
 				<div className="offcanvas__left">
 					<div className="offcanvas__logo">
 						<Link href={"/"}
-							><Image width={attributes.logo.data.attributes.width} height={attributes.logo.data.attributes.height} src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_API}${attributes.logo.data.attributes.url}`}
+							><Image width={attributes.logo.data.attributes.width} height={attributes.logo.data.attributes.height} src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_FRONT}${attributes.logo.data.attributes.url}`}
 							alt="Site Logo"/></Link>
 
 					</div>

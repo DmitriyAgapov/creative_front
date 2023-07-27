@@ -1,5 +1,5 @@
 import Section, {
-	SectionAboutUs, SectionAboutUsFirstItem, SectionAboutUsFourthItem, SectionAboutUsFThirdItem, SectionAboutUsSecondItem,
+	SectionAboutUs, SectionAboutUsFirstItem, SectionAboutUsFourthItem, SectionAboutUsFThirdItem, SectionAboutUsSecondItem, SectionCase, SectionCases, SectionCta,
 	SectionHowWeWork,
 	SectionPitch,
 	SectionProblems,
@@ -10,16 +10,17 @@ import Section, {
 	SectionTechStack,
 	SectionWhatWeAlsoDo
 } from "@/Components/Section";
-import { mainPage, pagesQuery, pagesUrl } from "@/utils/queries";
+import {  pagesQuery, pagesUrl } from "@/utils/queries";
 import getData from "@/utils/getData";
-import React, { ReactElement } from "react";
-import { attribute } from "postcss-selector-parser";
+import React from "react";
+import { notFound } from "next/navigation";
 
 //@ts-ignore
-const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
+const Page = ({ page: { attributes } }: {page: {attributes: any}}):JSX.Element => {
 
 	const allSections:any[] = [];
 	const problems:any[] = [];
+	const team:any[] = [];
 	const aboutslider:any[] = [];
 	attributes.sections.data.forEach((section:any) => {
 		let a = section.attributes.Type;
@@ -28,7 +29,7 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
 				allSections.push(<SectionScreen title={section.attributes.Title} description={section.attributes.Description}/>);
 				break;
 			case 'pitch' as string:
-				allSections.push(<SectionPitch title={section.attributes.Title} description={section.attributes.Description}/>);
+				allSections.push(<SectionPitch title={section.attributes.Title} description={section.attributes.Description} link={section.attributes.Link}/>);
 				break;
 			case 'problem' as string:
 				allSections.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
@@ -54,8 +55,20 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
 				// aboutslider.push(<SectionAboutUs title={section.attributes.Title} description={section.attributes.Description} Uptitle={section.attributes.Uptitle} Items={section.attributes.Items}/>);
 				break;
 			case 'team' as string:
-				allSections.push(<SectionTeam  title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
+				team.push(<SectionTeam  title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
 				// aboutslider.push(<SectionAboutUs title={section.attributes.Title} description={section.attributes.Description} Uptitle={section.attributes.Uptitle} Items={section.attributes.Items}/>);
+				break;
+
+			case 'cases' as string:
+				allSections.push(<SectionCases  title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
+			break;
+
+			case 'case_page' as string:
+				allSections.push(<SectionCase  title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
+			break;
+
+			case 'cta' as string:
+				allSections.push(<SectionCta  title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items} link={section.attributes.Link} Uptitle={section.attributes.Uptitle}/>);
 				break;
 
 			default:
@@ -65,25 +78,27 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):any[][] => {
 	//@ts-ignore
 	const slides =  aboutslider.length > 0 ?<SectionAboutUs>{aboutslider.map((slide, index) => index === 0 && <SectionAboutUsFirstItem {...slide} /> || index === 1 && <SectionAboutUsSecondItem {...slide} /> || index === 2 && <SectionAboutUsFThirdItem {...slide} /> || index === 3 && <SectionAboutUsFourthItem {...slide} /> )}</SectionAboutUs> : null;
 	const result = [...allSections, slides];
-	console.log(allSections)
-	return [allSections, [slides]]
+
+	return (<>{allSections} {slides} {team}</>)
 
 }
 // @ts-ignore
 export default async function Pages({ params: {url} }) {
 
-	const { data: {pages} }  =  await getData(pagesQuery, url );
-	console.log(pages)
+	const { data: { pages} }  =  await getData(pagesQuery, url );
+
 	// @ts-ignore
-	return 	<Page page={pages.data[0]} />
+	if(pages.data.length === 0) {
+		notFound()
+	}
+	return <Page page={pages.data[0]} />
 }
-// export const runtime = "edge";
-export const revalidate = 60;
 
 // @ts-ignore
-export async function generateStaticParams({ params: {url} }) {
+export async function generateStaticParams() {
+	console.log()
 	const { data: {pages} }  =  await getData(pagesUrl);
-	console.log(pages)
+	// console.log(pages)
 	return pages.data.map((page:any) => ({
 		url: page.attributes.url,
 	}))

@@ -287,18 +287,33 @@ export const pagesQuery:string = `query Page($url: String!) {
               Description
               price
               price_period
-              Items {
+                 Items {
+                 ... on ComponentLayoutDefinitionTable {
+                  __typename
+                  id
+                  Term
+                  Text
+                }
+                 ... on ComponentCardsCardTeam {
+                  __typename
+                  id
+                  FullName
+                  Position
+                }
                 ... on ComponentCardsCardDefault {
+                  __typename
                   id
                   Description
                   Title
                   Uptitle
                 }
                 ... on ComponentLayoutListItem {
+                  __typename
                   id
                   Title
                 }
                 ... on ComponentLayoutMedia {
+                  __typename
                   id
                   alt
                   img: Image {
@@ -314,6 +329,7 @@ export const pagesQuery:string = `query Page($url: String!) {
                   }
                 }
                 ... on ComponentCardsCard {
+                  __typename
                   id
                   Description
                   Title
@@ -356,3 +372,44 @@ export const pagesQuery:string = `query Page($url: String!) {
     }
   }
 }`
+export const webSiteConfig:string = `query WebSiteConfig {
+  websiteConfiguration {
+    data {
+      id
+     attributes {
+      PhoneNumber
+      email
+      Address
+      logo {
+        data {
+          id
+          attributes {
+            name
+            width
+            height
+            url
+          }
+        }
+      }
+    } 
+    }
+  }
+}`
+export const mainMenuList:string = `query MainMenu {
+  menusMenuItems {
+    data {
+      id
+      attributes {
+        title
+        url
+        order
+        parent {
+          data {
+            id
+          }
+        }
+      }
+    }
+  }
+}
+`

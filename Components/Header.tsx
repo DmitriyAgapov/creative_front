@@ -1,3 +1,10 @@
+import Link from "next/link";
+import Image from "next/image";
+import getData from "@/utils/getData";
+import { mainMenuList, webSiteConfig } from "@/utils/queries";
+import menuBlack from "@/assets/imgs/icon/menu-black.png"
+
+
 export const Preloader = () => {
 	return (
 		<div className="preloader">
@@ -14,14 +21,19 @@ export const Preloader = () => {
 		</div>
 	)
 }
-export const Offcanvas = () => {
+export const Offcanvas = async () => {
+	const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+	// console.log(data)
+	const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
 	return (
 		<div className="offcanvas__area">
 			<div className="offcanvas__body">
 				<div className="offcanvas__left">
 					<div className="offcanvas__logo">
-						<a href="index.html"><img src="/assets/imgs/logo/site-logo-white-2.png"
-							alt="Offcanvas Logo"/></a>
+						<Link href={"/"}
+							><Image width={attributes.logo.data.attributes.width} height={attributes.logo.data.attributes.height} src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_API}${attributes.logo.data.attributes.url}`}
+							alt="Site Logo"/></Link>
+
 					</div>
 					<div className="offcanvas__social">
 						<h3 className="social-title">Follow Us</h3>
@@ -225,13 +237,117 @@ export const Offcanvas = () => {
 		</div>
 	)
 }
+
+function MenuItem({item}:any) {
+
+	const SubItems = ( {items}:{ items: { id: string, url: string, title: string }[]}) => {
+		// console.log(items)
+		return (<>{items.map((subItem:any) => <li key={subItem.id}>
+				<Link prefetch={false} href={subItem.attributes.url}>{subItem.attributes.title}</Link>
+			</li>)}</>)
+
+	}
+	return <li>
+		<Link prefetch={false}  href={item.url}>{item.title}</Link>
+			{item.childs ? 		<ul className="main-dropdown"><SubItems  items={item.childs}/></ul> : null}
+
+	</li>;
+}
+
+export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) => {
+
+
+	const sortMenu = (ar:any[]) => {
+
+		const newAr:any = [];
+		ar.sort((a, b) => a.id - b.id);
+
+		ar.forEach((item) => {
+			if(!item.attributes.parent.data) {
+				newAr.push(item)
+			}
+		});
+
+		ar.forEach((item) => {
+			if(item.attributes.parent.data !== null) {
+				const {id} = item.attributes.parent.data;
+				const targetChild = newAr.filter((item:any) => item.id === id)[0].attributes;
+				if(!targetChild.childs) targetChild.childs = [];
+				newAr.filter((item:any) => item.id === id)[0].attributes.childs.push(item);
+
+			}
+		});
+
+		return newAr
+	}
+	const sortedMenu = sortMenu(menus);
+
+	if(sortedMenu.length > 0) {
+		return (
+				<>
+					<header className="header__area-3">
+						<div className="header__inner-3">
+							<div className="header__logo-2">
+								{/*<Link href={"/"}*/}
+								{/*	className="logo-dark"><Image src={"assets/imgs/logo/logo-black.png"}*/}
+								{/*	alt="Site Logo"/></Link>*/}
+								<Link href={"/"}
+									className="logo-dark"><Image
+									// @ts-ignore
+									width={config.logo.data.attributes.width / 2}
+									// @ts-ignore
+									height={config.logo.data.attributes.height / 2}
+									// @ts-ignore
+									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.BACK_URL}${config.logo.data.attributes.url}`}
+									alt="Site Logo"/></Link>
+								<Link href={"/"}
+									className="logo-light"><Image
+									// @ts-ignore
+									width={config.logo.data.attributes.width}
+									// @ts-ignore
+									height={config.logo.data.attributes.height}
+									// @ts-ignore
+									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.BACK_URL}${config.logo.data.attributes.url}`}
+									alt="Site Logo"/></Link>
+							</div>
+							<div className="header__nav-2">
+								<ul className="main-menu-3 menu-anim">
+									{sortedMenu.map((item:any) => <MenuItem key={item.id} item={item.attributes} />)}
+
+								</ul>
+							</div>
+							<div className="header__nav-icon-3">
+								<button className="search-icon"
+									id="search_icon"><i className="fa-solid fa-magnifying-glass"></i></button>
+								<button className="search-icon"
+									id="search_close"><i className="fa-solid fa-xmark"></i></button>
+								<button id="open_offcanvas"><Image src={menuBlack}
+									alt="Menubar Icon"/></button>
+							</div>
+						</div>
+					</header>
+					<div className="header__search">
+						<form action="#">
+							<input type="text"
+								name="s"
+								id="s"
+								placeholder="Search.."/>
+						</form>
+					</div>
+				</>
+			)
+	}
+	return null;
+
+
+}
 function Header() {
 	return <header className="header__area">
 		<div className="header__inner">
 			<div className="header__logo">
 				<a href="/">
 					<img className="logo-primary"
-						src="/assets/imgs/logo/site-logo-white.png"
+						src={"/assets/imgs/logo/site-logo-white.png"}
 						alt="Site Logo"/>
 					<img className="logo-secondary"
 						src="/assets/imgs/logo/site-logo-white-2.png"

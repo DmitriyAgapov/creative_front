@@ -1,11 +1,11 @@
 
 export const getData = async (query: string, variables: {} = {}) => {
 
-	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : process.env.NODE_API;
+	const uri = process.env.NODE_ENV === 'production' ? process.env.NODE_API : process.env.NODE_API_LOCAL;
 	// console.log(uri)
 	//@ts-ignore
-	const res = await fetch('https://a.theonebureau.design/graphql', {
-		cache: 'no-store',
+	const res = await fetch(uri, {
+
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json"

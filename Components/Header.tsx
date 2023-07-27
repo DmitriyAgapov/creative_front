@@ -31,7 +31,7 @@ export const Offcanvas = async () => {
 				<div className="offcanvas__left">
 					<div className="offcanvas__logo">
 						<Link href={"/"}
-							><Image width={attributes.logo.data.attributes.width} height={attributes.logo.data.attributes.height} src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_FRONT}${attributes.logo.data.attributes.url}`}
+							><Image width={attributes.logo.data.attributes.width} height={attributes.logo.data.attributes.height} src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_BACK}${attributes.logo.data.attributes.url}`}
 							alt="Site Logo"/></Link>
 
 					</div>
@@ -298,7 +298,7 @@ export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) 
 									// @ts-ignore
 									height={config.logo.data.attributes.height / 2}
 									// @ts-ignore
-									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.BACK_URL}${config.logo.data.attributes.url}`}
+									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_BACK}${config.logo.data.attributes.url}`}
 									alt="Site Logo"/></Link>
 								<Link href={"/"}
 									className="logo-light"><Image
@@ -307,7 +307,7 @@ export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) 
 									// @ts-ignore
 									height={config.logo.data.attributes.height}
 									// @ts-ignore
-									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.BACK_URL}${config.logo.data.attributes.url}`}
+									src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_BACK}${config.logo.data.attributes.url}`}
 									alt="Site Logo"/></Link>
 							</div>
 							<div className="header__nav-2">

@@ -71,7 +71,7 @@ export const SectionCase = ({ title, description, link, Items, Uptitle }:Section
 			</div>
 
 			{media && (<div key={media[0].id} className="portfolio__detail-thumb">
-				<Image src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_FRONT}${media[0].img.data.attributes.url}`} width={media[0].img.data.attributes.width} height={media[0].img.data.attributes.height} alt={media[0].alt} data-speed="auto" />
+				<Image src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_BACK}${media[0].img.data.attributes.url}`} width={media[0].img.data.attributes.width} height={media[0].img.data.attributes.height} alt={media[0].alt} data-speed="auto" />
 			</div>)}
 
 			 <div className="portfolio__detail-content">
@@ -95,7 +95,7 @@ export const SectionCase = ({ title, description, link, Items, Uptitle }:Section
 					</div>)}
 					{(media && media.length >= 2) && (<div key={media[1]?.id} className="block-thumb">
 						<Image
-							src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_FRONT}${media[1]?.img.data.attributes.url}`}
+							src={`${process.env.NODE_ENV === 'development' ? process.env.BACK_URL : process.env.NODE_BACK}${media[1]?.img.data.attributes.url}`}
 							width={media[1]?.img.data.attributes.width}
 							height={media[1]?.img.data.attributes.height}
 							alt={media[1]?.alt} data-speed="0.5" />
@@ -228,7 +228,7 @@ export const SectionTechStack = ({ title, description, link, Items, Uptitle }:Se
 	<div className="brand__list">
 	{Items?.map((item, index) =>
 	<div className="brand__item fade_bottom" key={index}>
-	<Image src={`${process.env.BACK_URL}${item.Image.data[0].attributes.url}`}
+	<Image src={`${process.env.NODE_FRONT}${item.Image.data[0].attributes.url}`}
 	width={item.Image.data[0].attributes.width}
 	height={item.Image.data[0].attributes.height}
 	alt="Brand Logo"/>

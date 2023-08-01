@@ -93,10 +93,10 @@ export default async function Pages({ params: {url} }) {
 	}
 	return <Page page={pages.data[0]} />
 }
-
+export const dynamic = 'auto'
 // @ts-ignore
 export async function generateStaticParams() {
-	console.log()
+
 	const { data: {pages} }  =  await getData(pagesUrl);
 	// console.log(pages)
 	return pages.data.map((page:any) => ({

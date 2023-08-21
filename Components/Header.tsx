@@ -23,16 +23,11 @@ export const Preloader = () => {
 		</div>
 	)
 }
-export const Offcanvas =  () => {
-	const loadData = async () => {
-		const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
-		const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
-		return await attributes
-	}
-	// @ts-ignore
-	const { attributes } = loadData()
+export const Offcanvas = async () => {
+	const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
 	// console.log(data)
-	if(attributes)	return (
+	const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
+	return (
 		<div className="offcanvas__area">
 			<div className="offcanvas__body">
 				<div className="offcanvas__left">
@@ -244,10 +239,15 @@ export const Offcanvas =  () => {
 		</div>
 	)
 }
-export const OffcanvasContact = async () => {
-	const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+export const OffcanvasContact =  () => {
+	const loadData = async () => {
+		const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
+		const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+		return await attributes
+	}
+	// @ts-ignore
+	const { attributes } = loadData()
 	// console.log(data)
-	const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
 	return (
 		<div className="offcanvas__area offcanvas__area-contact_form">
 

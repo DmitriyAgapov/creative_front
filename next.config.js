@@ -3,15 +3,15 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true
 	},
-	env: {
-		NODE_API:"https://a.theonebureau.design/graphql",
-		NODE_API_LOCAL:"http://localhost:1336/graphql",
-		NODE_FRONT:"https://theonebureau.design",
-		NODE_BACK:"https://a.theonebureau.design",
-		NODE_ENV:"production",
-		PORT:"10001",
-		BACK_URL:"http://localhost:1336"
-	},
+	//env: {
+	//	NODE_API:"https://a.theonebureau.design/graphql",
+	//	NODE_API_LOCAL:"http://localhost:1336/graphql",
+	//	NODE_FRONT:"https://theonebureau.design",
+	//	NODE_BACK:"https://a.theonebureau.design",
+	//	NODE_ENV:"production",
+	//	PORT:"10001",
+	//	BACK_URL:"http://localhost:1336"
+	//},
 	async rewrites() {
 		return [
 			{

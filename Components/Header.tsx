@@ -239,14 +239,8 @@ export const Offcanvas = async () => {
 		</div>
 	)
 }
-export const OffcanvasContact =  () => {
-	const loadData = async () => {
-		const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
-		const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
-		return await attributes
-	}
-	// @ts-ignore
-	const { attributes } = loadData()
+export const OffcanvasContact =  ({ attributes }:any) => {
+
 	// console.log(data)
 	return (
 		<div className="offcanvas__area offcanvas__area-contact_form">
@@ -254,7 +248,7 @@ export const OffcanvasContact =  () => {
 			<div className="offcanvas__body">
 
 				<div className="offcanvas__mid">
-					{attributes && <ContactSection contacts={attributes}/>}
+					<ContactSection contacts={attributes}/>
 
 				</div>
 

@@ -35,7 +35,7 @@ export default async function RootLayout({
 			<HorizontalHeader menus={data} config={attributes}/>
 		</Suspense>
 		{/*<Header />*/}
-		<OffcanvasContact/>
+		<OffcanvasContact attributes={attributes}/>
 		<div className="has-smooth"
 			id="has_smooth"></div>
 

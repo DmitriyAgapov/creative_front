@@ -777,7 +777,7 @@ export const SectionTeam = (props:SectionProps) => {
 
 
 export const ContactSection = ({ contacts }:any) => {
-	console.log(contacts)
+
 		return (
 			<section className="contact__area-6">
 				<div className="container g-0 line pt-120 pb-110">

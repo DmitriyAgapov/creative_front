@@ -23,11 +23,16 @@ export const Preloader = () => {
 		</div>
 	)
 }
-export const Offcanvas = async () => {
-	const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+export const Offcanvas =  () => {
+	const loadData = async () => {
+		const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
+		const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+		return await attributes
+	}
+	// @ts-ignore
+	const { attributes } = loadData()
 	// console.log(data)
-	const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
-	return (
+	if(attributes)	return (
 		<div className="offcanvas__area">
 			<div className="offcanvas__body">
 				<div className="offcanvas__left">

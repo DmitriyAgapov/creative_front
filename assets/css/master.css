@@ -5847,7 +5847,7 @@ img {
           animation: wcRotate 18s infinite linear;
 }
 .hero__area-2 {
-  background-image: url(../imgs/bg/lines.png);
+  background-image: url("../imgs/bg/lines.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--black-2);
@@ -8472,6 +8472,7 @@ img {
 }
 .service__area-6 .left-content {
   width: 20%;
+  padding-top: 100px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .service__area-6 .left-content {
@@ -8494,6 +8495,7 @@ img {
 .service__area-6 .right-content {
   width: 40%;
   padding-left: 80px;
+  padding-top: 180px;
 }
 @media only screen and (min-width: 1400px) and (max-width: 1919px) {
   .service__area-6 .right-content {
@@ -8842,16 +8844,10 @@ img {
 }
 .service__item-6 {
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+
 }
 .service__item-6 .image-tab {
   display: none;
@@ -9208,7 +9204,7 @@ img {
   }
 }
 .service__list-6 {
-  padding-top: 160px;
+  padding-top: 100px;
 }
 @media only screen and (min-width: 1400px) and (max-width: 1919px) {
   .service__list-6 {

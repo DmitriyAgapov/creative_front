@@ -111,9 +111,9 @@
   }
 
 
-  // 
+  //
   // Offcanvas CSS
-  // 
+  //
   .offcanvas {
     &__close {
       right: unset;
@@ -1488,7 +1488,7 @@
   }
 
 
-  // CTA CSS 
+  // CTA CSS
   .cta__area-3 {
     .wc-btn-black {
       flex-direction: row-reverse;
@@ -1855,7 +1855,7 @@
     }
 
     &__service .sec-text {
-      background-image: url(../imgs/shape/25.png);
+      background-image: url(../../imgs/shape/25.png);
       background-position: right 80px;
 
       @media (max-width: 1400px) {
@@ -2469,7 +2469,7 @@
         width: 500px;
         left: 0px;
         top: 0;
-        background-image: url(../imgs/shape/4.png);
+        background-image: url(../../imgs/shape/4.png);
         background-repeat: no-repeat;
         transform: rotateY(180deg);
       }

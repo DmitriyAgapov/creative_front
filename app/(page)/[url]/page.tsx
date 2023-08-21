@@ -19,7 +19,13 @@ import { notFound } from "next/navigation";
 const Page = ({ page: { attributes } }: {page: {attributes: any}}):JSX.Element => {
 
 	const allSections:any[] = [];
-	const problems:any[] = [];
+	const problemsWrapper:any[] = [];
+	const Problems = () => <section className={'problems__area-2'}>
+		<div className={'swiper problems__slider-2 '}>
+		<div className="swiper-wrapper">{problemsWrapper}</div>
+		<div className="problems__slider-2-pagination--">
+			<div className="swiper-pagination circle-pagination right"></div>
+		</div></div></section>
 	const team:any[] = [];
 	const aboutslider:any[] = [];
 	attributes.sections.data.forEach((section:any) => {
@@ -32,8 +38,8 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):JSX.Element =
 				allSections.push(<SectionPitch title={section.attributes.Title} description={section.attributes.Description} link={section.attributes.Link}/>);
 				break;
 			case 'problem' as string:
-				allSections.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
-				// problems.push({ title:section.attributes.Title, description:section.attributes.Description, Items:section.attributes.Items});
+				// allSections.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
+				problemsWrapper.push(<div className={"swiper-slide"}> <SectionProblems className={'problems__slide-2'} title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/></div>);
 				break;
 			case 'how_we_work' as string:
 				allSections.push(<SectionHowWeWork title={section.attributes.Title} description={section.attributes.Description} Uptitle={section.attributes.Uptitle} Items={section.attributes.Items}/>);
@@ -75,6 +81,7 @@ const Page = ({ page: { attributes } }: {page: {attributes: any}}):JSX.Element =
 				break;
 		}
 	});
+	allSections.push(<Problems/>)
 	//@ts-ignore
 	const slides =  aboutslider.length > 0 ?<SectionAboutUs>{aboutslider.map((slide, index) => index === 0 && <SectionAboutUsFirstItem {...slide} /> || index === 1 && <SectionAboutUsSecondItem {...slide} /> || index === 2 && <SectionAboutUsFThirdItem {...slide} /> || index === 3 && <SectionAboutUsFourthItem {...slide} /> )}</SectionAboutUs> : null;
 	const result = [...allSections, slides];

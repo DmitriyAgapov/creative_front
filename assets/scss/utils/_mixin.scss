@@ -162,3 +162,36 @@
     }
   }
 }
+// Menu Animation
+@mixin menu_anim_footer($shadow_color, $translate_y) {
+  .menu-text {
+    display: flex;
+    overflow: hidden;
+    text-shadow: 0 $translate_y 0 $shadow_color;
+
+    span {
+      display: block;
+      backface-visibility: hidden;
+      font-style: normal;
+      transition: transform .4s ease;
+      transform: translateY(-$translate_y) translateZ(0);
+      $i: 1;
+
+      @while $i < 50 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i / 20 + s;
+        }
+
+        $i: $i + 1;
+      }
+    }
+  }
+
+  &:hover {
+    --y: -4px;
+
+    span {
+      --m: calc($translate_y * -1);
+    }
+  }
+}

@@ -3,6 +3,8 @@ import Image from "next/image";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import menuBlack from "@/assets/imgs/icon/menu-black.png"
+import { sortMenu } from "@/utils/utils";
+import { ContactSection } from "@/Components/Section";
 
 
 export const Preloader = () => {
@@ -237,8 +239,30 @@ export const Offcanvas = async () => {
 		</div>
 	)
 }
+export const OffcanvasContact = async () => {
+	const {data: {menusMenuItems: {data}}} = await getData(mainMenuList)
+	// console.log(data)
+	const {data: {websiteConfiguration: {data: {attributes}}}} = await getData(webSiteConfig);
+	return (
+		<div className="offcanvas__area offcanvas__area-contact_form">
 
-function MenuItem({item}:any) {
+			<div className="offcanvas__body">
+
+				<div className="offcanvas__mid">
+					<ContactSection contacts={attributes}/>
+
+				</div>
+
+				<div className="offcanvas__close">
+					<button type="button"
+						id="close_offcanvas__area-contact_form-toggle"><i className="fa-solid fa-xmark"></i></button>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export function MenuItem({item, ...props}:any) {
 
 	const SubItems = ( {items}:{ items: { id: string, url: string, title: string }[]}) => {
 		// console.log(items)
@@ -247,7 +271,7 @@ function MenuItem({item}:any) {
 			</li>)}</>)
 
 	}
-	return <li>
+	return <li {...props}>
 		<Link prefetch={false}  href={item.url}>{item.title}</Link>
 			{item.childs ? 		<ul className="main-dropdown"><SubItems  items={item.childs}/></ul> : null}
 
@@ -257,29 +281,7 @@ function MenuItem({item}:any) {
 export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) => {
 
 
-	const sortMenu = (ar:any[]) => {
 
-		const newAr:any = [];
-		ar.sort((a, b) => a.id - b.id);
-
-		ar.forEach((item) => {
-			if(!item.attributes.parent.data) {
-				newAr.push(item)
-			}
-		});
-
-		ar.forEach((item) => {
-			if(item.attributes.parent.data !== null) {
-				const {id} = item.attributes.parent.data;
-				const targetChild = newAr.filter((item:any) => item.id === id)[0].attributes;
-				if(!targetChild.childs) targetChild.childs = [];
-				newAr.filter((item:any) => item.id === id)[0].attributes.childs.push(item);
-
-			}
-		});
-
-		return newAr
-	}
 	const sortedMenu = sortMenu(menus);
 
 	if(sortedMenu.length > 0) {
@@ -317,23 +319,13 @@ export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) 
 								</ul>
 							</div>
 							<div className="header__nav-icon-3">
-								<button className="search-icon"
-									id="search_icon"><i className="fa-solid fa-magnifying-glass"></i></button>
-								<button className="search-icon"
-									id="search_close"><i className="fa-solid fa-xmark"></i></button>
+
 								<button id="open_offcanvas"><Image src={menuBlack}
 									alt="Menubar Icon"/></button>
 							</div>
 						</div>
 					</header>
-					<div className="header__search">
-						<form action="#">
-							<input type="text"
-								name="s"
-								id="s"
-								placeholder="Search.."/>
-						</form>
-					</div>
+
 				</>
 			)
 	}

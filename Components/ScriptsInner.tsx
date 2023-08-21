@@ -8,7 +8,8 @@ export default function ScriptsInner(){
 	useEffect(() => {
 		// componentDidMount() {}
 		const externalScript = document.createElement('script');
-		externalScript.src = 'http://localhost:10001/assets/js/main.js';
+		// @ts-ignore
+		externalScript.src = process.env.NODE_ENV === 'development' ? 'http://localhost:10001/assets/js/main.js' : `${process.env.NODE_FRONT}/assets/js/main.js`;
 		externalScript.async = true;
 		document.head.append(externalScript);
 
@@ -24,20 +25,20 @@ export default function ScriptsInner(){
 	}, []);
 
 	return <>
-		<Script strategy={'beforeInteractive'} src={`http://localhost:10001/assets/js/jquery-3.6.0.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/bootstrap.bundle.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/swiper-bundle.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/counter.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/gsap.min.js`}/>
-		{/*<Scr  strategy={'beforeInteractive'}  ipt src={`http://localhost:10001/assets/js/jquery-3.6.0.min.js`}/>*/}
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/ScrollTrigger.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/ScrollToPlugin.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/ScrollSmoother.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/SplitText.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/chroma.min.js`}/>
-		<Script  strategy={'beforeInteractive'}    src={`http://localhost:10001/assets/js/mixitup.min.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/vanilla-tilt.js`}/>
-		<Script  strategy={'beforeInteractive'}   src={`http://localhost:10001/assets/js/jquery.meanmenu.min.js`}/>
+		<Script strategy={'afterInteractive'} src={`${process.env.NODE_ENV === 'development' ?    'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/jquery-3.6.0.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/bootstrap.bundle.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/swiper-bundle.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/counter.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/gsap.min.js`}/>
+		{/*<Scr  strategy={'afterInteractive'}  ipt sr${process.env.NODE_ENV === 'development' ? 'http://localhost:10001/ : process.env.NODE_FRONT}:10001/assets/js/jquery-3.6.0.min.js`}/>*/}
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/ScrollTrigger.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/ScrollToPlugin.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/ScrollSmoother.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/SplitText.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/chroma.min.js`}/>
+		<Script  strategy={'afterInteractive'}    src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/mixitup.min.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/vanilla-tilt.js`}/>
+		<Script  strategy={'afterInteractive'}   src={`${process.env.NODE_ENV === 'development' ? 'http://localhost:10001' : process.env.NODE_FRONT}/assets/js/jquery.meanmenu.min.js`}/>
 
 
 	</>;

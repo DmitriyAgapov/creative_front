@@ -30,7 +30,7 @@
     }
 
     &-2 {
-      background-image: url(../imgs/bg/lines.png);
+      background-image: url(../../imgs/bg/lines.png);
       background-repeat: no-repeat;
       background-size: cover;
       background-color: var(--black-2);
@@ -124,7 +124,7 @@
           }
 
           .bg-shape {
-            background-image: url(../imgs/shape/10.png);
+            background-image: url(../../imgs/shape/10.png);
             background-repeat: no-repeat;
             background-position: right top;
           }
@@ -168,7 +168,7 @@
         height: 100%;
         left: 0;
         top: 0;
-        background-image: url(../imgs/shape/5.png);
+        background-image: url(../../imgs/shape/5.png);
         background-repeat: no-repeat;
         background-position: left;
         z-index: -1;
@@ -181,7 +181,7 @@
         height: 50px;
         right: 50px;
         top: 140px;
-        background-image: url(../imgs/shape/6.png);
+        background-image: url(../../imgs/shape/6.png);
         background-repeat: no-repeat;
         background-position: right top;
       }
@@ -344,7 +344,7 @@
           left: -20px;
           width: 40px;
           height: 40px;
-          background: url(../imgs/icon/play-icon.png);
+          background: url(../../imgs/icon/play-icon.png);
           content: "";
           z-index: 999999999999;
           background-size: 100%;
@@ -596,7 +596,7 @@
 
   &__text {
     &-2 {
-      background-image: url(../imgs/icon/7.png);
+      background-image: url(../../imgs/icon/7.png);
       background-repeat: no-repeat;
       background-position: 64% 58%;
       padding-left: 32%;
@@ -932,7 +932,7 @@
 
   // About Hero
   &__about {
-    background-image: url(../imgs/about/about-bg.png);
+    background-image: url(../../imgs/about/about-bg.png);
     background-repeat: no-repeat;
     background-position: top right;
     overflow: hidden;
@@ -1158,7 +1158,7 @@
   }
 }
 
-// hero portfolio 
+// hero portfolio
 .hero {
   &__content-8 {
     padding-top: 80px;

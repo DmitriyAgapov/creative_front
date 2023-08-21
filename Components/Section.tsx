@@ -131,15 +131,7 @@ export const SectionCase = ({ title, description, link, Items, Uptitle }:Section
 			 				data-speed="0.5"/>
 			 		</div>
 
-			 		<div className="block-img-text">
-			 			<img src="assets/imgs/portfolio/detail/6.jpg"
-			 				alt="Portfolio Image"/>
-			 				<img src="assets/imgs/portfolio/detail/7.jpg"
-			 					alt="Portfolio Image"/>
-			 					<p>For those of us who are blessed with good sight. So we seldom consider
-			 						it. That’s why going off to
-			 						investigate the whys and hows involved is a little like trying to get behind the wind </p>
-			 		</div>
+
 
 			 		<div className="row">
 			 			<div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
@@ -202,11 +194,12 @@ export const SectionCases = ({ title, description, link, Items, Uptitle }:Sectio
 			<div className="swiper-wrapper">
 			{Items?.map((item) => <Slide key={item.index} {...item} />)}
 			</div>
+			<div className="portfolio__slider-2-pagination--">
+				<div className="swiper-pagination circle-pagination right"></div>
+			</div>
 		</div>
 
-		<div className="portfolio__slider-2-pagination--">
-		<div className="swiper-pagination circle-pagination right"></div>
-		</div>
+
 
 	</section>
 	)
@@ -303,7 +296,8 @@ export const SectionSolutionPage = ({ title, description, link, Items, Uptitle, 
 							<h3 className="sec-sub-title title-anim">Solution:</h3>
 							<h2 className="sec-title animation__char_come ">{title}</h2>
 							<div className="price__amount pt-4 d-inline">
-								<p>{price_period}: ${price}</p>
+
+								<p><Link href={'#'} className={'btn btn-filled'} id={'offcanvas__area-contact_form-toggle'}>To form</Link></p>
 							</div>
 						</div>
 					</div>
@@ -513,10 +507,11 @@ export function SectionAboutUsSecondItem(props:{title:string, description: any |
 	<span className="line-3"></span>
 
 	<div className="row">
-	<div className="col-xxl-7 col-xl-7 col-lg-7">
-	<div className="sec-title-wrapper">
-	<h2 className="sec-title title-anim">{title}</h2>
-	<div className={'text-anim'} dangerouslySetInnerHTML={{ __html: description }}/>
+	<div className="col-xxl-7 col-xl-7 col-lg-7 problems__text">
+	<div className="slide-content">
+	<h2 className="sec-title">{title}</h2>
+
+	<div style={{display: "contents"}} dangerouslySetInnerHTML={{ __html: description }}/>
 	</div>
 	</div>
 	<div className="col-xxl-5 col-xl-5 col-lg-5">
@@ -781,3 +776,82 @@ export const SectionTeam = (props:SectionProps) => {
 	export default Section
 
 
+export const ContactSection = ({ contacts }) => {
+	console.log(contacts)
+		return (
+			<section className="contact__area-6">
+				<div className="container g-0 line pt-120 pb-110">
+					<span className="line-3"></span>
+					<div className="row">
+						<div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+							<div className="sec-title-wrapper">
+								<h2 className="sec-title-2 animation__char_come">Let’s get in touch</h2>
+							</div>
+						</div>
+						<div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+							<div className="contact__text">
+								<p>Great! We're excited to hear from you and let's start
+									something special togerter. call us for any inquery.</p>
+							</div>
+						</div>
+					</div>
+					<div className="row contact__btm">
+						<div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
+							<div className="contact__info">
+								<h3 className="sub-title-anim-top animation__word_come">Don't be afraid man ! <br/>say hello</h3>
+								<ul>
+									<li><a href={`tel:${contacts.PhoneNumber}`}>{contacts.PhoneNumber}</a></li>
+									<li><a href={`mailto:${contacts.email}`}>{contacts.email}</a></li>
+									<li>{contacts.Address}</li>
+								</ul>
+							</div>
+						</div>
+						<div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
+							<div className="contact__form">
+								<form action="assets/mail.php"
+									method="POST">
+									<div className="row g-3">
+										<div className="col-xxl-6 col-xl-6 col-12">
+											<input type="text"
+												name="name"
+												placeholder="Name *"/>
+										</div>
+										<div className="col-xxl-6 col-xl-6 col-12">
+											<input type="email"
+												name="email"
+												placeholder="Email *"/>
+										</div>
+									</div>
+									<div className="row g-3">
+										<div className="col-xxl-6 col-xl-6 col-12">
+											<input type="tel"
+												name="phone"
+												placeholder="Phone"/>
+										</div>
+										<div className="col-xxl-6 col-xl-6 col-12">
+											<input type="text"
+												name="subject"
+												placeholder="Subject *"/>
+										</div>
+									</div>
+									<div className="row g-3">
+										<div className="col-12">
+											<textarea name="message"
+												placeholder="Messages *"></textarea>
+										</div>
+									</div>
+									<div className="row g-3">
+										<div className="col-12">
+											<div className="btn_wrapper">
+												<button className="wc-btn-primary btn-hover btn-item"><span></span> Send <br/>Messages <i className="fa-solid fa-arrow-right"></i></button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		)
+}

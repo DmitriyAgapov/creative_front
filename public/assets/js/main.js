@@ -276,6 +276,16 @@ function init () {
       $('.offcanvas__area').css('visibility', 'hidden');
     });
     /////////////////////////////////////////////////////
+ // 02. Offcanvas-contact
+    $("#offcanvas__area-contact_form-toggle").click(function () {
+      $('.offcanvas__area-contact_form').css('opacity', '1');
+      $('.offcanvas__area-contact_form').css('visibility', 'visible');
+    });
+    $("#close_offcanvas__area-contact_form-toggle").click(function () {
+      $('.offcanvas__area-contact_form').css('opacity', '0');
+      $('.offcanvas__area-contact_form').css('visibility', 'hidden');
+    });
+    /////////////////////////////////////////////////////
 
 
     /////////////////////////////////////////////////////
@@ -639,6 +649,24 @@ function init () {
       });
     });
     /////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+    // 15. Portfolio Slider
+    var total_portfolio_item = $('.portfolio__item-6').length;
+    if (total_portfolio_item) {
+      $('.portfolio__total').html(total_portfolio_item);
+    }
+
+    $(document).on('scroll', function () {
+      $('.portfolio__item-6').each(function () {
+        if ($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
+
+          var item_num = $(this).data('portfitem');
+          $('.portfolio__current').html(item_num);
+          $(this).addClass('active').siblings().removeClass('active');
+        }
+      });
+    });
+    /////////////////////////////////////////////////////
 
 
     /////////////////////////////////////////////////////
@@ -954,7 +982,7 @@ function init () {
         const itemSplitted = new SplitText(splitTextLine, { type: "words, lines" });
         gsap.set(splitTextLine, { perspective: 400 });
         itemSplitted.split({ type: "lines" })
-        tl.from(itemSplitted.lines, { duration: 1, delay: 0.3, opacity: 0, rotationX: -80, force3D: true, transformOrigin: "top center -50", stagger: 0.1 });
+        tl.from(itemSplitted.lines, { duration: 1, delay: 0.3, opacity: 0, rotationX: -180, force3D: true, transformOrigin: "top center -50", stagger: 0.1 });
       });
       /////////////////////////////////////////////////////
 
@@ -985,7 +1013,7 @@ function init () {
         const itemSplitted = new SplitText(splitTextLine, { type: "lines" });
         gsap.set(splitTextLine, { perspective: 400 });
         itemSplitted.split({ type: "lines" })
-        tl.from(itemSplitted.lines, { duration: 1, delay: 0.5, opacity: 0, rotationX: -80, force3D: true, transformOrigin: "top center -50", stagger: 0.1 });
+        tl.from(itemSplitted.lines, { duration: 1, delay: 0.5, opacity: 0, rotationX: -180, force3D: true, transformOrigin: "top center -50", stagger: 0.1 });
       });
       /////////////////////////////////////////////////////
 
@@ -1413,6 +1441,50 @@ function init () {
       },
       thumbs: {
         swiper: portfolio_project_thumbs,
+      },
+    });
+    /////////////////////////////////////////////////////
+// 39. Portfolio Slider 2
+    var problems_slider = new Swiper(".problems__slider-2", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      effect: "fade",
+      speed: 1500,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (i, className) {
+          return `
+        <button class="${className}">
+          <svg class="circle-progress"><circle class="circle-origin" r="24.5" cx="25" cy="25"></circle></svg><span></span>
+        </button>
+      `;
+        }
+      }
+    });
+
+    var problems_project_thumbs = new Swiper(".problems__project-thumbs", {
+      loop: true,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      freeMode: true,
+      watchSlidesProgress: true,
+      allowTouchMove: false,
+    });
+    var problems_project = new Swiper(".problems__project-slider", {
+      loop: true,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".pp-next",
+        prevEl: ".pp-prev",
+      },
+      thumbs: {
+        swiper: problems_project_thumbs,
       },
     });
     /////////////////////////////////////////////////////

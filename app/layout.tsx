@@ -1,6 +1,6 @@
-import './globals.css'
+import './globals.scss'
 import Footer from "@/Components/Footer";
-import { HorizontalHeader} from "@/Components/Header";
+import { HorizontalHeader,  OffcanvasContact } from "@/Components/Header";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import { Suspense } from "react";
@@ -35,14 +35,14 @@ export default async function RootLayout({
 			<HorizontalHeader menus={data} config={attributes}/>
 		</Suspense>
 		{/*<Header />*/}
-		{/*<Offcanvas/>*/}
+		<OffcanvasContact/>
 		<div className="has-smooth"
 			id="has_smooth"></div>
 
 		<div id="smooth-wrapper">
 			<div id="smooth-content">
 				<main> {children}</main>
-				<Footer/>
+				<Footer menus={data} config={attributes}/>
 			</div>
 		</div>
 		<button id="scroll_top"

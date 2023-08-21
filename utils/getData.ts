@@ -21,10 +21,10 @@ export const getData = async (query: string, variables: {} = {}) => {
 	// You can return Date, Map, Set, etc.
 
 	// Recommendation: handle errors
-	// if (!res.ok) {
-	// 	// This will activate the closest `error.js` Error Boundary
-	// 	throw new Error('Failed to fetch data');
-	// }
+	if (!res.ok) {
+		// This will activate the closest `error.js` Error Boundary
+		throw new Error('Failed to fetch data');
+	}
 	const data = await res.json();
 	// console.log(data)
 	return data

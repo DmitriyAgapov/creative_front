@@ -254,7 +254,7 @@ export const OffcanvasContact =  () => {
 			<div className="offcanvas__body">
 
 				<div className="offcanvas__mid">
-					<ContactSection contacts={attributes}/>
+					{attributes && <ContactSection contacts={attributes}/>}
 
 				</div>
 

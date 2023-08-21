@@ -776,7 +776,7 @@ export const SectionTeam = (props:SectionProps) => {
 	export default Section
 
 
-export const ContactSection = ({ contacts }) => {
+export const ContactSection = ({ contacts }:any) => {
 	console.log(contacts)
 		return (
 			<section className="contact__area-6">

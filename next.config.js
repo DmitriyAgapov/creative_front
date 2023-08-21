@@ -3,6 +3,15 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true
 	},
+	env: {
+		NEXT_PUBLIC__NODE_API:"https://a.theonebureau.design/graphql",
+		NEXT_PUBLIC__NODE_API_LOCAL:"http://localhost:1336/graphql",
+		NEXT_PUBLIC__NODE_FRONT:"https://theonebureau.design",
+		NEXT_PUBLIC__NODE_BACK:"https://a.theonebureau.design",
+		NEXT_PUBLIC__NODE_ENV:"production",
+		PORT:"10001",
+		BACK_URL:"http://localhost:1336"
+	},
 	async rewrites() {
 		return [
 			{

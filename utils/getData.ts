@@ -1,7 +1,7 @@
 
 export const getData = async (query: string, variables: {} = {}) => {
 
-	const uri = process.env.NEXT_PUBLIC__NODE_ENV === 'production' ? process.env.NODE_API : process.env.NODE_API_LOCAL;
+	const uri = process.env.NEXT_PUBLIC__NODE_ENV === 'production' ? process.env.NODE_API : process.env.NODE_API;
 	// console.log(uri)
 	//@ts-ignore
 	const res = await fetch(uri, {

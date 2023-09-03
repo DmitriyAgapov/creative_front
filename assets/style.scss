@@ -17,6 +17,7 @@ li.footer__menu-item {
 	background: none;
 	  li {
 		padding: 0 !important;
+		display: block;
 		a {
 		  padding: 10px 0;
 		}
@@ -156,6 +157,7 @@ li.footer__menu-item {
 
 .service__area-6.section_default {
   background:  var(--white-6);
+
 
    * {
 	color: black;

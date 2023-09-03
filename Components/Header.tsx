@@ -254,7 +254,7 @@ export const OffcanvasContact =  ({ attributes }:any) => {
 
 				<div className="offcanvas__close">
 					<button type="button"
-						id="close_offcanvas__area-contact_form-toggle"><i className="fa-solid fa-xmark"></i></button>
+						id={"close_offcanvas__area-contact_form-toggle"}><i className="fa-solid fa-xmark"></i></button>
 				</div>
 			</div>
 		</div>
@@ -281,9 +281,9 @@ export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) 
 
 
 
-	const sortedMenu = sortMenu(menus);
 
-	if(sortedMenu.length > 0) {
+
+	if(menus.length > 0) {
 		return (
 				<>
 					<header className="header__area-3">
@@ -313,7 +313,7 @@ export const HorizontalHeader =  ({menus, config}:{menus:any[], config: any[]}) 
 							</div>
 							<div className="header__nav-2">
 								<ul className="main-menu-3 menu-anim">
-									{sortedMenu.map((item:any) => <MenuItem key={item.id} item={item.attributes} />)}
+									{menus.map((item:any) => <MenuItem key={item.id} item={item.attributes} />)}
 
 								</ul>
 							</div>

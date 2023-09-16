@@ -1,6 +1,6 @@
 /***************************************************
 ==================== JS INDEX ======================
-****************************************************
+ ****************************************************
 00. Preloader
 01. Cursor Animations
 02. Offcanvas
@@ -67,11 +67,9 @@
 63.Portfolio Slider 7
 64. Header 7
 65. Service 7 Animation
-****************************************************/
-
+ ****************************************************/
+"use strict";
 (function ($) {
-  "use strict";
-
   // Get Device width
   let device_width = window.innerWidth;
 
@@ -83,7 +81,7 @@
   /////////////////////////////////////////////////////
 
   // 07. Data backgrond
-  $("[data-background").each(function () {
+  $("[data-background]").each(function () {
     $(this).css(
       "background-image",
       "url( " + $(this).attr("data-background") + "  )",
@@ -138,180 +136,6 @@
   });
 
   /////////////////////////////////////////////////////
-  // 01. Cursor Animations
-
-  // Home Page Client Cursor
-  var client_cursor = document.getElementById("client_cursor");
-
-  // Team Page Team Cursor
-  var team_cursor = document.getElementById("team_cursor");
-
-  // Portfolio  Cursor
-  var portf_cursor_6 = document.getElementById("portf_cursor_6");
-
-  // Featured  Cursor
-  var featured_cursor = document.getElementById("featured_cursor");
-
-  var portfolio4_cursor = document.getElementById("portfolio4_cursor");
-
-  function mousemoveHandler(e) {
-    try {
-      const target = e.target;
-
-      let tl = gsap.timeline({
-        defaults: {
-          x: e.clientX,
-          y: e.clientY,
-        },
-      });
-      let t2 = gsap.timeline({
-        defaults: {
-          x: e.clientX,
-          y: e.clientY,
-        },
-      });
-
-      // Home Page Client Cursor
-      if (target.closest(".testimonial__img")) {
-        tl.to(
-          client_cursor,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          client_cursor,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-
-      // Team Page Team Cursor
-      if (target.closest(".team__slider")) {
-        tl.to(
-          team_cursor,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          team_cursor,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-
-      // Portfolio Cursor
-      if (target.closest(".portfolio__item-6")) {
-        tl.to(
-          portf_cursor_6,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          portf_cursor_6,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-      // Portfolio Cursor
-      if (target.closest(".portfolio__item-6")) {
-        tl.to(
-          portf_cursor_6,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          portf_cursor_6,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-
-      // featured  Cursor
-      if (target.closest(".portfolio__slider-3")) {
-        tl.to(
-          featured_cursor,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          featured_cursor,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-
-      // featured  Cursor
-      if (target.closest(".portfolio__area-5")) {
-        tl.to(
-          portfolio4_cursor,
-          {
-            opacity: 1,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      } else {
-        t2.to(
-          portfolio4_cursor,
-          {
-            opacity: 0,
-            ease: "power4.out",
-          },
-          "-=0.3",
-        );
-      }
-
-      // Main Cursor Moving
-      tl.to(".cursor1", {
-        ease: "power2.out",
-      }).to(
-        ".cursor2",
-        {
-          ease: "power2.out",
-        },
-        "-=0.4",
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  document.addEventListener("mousemove", mousemoveHandler);
-  /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
   // 02. Offcanvas
@@ -322,6 +146,16 @@
   $("#close_offcanvas").click(function () {
     $(".offcanvas__area").css("opacity", "0");
     $(".offcanvas__area").css("visibility", "hidden");
+  });
+  /////////////////////////////////////////////////////
+  // 02. Offcanvas-contact
+  $("#offcanvas__area-contact_form-toggle").click(function () {
+    $(".offcanvas__area-contact_form").css("opacity", "1");
+    $(".offcanvas__area-contact_form").css("visibility", "visible");
+  });
+  $("#close_offcanvas__area-contact_form-toggle").click(function () {
+    $(".offcanvas__area-contact_form").css("opacity", "0");
+    $(".offcanvas__area-contact_form").css("visibility", "hidden");
   });
   /////////////////////////////////////////////////////
 
@@ -771,6 +605,51 @@
   });
   /////////////////////////////////////////////////////
 
+  // 39. Portfolio Slider 2
+  var problems_slider = new Swiper(".problems__slider-2", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    effect: "fade",
+    speed: 1500,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (i, className) {
+        return `
+        <button class="${className}">
+          <svg class="circle-progress"><circle class="circle-origin" r="24.5" cx="25" cy="25"></circle></svg><span></span>
+        </button>
+      `;
+      },
+    },
+  });
+
+  var problems_project_thumbs = new Swiper(".problems__project-thumbs", {
+    loop: true,
+    spaceBetween: 0,
+    slidesPerView: 1,
+    freeMode: true,
+    watchSlidesProgress: true,
+    allowTouchMove: false,
+  });
+  var problems_project = new Swiper(".problems__project-slider", {
+    loop: true,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".pp-next",
+      prevEl: ".pp-prev",
+    },
+    thumbs: {
+      swiper: problems_project_thumbs,
+    },
+  });
+  /////////////////////////////////////////////////////
+
   /////////////////////////////////////////////////////
   // 19. Button Move Animation
   const all_btns = gsap.utils.toArray(".btn_wrapper");
@@ -811,12 +690,7 @@
 
   /////////////////////////////////////////////////////
   // 20. Register GSAP
-  gsap.registerPlugin(
-    ScrollTrigger,
-    // ScrollSmoother,
-    TweenMax,
-    ScrollToPlugin,
-  );
+  gsap.registerPlugin(ScrollTrigger, TweenMax, ScrollToPlugin);
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////

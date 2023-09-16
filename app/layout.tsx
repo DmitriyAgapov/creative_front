@@ -66,7 +66,7 @@ export default async function RootLayout({
         </Suspense>
         {/*<Header />*/}
         <OffcanvasContact attributes={attributes} />
-        <div className="has-smooth" id="has_smooth"></div>
+        {/*<div className="has-smooth" id="has_smooth"></div>*/}
         <div id="smooth-wrapper">
           <div id="smooth-content">
             <main> {children}</main>

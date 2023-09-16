@@ -67,14 +67,14 @@ export default async function RootLayout({
         {/*<Header />*/}
         <OffcanvasContact attributes={attributes} />
         {/*<div className="has-smooth" id="has_smooth"></div>*/}
-        <div id="smooth-wrapper">
-          <div id="smooth-content">
-            <main> {children}</main>
-            <Suspense>
-              <Footer menus={sortedMenu} config={attributes} />
-            </Suspense>
-          </div>
-        </div>
+        {/*<div id="smooth-wrapper">*/}
+        {/*  <div id="smooth-content">*/}
+        <main> {children}</main>
+        <Suspense>
+          <Footer menus={sortedMenu} config={attributes} />
+        </Suspense>
+        {/*  </div>*/}
+        {/*</div>*/}
         <button id="scroll_top" className="scroll-top">
           <i className="fa-solid fa-arrow-up"></i>
         </button>{" "}

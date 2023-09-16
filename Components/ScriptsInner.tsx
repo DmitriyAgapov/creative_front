@@ -31,18 +31,24 @@ export default function ScriptsInner() {
           onLoad={() => {
             setLoad((prevState) => prevState++);
           }}
-        />
-
+        />{" "}
+        {/*<Script*/}
+        {/*  strategy={"afterInteractive"}*/}
+        {/*  src={`https://theonebureau.design/assets/js/ScrollTrigger.min.js`}*/}
+        {/*  onLoad={() => {*/}
+        {/*    setLoad((prevState) => prevState++);*/}
+        {/*  }}*/}
+        {/*/>*/}
         <Script
           strategy={"afterInteractive"}
           src={`https://theonebureau.design/assets/js/ScrollToPlugin.min.js`}
           onLoad={() => setLoad((prevState) => prevState++)}
         />
-        <Script
-          strategy={"afterInteractive"}
-          src={`https://theonebureau.design/assets/js/ScrollSmoother.min.js`}
-          onLoad={() => setLoad((prevState) => prevState++)}
-        />
+        {/*<Script*/}
+        {/*  strategy={"afterInteractive"}*/}
+        {/*  src={`https://theonebureau.design/assets/js/ScrollSmoother.min.js`}*/}
+        {/*  onLoad={() => setLoad((prevState) => prevState++)}*/}
+        {/*/>*/}
         <Script
           strategy={"afterInteractive"}
           src={`https://theonebureau.design/assets/js/SplitText.min.js`}

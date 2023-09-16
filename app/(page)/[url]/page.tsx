@@ -42,7 +42,7 @@ const Page = ({
     </section>
   );
   const team: any[] = [];
-  const aboutslider: any[] = [];
+  const aboutslider: any = [];
   attributes.sections.data.forEach((section: any) => {
     let a = section.attributes.Type;
     switch (a) {
@@ -181,16 +181,20 @@ const Page = ({
   });
   allSections.push(<Problems />);
   //@ts-ignore
+
   const slides =
     aboutslider.length > 0 ? (
       <SectionAboutUs>
-        {aboutslider.map(
-          (slide, index) =>
-            (index === 0 && <SectionAboutUsFirstItem {...slide} />) ||
-            (index === 1 && <SectionAboutUsSecondItem {...slide} />) ||
-            (index === 2 && <SectionAboutUsFThirdItem {...slide} />) ||
-            (index === 3 && <SectionAboutUsFourthItem {...slide} />),
-        )}
+        {
+          // @ts-ignore
+          aboutslider.map(
+            (slide: any, index: number) =>
+              (index === 0 && <SectionAboutUsFirstItem {...slide} />) ||
+              (index === 1 && <SectionAboutUsSecondItem {...slide} />) ||
+              (index === 2 && <SectionAboutUsFThirdItem {...slide} />) ||
+              (index === 3 && <SectionAboutUsFourthItem {...slide} />),
+          )
+        }
       </SectionAboutUs>
     ) : null;
   const result = [...allSections, slides];

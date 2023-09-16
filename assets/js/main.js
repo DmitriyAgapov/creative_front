@@ -811,7 +811,12 @@
 
   /////////////////////////////////////////////////////
   // 20. Register GSAP
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, TweenMax, ScrollToPlugin);
+  gsap.registerPlugin(
+    ScrollTrigger,
+    // ScrollSmoother,
+    TweenMax,
+    ScrollToPlugin,
+  );
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
@@ -992,18 +997,18 @@
 
   if (device_width > 100) {
     /////////////////////////////////////////////////////
-    // 24. Portfolio 5 Animation
-    let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
-      clamp = gsap.utils.clamp(-15, 15);
-    const smoother = ScrollSmoother.create({
-      smooth: 1.35,
-      effects: device_width < 1025 ? false : true,
-      smoothTouch: false,
-      normalizeScroll: false,
-      ignoreMobileResize: true,
-      onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
-      onStop: () => skewSetter(0),
-    });
+    // // 24. Portfolio 5 Animation
+    // let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
+    //   clamp = gsap.utils.clamp(-15, 15);
+    // const smoother = ScrollSmoother.create({
+    //   smooth: 1.35,
+    //   effects: device_width < 1025 ? false : true,
+    //   smoothTouch: false,
+    //   normalizeScroll: false,
+    //   ignoreMobileResize: true,
+    //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
+    //   onStop: () => skewSetter(0),
+    // });
 
     /////////////////////////////////////////////////////
 

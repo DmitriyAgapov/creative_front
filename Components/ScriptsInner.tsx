@@ -45,10 +45,10 @@ const OutScripts = (): any => {
         strategy={"afterInteractive"}
         src={`https://theonebureau.design/assets/js/vanilla-tilt.js`}
       />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/jquery.meanmenu.min.js`}
-      />
+      {/*<Script*/}
+      {/*  strategy={"afterInteractive"}*/}
+      {/*  src={`https://theonebureau.design/assets/js/jquery.meanmenu.min.js`}*/}
+      {/*/>*/}
     </>
   );
 };

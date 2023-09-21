@@ -540,9 +540,7 @@ export function MenuItem({ item, ...props }: any) {
       <>
         {items.map((subItem: any) => (
           <li key={subItem.id}>
-            <Link href={subItem.attributes.url}>
-              {subItem.attributes.title}
-            </Link>
+            <a href={subItem.attributes.url}>{subItem.attributes.title}</a>
           </li>
         ))}
       </>

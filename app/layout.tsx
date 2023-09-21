@@ -1,6 +1,10 @@
 import "./globals.scss";
 import Footer from "@/Components/Footer";
-import { HorizontalHeader, OffcanvasContact } from "@/Components/Header";
+import {
+  HorizontalHeader,
+  OffcanvasContact,
+  Preloader,
+} from "@/Components/Header";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import React, { Suspense } from "react";
@@ -39,16 +43,16 @@ export default async function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin={"anonymous"}
         />
-        <Script
-          strategy={"afterInteractive"}
-          src={`https://theonebureau.design/assets/js/jquery-3.6.0.min.js`}
-          // onLoad={() => setLoad((prevState) => prevState++)}
-        />
-        <Script
-          strategy={"afterInteractive"}
-          src={`https://theonebureau.design/assets/js/ScrollTrigger.min.js`}
-          // onLoad={() => setLoad((prevState) => prevState++)}
-        />
+        {/*<Script*/}
+        {/*  strategy={"afterInteractive"}*/}
+        {/*  src={`https://theonebureau.design/assets/js/jquery-3.6.0.min.js`}*/}
+        {/*  // onLoad={() => setLoad((prevState) => prevState++)}*/}
+        {/*/>*/}
+        {/*<Script*/}
+        {/*  strategy={"afterInteractive"}*/}
+        {/*  src={`https://theonebureau.design/assets/js/ScrollTrigger.min.js`}*/}
+        {/*  // onLoad={() => setLoad((prevState) => prevState++)}*/}
+        {/*/>*/}
         <Script
           strategy={"afterInteractive"}
           src={`https://theonebureau.design/assets/js/gsap.min.js`}
@@ -69,7 +73,10 @@ export default async function RootLayout({
         {/*<div className="has-smooth" id="has_smooth"></div>*/}
         {/*<div id="smooth-wrapper">*/}
         {/*  <div id="smooth-content">*/}
-        <main> {children}</main>
+        <main>
+          <Preloader />
+          {children}
+        </main>
         <Suspense>
           <Footer menus={sortedMenu} config={attributes} />
         </Suspense>

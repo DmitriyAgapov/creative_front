@@ -37,13 +37,13 @@ export const SectionCta = ({
               <p className="cta__sub-title">{Uptitle}</p>
               <h2 className="cta__title title-anim">{title}</h2>
               <div className="btn_wrapper">
-                <Link
+                <a
                   href={link?.link || "/"}
                   className="wc-btn-primary btn-hover btn-item"
                 >
                   <span></span>
                   {link?.text} <i className="fa-solid fa-arrow-right"></i>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ export const SectionCase = ({
   const media = Items?.filter(
     (item) => item.__typename == "ComponentLayoutMedia",
   );
-  // console.log(media.length)
+  console.log(media.length);
   return (
     <section className="portfolio__detail">
       <div className="portfolio__detail-top">
@@ -101,7 +101,7 @@ export const SectionCase = ({
         </div>
       </div>
 
-      {media && (
+      {media && media.length >= 1 && (
         <div key={media[0].id} className="portfolio__detail-thumb">
           <Image
             src={`${
@@ -242,32 +242,32 @@ export const SectionCases = ({
       <div className="swiper-slide">
         <div className="portfolio__slide-2">
           <div className="slide-img">
-            <Link href={props.Link[0].url}>
+            <a href={props.Link[0].url}>
               <Image
                 src={props.image || "/assets/imgs/portfolio/2/1.jpg"}
                 width={945}
                 height={1000}
                 alt={props.Title}
               />
-            </Link>
+            </a>
           </div>
           <div className="slide-content text-anim">
             <h2 className="sec-title title-anim">
-              <Link href={props.Link[0].url || "portfolio-details.html"}>
+              <a href={props.Link[0].url || "portfolio-details.html"}>
                 {props.Title?.split(" ")[0]}{" "}
                 <span>{props.Title?.split(" ")[1]}</span>
-              </Link>
+              </a>
             </h2>
             <div dangerouslySetInnerHTML={{ __html: props.Description }} />
 
             <div className="btn-common-wrap">
-              <Link
+              <a
                 href={props.Link[0].url || "portfolio-details.html"}
                 className={"btn-common"}
               >
                 {props.Link[0].Text}
                 <i className="fa-solid fa-arrow-right"></i>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -370,12 +370,12 @@ export const SectionWhatWeAlsoDo = ({
               <div className="service__items-7 animation_service_7">
                 {Items?.map((item, index) => (
                   <div className="service__item-7" key={item.id}>
-                    <Link href={"#"}>
+                    <a href={"#"}>
                       <h3 className="service__title-7">
                         {item.Title.split(" ")[0]}{" "}
                         <span>{item.Title.split(" ")[1]}</span>
                       </h3>
-                    </Link>
+                    </a>
                     <div
                       dangerouslySetInnerHTML={{ __html: item.Description }}
                     />
@@ -436,13 +436,13 @@ export const SectionSolutionPage = ({
               <h2 className="sec-title animation__char_come ">{title}</h2>
               <div className="price__amount pt-4 d-inline">
                 <p>
-                  <Link
+                  <a
                     href={"#"}
                     className={"btn btn-filled"}
                     id={"offcanvas__area-contact_form-toggle"}
                   >
                     To form
-                  </Link>
+                  </a>
                 </p>
               </div>
             </div>
@@ -718,6 +718,7 @@ export const SectionProblems = ({
   Uptitle,
   className = "",
 }: SectionProps) => {
+  // const [];
   return (
     <section className={`career__benefits section_problems ${className}`}>
       <div className="container  g-0 pt-100 pb-100">
@@ -791,14 +792,14 @@ export const SectionPitch = ({
                 />
 
                 <div className="cursor-btn btn_wrapper">
-                  <Link
+                  <a
                     className="btn-item wc-btn-primary btn-hover"
                     // @ts-ignore
                     href={link?.url || "/"}
                   >
                     <span></span> Explore Us{" "}
                     <i className="fa-solid fa-arrow-right"></i>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -965,11 +966,11 @@ const Section = ({
 `;
   return (
     <section className="service__area-6 section_default">
-      <Script
-        id={"serv"}
-        strategy={"afterInteractive"}
-        dangerouslySetInnerHTML={{ __html: inlineScript }}
-      />
+      {/*<Script*/}
+      {/*  id={"serv"}*/}
+      {/*  strategy={"afterInteractive"}*/}
+      {/*  dangerouslySetInnerHTML={{ __html: inlineScript }}*/}
+      {/*/>*/}
       <div className="container">
         <div className="row inherit-row">
           <div className="col-xxl-12">

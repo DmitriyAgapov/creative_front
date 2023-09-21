@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
@@ -6,20 +6,33 @@ import Image from "next/image";
 import menuBlack from "@/assets/imgs/icon/menu-black.png";
 import { useEffect, useMemo, useState } from "react";
 
-function MenuItem({item}:any) {
-
-	const SubItems = ( {items}:{ items: { id: string, url: string, title: string }[]}) => {
-		// console.log(items)
-		return (<>{items.map((subItem:any) => <li key={subItem.id}>
-			<Link href={subItem.attributes.url}>{subItem.attributes.title}</Link>
-		</li>)}</>)
-
-	}
-	return <li>
-		<Link href={item.url}>{item.title}</Link>
-		{item.childs ? 		<ul className="main-dropdown"><SubItems  items={item.childs}/></ul> : null}
-
-	</li>;
+function MenuItem({ item }: any) {
+  const SubItems = ({
+    items,
+  }: {
+    items: { id: string; url: string; title: string }[];
+  }) => {
+    // console.log(items)
+    return (
+      <>
+        {items.map((subItem: any) => (
+          <li key={subItem.id}>
+            <a href={subItem.attributes.url}>{subItem.attributes.title}</a>
+          </li>
+        ))}
+      </>
+    );
+  };
+  return (
+    <li>
+      <a href={item.url}>{item.title}</a>
+      {item.childs ? (
+        <ul className="main-dropdown">
+          <SubItems items={item.childs} />
+        </ul>
+      ) : null}
+    </li>
+  );
 }
 
 // const HorizontalHeader = () => {

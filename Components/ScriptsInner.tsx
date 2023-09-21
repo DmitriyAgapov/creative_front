@@ -1,13 +1,11 @@
 "use client";
 import Script from "next/script";
-import { Suspense, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { mainScript } from "@/Components/main";
 
 const arrSc = ["https://theonebureau.design/assets/js/jquery-3.6.0.min.js", ""];
 
-const OutScripts = () => {
+const OutScripts = (): any => {
   return (
     <>
       <Script
@@ -55,7 +53,7 @@ const OutScripts = () => {
   );
 };
 
-const ScriptsInner = () => {
+const ScriptsInner = (): any => {
   // const pathname = usePathname();
   // const router = useRouter();
   // const [load, setLoad] = useState(0);
@@ -72,10 +70,8 @@ const ScriptsInner = () => {
     mainScript();
   }, []);
   return (
-    // <div></div>
-    <>
-      <OutScripts />
-    </>
+    <OutScripts />
+
     //   {load > 13 && (
     //     <Suspense>
     //       <Script

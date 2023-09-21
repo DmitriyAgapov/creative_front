@@ -1,16 +1,19 @@
 "use client";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-// @ts-ignore
-const NoSSR = dynamic(() => import("@/Components/ScriptsInner.tsx"), {
-  ssr: true,
+const NoSSR = dynamic(() => import("@/Components/ScriptsInner"), {
+  ssr: false,
 });
 export default function Template({ children }: { children: React.ReactNode }) {
+  // @ts-ignore
   return (
     <div>
       {children}
-
-      <NoSSR />
+      <Suspense>
+        {/*//@ts-ignore*/}
+        <NoSSR />
+      </Suspense>
     </div>
   );
 }

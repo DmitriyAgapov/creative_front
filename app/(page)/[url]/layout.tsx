@@ -1,7 +1,3 @@
-import DefaultScripts from "@/Components/Scripts";
-import { Suspense } from "react";
-import ScriptsInner from "@/Components/ScriptsInner";
-
 export default function PageLayout({
   children,
 }: {

@@ -68,7 +68,7 @@ export const SectionCase = ({
   const media = Items?.filter(
     (item) => item.__typename == "ComponentLayoutMedia",
   );
-  console.log(media.length);
+
   return (
     <section className="portfolio__detail">
       <div className="portfolio__detail-top">

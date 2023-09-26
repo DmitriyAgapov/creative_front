@@ -751,7 +751,7 @@ export const SectionPitch = ({
               <div className="about__img">
                 <div className="img-anim">
                   <img
-                    src="/assets/imgs/about/1/1.jpg"
+                    src="/assets/imgs/home-7/top01.png"
                     alt="About Image"
                     data-speed="0.3"
                   />
@@ -759,7 +759,7 @@ export const SectionPitch = ({
 
                 <div className="about__img-right">
                   <img
-                    src="/assets/imgs/about/1/2.jpg"
+                    src="/assets/imgs/home-7/top02.png"
                     alt="About Image Right"
                     data-speed="0.5"
                   />
@@ -809,22 +809,22 @@ export const SectionScreen = ({
             <div className="service__hero-inner-2">
               <div className="service__hero-left-2">
                 <img
-                  src="/assets/imgs/home-7/sh-1.jpg"
+                  src="/assets/imgs/home-7/sc1.png"
                   alt="Image"
                   className="image-1"
                 />
                 <img
-                  src="/assets/imgs/home-7/sh-2.jpg"
+                  src="/assets/imgs/home-7/sc2.png"
                   alt="Image"
                   className="image-2"
                 />
                 <img
-                  src="/assets/imgs/home-7/sh-3.jpg"
+                  src="/assets/imgs/home-7/sc3.png"
                   alt="Image"
                   className="image-3"
                 />
                 <img
-                  src="/assets/imgs/home-7/sh-4.jpg"
+                  src="/assets/imgs/home-7/sc4.png"
                   alt="Image"
                   className="image-4"
                 />
@@ -975,16 +975,28 @@ const Section = ({
 
               <div className="mid-content">
                 <div className="service__image">
-                  <img src="/assets/imgs/service/1.jpg" alt="Service Image" />
+                  <img
+                    src="/assets/imgs/home-7/spec1.png"
+                    alt="Service Image"
+                  />
                 </div>
                 <div className="service__image">
-                  <img src="/assets/imgs/service/2.jpg" alt="Service Image" />
+                  <img
+                    src="/assets/imgs/home-7/spec2.png"
+                    alt="Service Image"
+                  />
                 </div>
                 <div className="service__image">
-                  <img src="/assets/imgs/service/3.jpg" alt="Service Image" />
+                  <img
+                    src="/assets/imgs/home-7/spec3.png"
+                    alt="Service Image"
+                  />
                 </div>
                 <div className="service__image">
-                  <img src="/assets/imgs/service/4.jpg" alt="Service Image" />
+                  <img
+                    src="/assets/imgs/home-7/spec4.png"
+                    alt="Service Image"
+                  />
                 </div>
               </div>
 

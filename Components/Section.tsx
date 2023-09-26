@@ -208,25 +208,6 @@ export const SectionCase = ({
               data-speed="0.5"
             />
           </div>
-
-          <div className="row">
-            <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-              <div className="portfolio__detail-btns pt-150 pb-150">
-                <a
-                  href="portfolio-details.html"
-                  className="wc-btn-primary btn-hover"
-                >
-                  <span></span> Prev Work
-                </a>
-                <a
-                  href="portfolio-details.html"
-                  className="wc-btn-primary btn-hover"
-                >
-                  <span></span> Next Work
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

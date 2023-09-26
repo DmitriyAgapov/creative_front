@@ -435,15 +435,15 @@ export const SectionSolutionPage = ({
               <h3 className="sec-sub-title title-anim">Solution:</h3>
               <h2 className="sec-title animation__char_come ">{title}</h2>
               <div className="price__amount pt-4 d-inline">
-                <p>
+                <div className={"cursor-btn btn_wrapper"}>
                   <a
                     href={"#"}
-                    className={"btn btn-filled"}
+                    className={" wc-btn-primary btn-hover"}
                     id={"offcanvas__area-contact_form-toggle"}
                   >
                     To form
                   </a>
-                </p>
+                </div>
               </div>
             </div>
           </div>

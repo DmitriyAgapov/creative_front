@@ -76,7 +76,7 @@ export const SectionCase = ({
           <span className="line-3"></span>
 
           <div className="row">
-            <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-7">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
               <div className="sec-title-wrapper">
                 <h2 className="sec-title animation__char_come">
                   {title?.split(" ")[0]} <br />
@@ -85,9 +85,9 @@ export const SectionCase = ({
               </div>
             </div>
 
-            <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
               <div className="portfolio__detail-info">
-                <ul>
+                <ul className={"portfolio__description_header"}>
                   {dt?.map((item) => (
                     <li key={item.id}>
                       {item.Term}
@@ -95,6 +95,10 @@ export const SectionCase = ({
                     </li>
                   ))}
                 </ul>
+                <div
+                  className={"portfolio__description"}
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
               </div>
             </div>
           </div>
@@ -881,7 +885,7 @@ const Section = ({
   Uptitle,
 }: SectionProps) => {
   const inlineScript = `
-  
+
     // 20. Register GSAP
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother, TweenMax, ScrollToPlugin);
 
@@ -889,7 +893,7 @@ const Section = ({
     gsap.config({
       nullTargetWarn: false,
     });
-  
+
     // 22. Service 6
     if (window.innerWidth > 1200) {
       gsap.to(".service__list-6", {
@@ -962,7 +966,7 @@ const Section = ({
         });
       });
     }
-    
+
 `;
   return (
     <section className="service__area-6 section_default">

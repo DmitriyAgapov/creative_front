@@ -665,8 +665,8 @@ export function SectionAboutUsFourthItem(props: {
               <h2 className="cta__title-2">{props.title}</h2>
               <div className="btn_wrapper">
                 <a
-                  href="contact.html"
-                  className="wc-btn-black btn-hover btn-item"
+                  href="#"
+                  className="wc-btn-black btn-hover btn-item open_offcanvas"
                 >
                   <span></span>Contact <br />
                   with us <i className="fa-solid fa-arrow-right"></i>

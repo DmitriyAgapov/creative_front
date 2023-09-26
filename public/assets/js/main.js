@@ -143,6 +143,10 @@
     $(".offcanvas__area").css("opacity", "1");
     $(".offcanvas__area").css("visibility", "visible");
   });
+  $(".open_offcanvas").click(function () {
+    $(".offcanvas__area").css("opacity", "1");
+    $(".offcanvas__area").css("visibility", "visible");
+  });
   $("#close_offcanvas").click(function () {
     $(".offcanvas__area").css("opacity", "0");
     $(".offcanvas__area").css("visibility", "hidden");

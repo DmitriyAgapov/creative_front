@@ -1,56 +1,12 @@
 "use client";
 import Script from "next/script";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { mainScript } from "@/Components/main";
 
 const arrSc = ["https://theonebureau.design/assets/js/jquery-3.6.0.min.js", ""];
 
-const OutScripts = (): any => {
-  return (
-    <>
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/bootstrap.bundle.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/swiper-bundle.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/counter.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/ScrollToPlugin.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`/assets/js/ScrollSmoother.min.js`}
-      />
-
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/SplitText.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/chroma.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/mixitup.min.js`}
-      />
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/vanilla-tilt.js`}
-      />
-      {/*<Script*/}
-      {/*  strategy={"afterInteractive"}*/}
-      {/*  src={`https://theonebureau.design/assets/js/jquery.meanmenu.min.js`}*/}
-      {/*/>*/}
-    </>
-  );
+export const OutScripts = (): any => {
+  return <></>;
 };
 
 const ScriptsInner = (): any => {
@@ -67,17 +23,15 @@ const ScriptsInner = (): any => {
   //   }
   // }, [currentPath, load, pathname]);
   useEffect(() => {
-    mainScript();
+    // mainScript();
   }, []);
   return (
-    <OutScripts />
-
-    //   {load > 13 && (
-    //     <Suspense>
-    //       <Script
-    //         strategy={"afterInteractive"}
-    //         src={`https://theonebureau.design/assets/js/main.js`}
-    //       />
+    <>
+      <Script
+        strategy={"afterInteractive"}
+        src={`https://theonebureau.design/assets/js/main.js`}
+      />
+    </>
     //     </Suspense>
     //   )}
     // </>

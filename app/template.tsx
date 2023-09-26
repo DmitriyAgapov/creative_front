@@ -10,10 +10,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <div>
       {children}
-      <Suspense>
-        {/*//@ts-ignore*/}
-        <NoSSR />
-      </Suspense>
+      {/*<Suspense>*/}
+      {/*//@ts-ignore*/}
+      <NoSSR />
+      {/*</Suspense>*/}
     </div>
   );
 }

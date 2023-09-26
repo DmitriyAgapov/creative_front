@@ -179,7 +179,7 @@ const Page = ({
         break;
     }
   });
-  allSections.push(<Problems />);
+  if (problemsWrapper.length > 0) allSections.splice(2, 0, <Problems />);
   //@ts-ignore
 
   const slides =
@@ -217,6 +217,7 @@ export default async function Pages({ params: { url } }) {
   }
   return (
     <Suspense fallback={<Preloader />}>
+      <Preloader />
       <Page page={pages.data[0]} />
     </Suspense>
   );

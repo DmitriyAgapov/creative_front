@@ -1,14 +1,3 @@
-// @ts-nocheck
-import $ from "jquery";
-import TweenMax from "gsap/gsap-core";
-import gsap from "gsap";
-import chroma from "chroma-js";
-import Swiper from "swiper";
-import SplitType from "split-type";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/gsap-core";
-
 /***************************************************
 ==================== JS INDEX ======================
  ****************************************************
@@ -79,16 +68,16 @@ import ScrollSmoother from "gsap/gsap-core";
 64. Header 7
 65. Service 7 Animation
  ****************************************************/
-
-export const mainScript = () => {
+"use strict";
+(function ($) {
   // Get Device width
   let device_width = window.innerWidth;
 
   /////////////////////////////////////////////////////
   // 00. Preloader
-  // $(document).ready(function () {
-  //   $(".preloader").hide();
-  // });
+  $(document).ready(function () {
+    $(".preloader").hide();
+  });
   /////////////////////////////////////////////////////
 
   // 07. Data backgrond
@@ -101,6 +90,7 @@ export const mainScript = () => {
 
   /////////////////////////////////////////////////////
   // HERO - 9
+
   var testimonial_4 = new Swiper(".hero-9", {
     pagination: {
       el: ".swiper-pagination",
@@ -365,6 +355,26 @@ export const mainScript = () => {
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
+  // 09. Header Search
+  let header_search = document.querySelector(".header__search");
+  let search_icon = document.querySelector("#search_icon");
+  let search_close = document.querySelector("#search_close");
+  if (header_search) {
+    search_icon.addEventListener("click", function () {
+      header_search.classList.add("open-search");
+      search_icon.style.display = "none";
+      search_close.style.display = "block";
+    });
+
+    search_close.addEventListener("click", function () {
+      header_search.classList.remove("open-search");
+      search_icon.style.display = "block";
+      search_close.style.display = "none";
+    });
+  }
+  /////////////////////////////////////////////////////
+
+  /////////////////////////////////////////////////////
   // 10. Roll Slider
   var roll_slider = new Swiper(".roll__slider", {
     loop: true,
@@ -548,7 +558,7 @@ export const mainScript = () => {
 
   /////////////////////////////////////////////////////
   // 17. Counter
-  const about_counter = window.counterUp?.default;
+  const about_counter = window.counterUp.default;
   const about_cb = (entries) => {
     entries.forEach((entry) => {
       const el = entry.target;
@@ -570,7 +580,6 @@ export const mainScript = () => {
   els.forEach((el) => {
     IO.observe(el);
   });
-
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
@@ -639,7 +648,6 @@ export const mainScript = () => {
       swiper: problems_project_thumbs,
     },
   });
-
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
@@ -655,7 +663,6 @@ export const mainScript = () => {
     $(btn).mousemove(function (e) {
       callParallax(e);
     });
-
     function callParallax(e) {
       parallaxIt(e, all_btn_cirlce[i], 80);
     }
@@ -671,7 +678,6 @@ export const mainScript = () => {
         ease: Power2.easeOut,
       });
     }
-
     $(btn).mouseleave(function (e) {
       gsap.to(all_btn_cirlce[i], 0.5, {
         x: 0,
@@ -684,12 +690,7 @@ export const mainScript = () => {
 
   /////////////////////////////////////////////////////
   // 20. Register GSAP
-  gsap.registerPlugin(
-    gsap.plugins.ScrollTrigger,
-    gsap.plugins.ScrollSmoother,
-    gsap.plugins.TweenMax,
-    gsap.plugins.ScrollToPlugin,
-  );
+  gsap.registerPlugin(ScrollTrigger, TweenMax, ScrollToPlugin);
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
@@ -760,11 +761,7 @@ export const mainScript = () => {
         nav.addEventListener("click", (e) => {
           e.preventDefault();
           const ids = nav.getAttribute("href");
-          gsap.to(window, {
-            duration: 0.5,
-            scrollTo: ids,
-            ease: "power4.out",
-          });
+          gsap.to(window, { duration: 0.5, scrollTo: ids, ease: "power4.out" });
         });
       });
     }
@@ -870,139 +867,135 @@ export const mainScript = () => {
       }
     }
   }
-  ///////////////////////////////////////////////////
-  $(document).ready(function () {
-    if (device_width > 100) {
-      ///////////////////////////////////////////////////
-      // 24. Portfolio 5 Animation
-      let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
-        clamp = gsap.utils.clamp(-15, 15);
-      // let scrollsmoother = ScrollSmoother.create({
-      //   smooth: 1.35,
-      //   effects: device_width < 1025 ? false : true,
-      //   smoothTouch: false,
-      //   normalizeScroll: false,
-      //   ignoreMobileResize: true,
-      //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
-      //   onStop: () => skewSetter(0),
-      // });
-      ///////////////////////////////////////////////////
-      /////////////////////////////////////////////////////
-      // 25. Title Animation
-      let splitTitleLines = gsap.utils.toArray(".title-anim");
+  /////////////////////////////////////////////////////
 
-      splitTitleLines.forEach((splitTextLine) => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: splitTextLine,
-            start: "top 90%",
-            end: "bottom 60%",
-            scrub: false,
-            markers: false,
-            toggleActions: "play none none none",
-          },
-        });
+  if (device_width > 100) {
+    /////////////////////////////////////////////////////
+    // // 24. Portfolio 5 Animation
+    // let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
+    //   clamp = gsap.utils.clamp(-15, 15);
+    // const smoother = ScrollSmoother.create({
+    //   smooth: 1.35,
+    //   effects: device_width < 1025 ? false : true,
+    //   smoothTouch: false,
+    //   normalizeScroll: false,
+    //   ignoreMobileResize: true,
+    //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
+    //   onStop: () => skewSetter(0),
+    // });
 
-        let itemSplitted = new SplitType(splitTextLine, {
-          type: "words, lines",
-        });
-        gsap.set(splitTextLine, { perspective: 400 });
-        itemSplitted.split({ type: "lines" });
-        tl.from(itemSplitted.lines, {
-          duration: 1,
-          delay: 0.3,
-          opacity: 0,
-          rotationX: -80,
-          force3D: true,
-          transformOrigin: "top center -50",
-          stagger: 0.1,
-        });
+    /////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
+    // 25. Title Animation
+    let splitTitleLines = gsap.utils.toArray(".title-anim");
+
+    splitTitleLines.forEach((splitTextLine) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: splitTextLine,
+          start: "top 90%",
+          end: "bottom 60%",
+          scrub: false,
+          markers: false,
+          toggleActions: "play none none none",
+        },
       });
 
-      /////////////////////////////////////////////////////
-
-      /////////////////////////////////////////////////////
-      // 26. Title Animation Top
-
-      /////////////////////////////////////////////////////
-
-      /////////////////////////////////////////////////////
-      // 27. Text Animation
-      let splitTextLines = gsap.utils.toArray(".text-anim p");
-
-      splitTextLines.forEach((splitTextLine) => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: splitTextLine,
-            start: "top 90%",
-            duration: 2,
-            end: "bottom 60%",
-            scrub: false,
-            markers: false,
-            toggleActions: "play none none none",
-          },
-        });
-
-        const itemSplitted = new SplitType(splitTextLine, { type: "lines" });
-        gsap.set(splitTextLine, { perspective: 400 });
-        itemSplitted.split({ type: "lines" });
-        tl.from(itemSplitted.lines, {
-          duration: 1,
-          delay: 0.5,
-          opacity: 0,
-          rotationX: -80,
-          force3D: true,
-          transformOrigin: "top center -50",
-          stagger: 0.1,
-        });
+      const itemSplitted = new SplitText(splitTextLine, {
+        type: "words, lines",
       });
-      /////////////////////////////////////////////////////
-
-      /////////////////////////////////////////////////////
-      // 28. Text Animation Top
-      let text_anim_top = gsap.utils.toArray(".text-anim-top");
-
-      text_anim_top.forEach((splitTextLine2) => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: splitTextLine2,
-            start: "top 100%",
-            toggleActions: "play none play reset",
-          },
-        });
-
-        const itemSplitted = new SplitType(splitTextLine2, { type: "words" }),
-          textNumWords = itemSplitted.words.length;
-
-        gsap.delayedCall(0.05, function () {
-          for (var i = 0; i < textNumWords; i++) {
-            tl.from(
-              itemSplitted.words[i],
-              1,
-              {
-                force3D: true,
-                scale: Math.random() > 0.5 ? 0 : 2,
-                opacity: 0,
-              },
-              Math.random(),
-            );
-          }
-        });
+      gsap.set(splitTextLine, { perspective: 400 });
+      itemSplitted.split({ type: "lines" });
+      tl.from(itemSplitted.lines, {
+        duration: 1,
+        delay: 0.3,
+        opacity: 0,
+        rotationX: -80,
+        force3D: true,
+        transformOrigin: "top center -50",
+        stagger: 0.1,
       });
-      /////////////////////////////////////////////////////
-    }
+    });
+    /////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
+    // 26. Title Animation Top
+
+    /////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
+    // 27. Text Animation
+    let splitTextLines = gsap.utils.toArray(".text-anim p");
+
+    splitTextLines.forEach((splitTextLine) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: splitTextLine,
+          start: "top 90%",
+          duration: 2,
+          end: "bottom 60%",
+          scrub: false,
+          markers: false,
+          toggleActions: "play none none none",
+        },
+      });
+
+      const itemSplitted = new SplitText(splitTextLine, { type: "lines" });
+      gsap.set(splitTextLine, { perspective: 400 });
+      itemSplitted.split({ type: "lines" });
+      tl.from(itemSplitted.lines, {
+        duration: 1,
+        delay: 0.5,
+        opacity: 0,
+        rotationX: -80,
+        force3D: true,
+        transformOrigin: "top center -50",
+        stagger: 0.1,
+      });
+    });
+    /////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////
+    // 28. Text Animation Top
+    let text_anim_top = gsap.utils.toArray(".text-anim-top");
+
+    text_anim_top.forEach((splitTextLine2) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: splitTextLine2,
+          start: "top 100%",
+          toggleActions: "play none play reset",
+        },
+      });
+
+      const itemSplitted = new SplitText(splitTextLine2, { type: "words" }),
+        textNumWords = itemSplitted.words.length;
+
+      gsap.delayedCall(0.05, function () {
+        for (var i = 0; i < textNumWords; i++) {
+          tl.from(
+            itemSplitted.words[i],
+            1,
+            { force3D: true, scale: Math.random() > 0.5 ? 0 : 2, opacity: 0 },
+            Math.random(),
+          );
+        }
+      });
+    });
+    /////////////////////////////////////////////////////
+  }
+
+  jQuery(document).ready(function () {
+    /////////////////////////////////////////////////////
+    // 29. Offcanvas Menu
+    $(".offcanvas__menu").meanmenu({
+      meanScreenWidth: "5000",
+      meanMenuContainer: ".offcanvas__menu-wrapper",
+      meanMenuCloseSize: "36px",
+    });
+    /////////////////////////////////////////////////////
   });
-
-  // $(document).ready(function () {
-  //   /////////////////////////////////////////////////////
-  //   // 29. Offcanvas Menu
-  //   $(".offcanvas__menu").meanmenu({
-  //     meanScreenWidth: "5000",
-  //     meanMenuContainer: ".offcanvas__menu-wrapper",
-  //     meanMenuCloseSize: "36px",
-  //   });
-  //   /////////////////////////////////////////////////////
-  // });
 
   /////////////////////////////////////////////////////
   // 30. Service 3
@@ -1045,12 +1038,8 @@ export const mainScript = () => {
       once: true,
     },
   });
-  //@ts-ignore
-  let mySplitText = new SplitType(".end", {
-    type: "words,chars",
-  });
+  let mySplitText = new SplitText(".end", { type: "words,chars" });
   let chars = mySplitText.chars;
-
   let endGradient = chroma.scale(["#F9D371", "#F47340", "#EF2F88", "#8843F2"]);
   endTl.to(chars, {
     duration: 0.5,
@@ -1134,18 +1123,18 @@ export const mainScript = () => {
     });
   }, 1000);
   /////////////////////////////////////////////////////
-  // $(document).ready(function () {
-  //   /////////////////////////////////////////////////////
-  //   // // 333. Main Portfolio Sticky
-  //   ScrollTrigger.create({
-  //     trigger: ".portfolio__wrapper-6",
-  //     start: "top top",
-  //     end: "bottom bottom",
-  //     pin: ".portfolio__title-wrap-6",
-  //     pinSpacing: false,
-  //   });
-  //   /////////////////////////////////////////////////////
-  // });
+
+  /////////////////////////////////////////////////////
+  // 33. Main Portfolio Sticky
+  ScrollTrigger.create({
+    trigger: ".portfolio__wrapper-6",
+    start: "top top",
+    end: "bottom bottom",
+    pin: ".portfolio__title-wrap-6",
+    pinSpacing: false,
+  });
+  /////////////////////////////////////////////////////
+
   /////////////////////////////////////////////////////
   // 34. Hero 3 Animation
   const radio_buttons = document.querySelector("#video_check");
@@ -1173,56 +1162,56 @@ export const mainScript = () => {
   /////////////////////////////////////////////////////
 
   // /////////////////////////////////////////////////////
-  // 35. Home Page 2 Animations
-  let tHero = gsap.timeline();
-
-  let heading_title = new SplitType(".sec-title-3", { type: "chars" });
-  let heading_char = heading_title.chars;
-
-  tHero.from(heading_char, {
-    rotate: 20,
-    ease: "back.out",
-    opacity: 0,
-    duration: 2,
-    stagger: 0.1,
-  });
-
-  tHero.from(
-    ".hero2-shape img",
-    {
-      xPercent: -100,
-      duration: 1,
-    },
-    "-=6.5",
-  );
-
-  tHero.from(
-    ".hero__text-2 p",
-    {
-      opacity: 0,
-      x: -30,
-      duration: 1.5,
-    },
-    "-=5",
-  );
-
-  var hero_bts = document.querySelector(".hero__text-2 .btn_wrapper");
-  if (hero_bts) {
-    var hero_btn = document.querySelector(".hero__text-2 .btn_wrapper");
-  } else {
-    var hero_btn = document.querySelector(".hero__text-2 #btn_wrapper");
-  }
-  console.log(hero_btn);
-  tHero.from(
-    hero_btn,
-    {
-      opacity: 0,
-      y: -70,
-      ease: "bounce",
-      duration: 1.5,
-    },
-    "-=5",
-  );
+  // // 35. Home Page 2 Animations
+  // let tHero = gsap.timeline();
+  //
+  // let heading_title = new SplitText(".sec-title-3", { type: "chars" });
+  // let heading_char = heading_title.chars;
+  //
+  // tHero.from(heading_char, {
+  //   rotate: 20,
+  //   ease: "back.out",
+  //   opacity: 0,
+  //   duration: 2,
+  //   stagger: 0.1,
+  // });
+  //
+  // tHero.from(
+  //   ".hero2-shape img",
+  //   {
+  //     xPercent: -100,
+  //     duration: 1,
+  //   },
+  //   "-=6.5",
+  // );
+  //
+  // tHero.from(
+  //   ".hero__text-2 p",
+  //   {
+  //     opacity: 0,
+  //     x: -30,
+  //     duration: 1.5,
+  //   },
+  //   "-=5",
+  // );
+  //
+  // var hero_bts = document.querySelector(".hero__text-2 .btn_wrapper");
+  // if (hero_bts) {
+  //   var hero_btn = document.querySelector(".hero__text-2 .btn_wrapper");
+  // } else {
+  //   var hero_btn = document.querySelector(".hero__text-2 #btn_wrapper");
+  // }
+  // console.log(hero_btn);
+  // tHero.from(
+  //   hero_btn,
+  //   {
+  //     opacity: 0,
+  //     y: -70,
+  //     ease: "bounce",
+  //     duration: 1.5,
+  //   },
+  //   "-=5",
+  // );
 
   // All Buttons
   let arr1 = gsap.utils.toArray("#btn_wrapper");
@@ -1522,7 +1511,6 @@ export const mainScript = () => {
       console.log(err);
     }
   }
-
   /////////////////////////////////////////////////////
 
   imageMovingPortfolio(".portfolio-section", ".portfolio__hero img");
@@ -1975,15 +1963,15 @@ export const mainScript = () => {
   //   })
 
   //   // animation__hero_one a
-  //   let split_char_btn = new SplitType(".animation__hero_one a", { type: "chars, words" })
+  //   let split_char_btn = new SplitText(".animation__hero_one a", { type: "chars, words" })
   //   heroOnetl.from(split_char_btn.words, { duration: 1, x: -50, opacity: 0, autoAlpha: 0, stagger: 0.1 });
 
   //   //hero__title
-  //   let split_char_hero = new SplitType(".hero__title", { type: "chars, words" })
+  //   let split_char_hero = new SplitText(".hero__title", { type: "chars, words" })
   //   heroOnetl.from(split_char_hero.chars, { duration: 1, x: 70, opacity: 0, autoAlpha: 0, stagger: 0.1 }, '-=1');
 
   //   //hero__Sub_title
-  //   let split_char_hero_subtitle = new SplitType(".animation__hero_one .hero__sub-title", { type: "words" })
+  //   let split_char_hero_subtitle = new SplitText(".animation__hero_one .hero__sub-title", { type: "words" })
   //   heroOnetl.from(split_char_hero_subtitle.words, { duration: 1, x: 50, opacity: 0, autoAlpha: 0, stagger: 0.07 }, '-=1.5');
 
   //   // heroOnetl.to(".animation__hero_one .hero__sub-title", {
@@ -2151,17 +2139,17 @@ export const mainScript = () => {
 
   // Charchater Come Animation
   let char_come = document.querySelectorAll(".animation__char_come");
-  $(document).ready(function () {
-    char_come.forEach((char_come) => {
-      let split_char = new SplitType(char_come, { type: "chars, words" });
-      gsap.from(split_char.chars, {
-        duration: 1,
-        x: 70,
-        autoAlpha: 0,
-        stagger: 0.05,
-      });
+
+  char_come.forEach((char_come) => {
+    let split_char = new SplitText(char_come, { type: "chars, words" });
+    gsap.from(split_char.chars, {
+      duration: 1,
+      x: 70,
+      autoAlpha: 0,
+      stagger: 0.05,
     });
   });
+
   // Charchater Come long Animation
   let char_come_long = document.querySelectorAll(".animation__char_come_long");
 
@@ -2177,83 +2165,77 @@ export const mainScript = () => {
 
   // Charchater Up Animation
   let char_up = document.querySelector(".animation__char_up");
-  $(document).ready(function () {
-    let split_char_up = new SplitType(char_up, { type: "chars, words" });
-    gsap.from(split_char_up.chars, {
-      duration: 1,
-      y: 15,
-      autoAlpha: 0,
-      stagger: 0.05,
-    });
-    // Service Page hero Animation
-    let word_up = document.querySelector(".animation__word_up");
-    let split_word_up = new SplitType(word_up, {
-      type: "words",
-      position: "absolute",
-    });
-    gsap.from(split_word_up.words, {
-      duration: 1,
-      y: 50,
-      autoAlpha: 0,
-      stagger: 0.05,
-    });
-
-    // Service Page hero Animation
-    let word_come = document.querySelectorAll(".animation__word_come");
-    word_come.forEach((word_come) => {
-      let split_word_come = new SplitType(word_come, {
-        type: "chars words",
-        position: "absolute",
-      });
-      gsap.from(split_word_come.words, {
-        duration: 1,
-        x: 50,
-        autoAlpha: 0,
-        stagger: 0.05,
-      });
-    });
-
-    // Service Page hero Animation
-    let word_come_long = document.querySelectorAll(
-      ".animation__word_come_long",
-    );
-    word_come_long.forEach((word_come_long) => {
-      let split_word_come_long = new SplitType(word_come_long, {
-        type: "chars words",
-        position: "absolute",
-      });
-      gsap.from(split_word_come_long.words, {
-        duration: 1,
-        x: 50,
-        autoAlpha: 0,
-        stagger: 0.5,
-      });
-    });
-
-    // Home page Hero Animation
-
-    /////////////////////////////////////////////////////
-    //  Service Page Animation
-    let animation__service_page = gsap.utils.toArray(
-      ".animation__service_page",
-    );
-    if (animation__service_page) {
-      animation__service_page.forEach((item, i) => {
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top center+=20%",
-            markers: false,
-          },
-          opacity: 0,
-          x: -50,
-          ease: "power2.out",
-          duration: 2,
-        });
-      });
-    }
+  let split_char_up = new SplitText(char_up, { type: "chars, words" });
+  gsap.from(split_char_up.chars, {
+    duration: 1,
+    y: 15,
+    autoAlpha: 0,
+    stagger: 0.05,
   });
 
+  // Service Page hero Animation
+  let word_up = document.querySelector(".animation__word_up");
+  let split_word_up = new SplitText(word_up, {
+    type: "words",
+    position: "absolute",
+  });
+  gsap.from(split_word_up.words, {
+    duration: 1,
+    y: 50,
+    autoAlpha: 0,
+    stagger: 0.05,
+  });
+
+  // Service Page hero Animation
+  let word_come = document.querySelectorAll(".animation__word_come");
+  word_come.forEach((word_come) => {
+    let split_word_come = new SplitText(word_come, {
+      type: "chars words",
+      position: "absolute",
+    });
+    gsap.from(split_word_come.words, {
+      duration: 1,
+      x: 50,
+      autoAlpha: 0,
+      stagger: 0.05,
+    });
+  });
+
+  // Service Page hero Animation
+  let word_come_long = document.querySelectorAll(".animation__word_come_long");
+  word_come_long.forEach((word_come_long) => {
+    let split_word_come_long = new SplitText(word_come_long, {
+      type: "chars words",
+      position: "absolute",
+    });
+    gsap.from(split_word_come_long.words, {
+      duration: 1,
+      x: 50,
+      autoAlpha: 0,
+      stagger: 0.5,
+    });
+  });
+
+  // Home page Hero Animation
+
+  /////////////////////////////////////////////////////
+  //  Service Page Animation
+  let animation__service_page = gsap.utils.toArray(".animation__service_page");
+  if (animation__service_page) {
+    animation__service_page.forEach((item, i) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top center+=20%",
+          markers: false,
+        },
+        opacity: 0,
+        x: -50,
+        ease: "power2.out",
+        duration: 2,
+      });
+    });
+  }
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
@@ -2637,151 +2619,149 @@ export const mainScript = () => {
       delay: 1,
     });
   }
-  $(document).ready(function () {
-    // Charchater Come long Animation
-    let mark = document.querySelector(".hero__area-3 .title-left");
-    let eting = document.querySelector(".hero__area-3 .title-right");
-    let hero__text_animation = document.querySelector(".hero__text-animation");
 
-    let split_creatives = new SplitType(mark, { type: "chars" });
-    let split_solutions = new SplitType(eting, { type: "chars" });
-    let split_text_animation = new SplitType(hero__text_animation, {
-      type: "chars words",
-    });
+  // Charchater Come long Animation
+  let mark = document.querySelector(".hero__area-3 .title-left");
+  let eting = document.querySelector(".hero__area-3 .title-right");
+  let hero__text_animation = document.querySelector(".hero__text-animation");
 
-    HomeDigital.from(split_creatives.chars, {
-      duration: 2,
-      x: 100,
-      autoAlpha: 0,
-      stagger: 0.2,
-    });
-    HomeDigital.from(
-      split_solutions.chars,
-      { duration: 1, x: 100, autoAlpha: 0, stagger: 0.1 },
-      "-=1",
-    );
-    HomeDigital.from(
-      split_text_animation.words,
-      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-      "-=1",
-    );
-
-    // Home page Hero Animation
-    let homeCreative = gsap.timeline();
-
-    // Charchater Come long Animation
-    let creative = document.querySelector(".service__hero-right-2 .creative");
-    let solution = document.querySelector(".service__hero-right-2 .solution");
-    let heroContent = document.querySelector(
-      ".service__hero-right-2 .animate_content",
-    );
-
-    let split_creative = new SplitType(creative, { type: "chars" });
-    let split_solution = new SplitType(solution, { type: "chars" });
-    let split_herocontent = new SplitType(heroContent, {
-      type: "chars words",
-    });
-
-    homeCreative.from(split_creative.chars, {
-      duration: 1,
-      x: 70,
-      autoAlpha: 0,
-      stagger: 0.1,
-    });
-    homeCreative.from(
-      split_solution.chars,
-      { duration: 1, x: 70, autoAlpha: 0, stagger: 0.1 },
-      "-=1.5",
-    );
-    homeCreative.from(
-      split_herocontent.words,
-      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-      "-=1",
-    );
-
-    // Home page Hero Animation
-    gsap.set(".experience", {
-      y: 50,
-      opacity: 0,
-    });
-    let homeAgency = gsap.timeline();
-
-    // Charchater Come long Animation
-    let hero__title = document.querySelector(".hero__title");
-    let hero__subtitle = document.querySelector(".hero__sub-title");
-
-    let split_hero__title = new SplitType(hero__title, { type: "chars" });
-    let split_hero__subtitle = new SplitType(hero__subtitle, {
-      type: "chars words",
-    });
-
-    homeAgency.from(split_hero__title.chars, {
-      duration: 1,
-      x: 70,
-      autoAlpha: 0,
-      stagger: 0.1,
-    });
-    homeAgency.from(
-      split_hero__subtitle.words,
-      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-      "-=1",
-    );
-
-    homeAgency.to(
-      ".experience",
-      {
-        y: 0,
-        opacity: 1,
-        duration: 2,
-        ease: "power2.out",
-      },
-      "-=1.5",
-    );
-
-    // Home 6 Hero Animation
-    let homeStratup = gsap.timeline();
-
-    // Charchater Come long Animation
-    let hero6_title = document.querySelector(".hero__six_anim .hero__title-6");
-    let hero6_desc = document.querySelector(".hero__six_anim p");
-
-    let hero6_button = document.querySelector(".hero__six_anim a");
-    let hero6_image = document.querySelector(".hero__right-6 img");
-
-    gsap.set(hero6_image, {
-      opacity: 0,
-      y: 50,
-    });
-    gsap.set(hero6_button, {
-      opacity: 0,
-      y: 50,
-    });
-
-    let split_hero6_title = new SplitType(hero6_title, { type: "chars" });
-    let split_hero6_desc = new SplitType(hero6_desc, { type: "chars words" });
-
-    homeStratup.from(split_hero6_title.chars, {
-      duration: 1,
-      x: 70,
-      autoAlpha: 0,
-      stagger: 0.1,
-    });
-    homeStratup.from(
-      split_hero6_desc.words,
-      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-      "-=1",
-    );
-    homeStratup.to(
-      hero6_button,
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-      "-=1.5",
-    );
-    homeStratup.to(
-      hero6_image,
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-      "-=1",
-    );
+  let split_creatives = new SplitText(mark, { type: "chars" });
+  let split_solutions = new SplitText(eting, { type: "chars" });
+  let split_text_animation = new SplitText(hero__text_animation, {
+    type: "chars words",
   });
+
+  HomeDigital.from(split_creatives.chars, {
+    duration: 2,
+    x: 100,
+    autoAlpha: 0,
+    stagger: 0.2,
+  });
+  HomeDigital.from(
+    split_solutions.chars,
+    { duration: 1, x: 100, autoAlpha: 0, stagger: 0.1 },
+    "-=1",
+  );
+  HomeDigital.from(
+    split_text_animation.words,
+    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+    "-=1",
+  );
+
+  // Home page Hero Animation
+  let homeCreative = gsap.timeline();
+
+  // Charchater Come long Animation
+  let creative = document.querySelector(".service__hero-right-2 .creative");
+  let solution = document.querySelector(".service__hero-right-2 .solution");
+  let heroContent = document.querySelector(
+    ".service__hero-right-2 .animate_content",
+  );
+
+  let split_creative = new SplitText(creative, { type: "chars" });
+  let split_solution = new SplitText(solution, { type: "chars" });
+  let split_herocontent = new SplitText(heroContent, { type: "chars words" });
+
+  homeCreative.from(split_creative.chars, {
+    duration: 1,
+    x: 70,
+    autoAlpha: 0,
+    stagger: 0.1,
+  });
+  homeCreative.from(
+    split_solution.chars,
+    { duration: 1, x: 70, autoAlpha: 0, stagger: 0.1 },
+    "-=1.5",
+  );
+  homeCreative.from(
+    split_herocontent.words,
+    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+    "-=1",
+  );
+
+  // Home page Hero Animation
+  gsap.set(".experience", {
+    y: 50,
+    opacity: 0,
+  });
+  let homeAgency = gsap.timeline();
+
+  // Charchater Come long Animation
+  let hero__title = document.querySelector(".hero__title");
+  let hero__subtitle = document.querySelector(".hero__sub-title");
+
+  let split_hero__title = new SplitText(hero__title, { type: "chars" });
+  let split_hero__subtitle = new SplitText(hero__subtitle, {
+    type: "chars words",
+  });
+
+  homeAgency.from(split_hero__title.chars, {
+    duration: 1,
+    x: 70,
+    autoAlpha: 0,
+    stagger: 0.1,
+  });
+  homeAgency.from(
+    split_hero__subtitle.words,
+    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+    "-=1",
+  );
+
+  homeAgency.to(
+    ".experience",
+    {
+      y: 0,
+      opacity: 1,
+      duration: 2,
+      ease: "power2.out",
+    },
+    "-=1.5",
+  );
+
+  // Home 6 Hero Animation
+  let homeStratup = gsap.timeline();
+
+  // Charchater Come long Animation
+  let hero6_title = document.querySelector(".hero__six_anim .hero__title-6");
+  let hero6_desc = document.querySelector(".hero__six_anim p");
+
+  let hero6_button = document.querySelector(".hero__six_anim a");
+  let hero6_image = document.querySelector(".hero__right-6 img");
+
+  gsap.set(hero6_image, {
+    opacity: 0,
+    y: 50,
+  });
+  gsap.set(hero6_button, {
+    opacity: 0,
+    y: 50,
+  });
+
+  let split_hero6_title = new SplitText(hero6_title, { type: "chars" });
+  let split_hero6_desc = new SplitText(hero6_desc, { type: "chars words" });
+
+  homeStratup.from(split_hero6_title.chars, {
+    duration: 1,
+    x: 70,
+    autoAlpha: 0,
+    stagger: 0.1,
+  });
+  homeStratup.from(
+    split_hero6_desc.words,
+    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+    "-=1",
+  );
+  homeStratup.to(
+    hero6_button,
+    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+    "-=1.5",
+  );
+  homeStratup.to(
+    hero6_image,
+    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+    "-=1",
+  );
+
   /////////////////////////////////////////////////////
   // 67. Workflow Slider Animation |  fade_bottom 2
   gsap.set(".fade_bottom_2", { y: 30, opacity: 0 });
@@ -3015,7 +2995,6 @@ export const mainScript = () => {
         ".hover_8_img",
       ).style.transform = `translate(${dx}px, ${dy}px)`;
     }
-
     hover_8_wrap[0].addEventListener("mousemove", (event) => {
       setInterval(showCase8Func(event, hover_8_wrap), 1000);
       document.querySelector(".hover_8_img").classList.add("active");
@@ -3036,7 +3015,6 @@ export const mainScript = () => {
 
       console.log(event.pageX);
     }
-
     hover_8_wrap[0].addEventListener("mousemove", (event) => {
       setInterval(showCase8Func(event, hover_8_wrap), 1000);
       document.querySelector(".hover_8_img").classList.add("active");
@@ -3053,7 +3031,6 @@ export const mainScript = () => {
         ".hover_8_img_2",
       ).style.transform = `translate(${dx}px, ${dy}px)`;
     }
-
     hover_8_wrap[1].addEventListener("mousemove", (event) => {
       setInterval(showCase8Func2(event, hover_8_wrap), 1000);
       document.querySelector(".hover_8_img_2").classList.add("active");
@@ -3173,7 +3150,6 @@ export const mainScript = () => {
       cursorF.style.left = cursorX - sizeF / 2 + "px";
       requestAnimationFrame(loop);
     }
-
     loop();
 
     // Rollover UP & Down Mouse Wheel Navigation
@@ -3285,7 +3261,6 @@ export const mainScript = () => {
 
     //Mouse Wheel Scroll Transition
     let scrollTimeout;
-
     function wheel(e) {
       clearTimeout(scrollTimeout);
       setTimeout(function () {
@@ -3296,7 +3271,6 @@ export const mainScript = () => {
         }
       });
     }
-
     window.addEventListener("mousewheel", wheel, false);
     window.addEventListener("wheel", wheel, false);
 
@@ -3304,23 +3278,23 @@ export const mainScript = () => {
     alls[0].classList.add("showed");
   }
 
-  // // Tilt JS
-  // let tilt = document.querySelectorAll(".wc-tilt");
-  // let tilt_2 = document.querySelectorAll(".wc-tilt-2");
-  //
-  // if (tilt) {
-  //   VanillaTilt.init(document.querySelectorAll(".wc-tilt"), {
-  //     max: 15,
-  //     speed: 3000,
-  //   });
-  // }
-  //
-  // if (tilt_2) {
-  //   VanillaTilt.init(document.querySelectorAll(".wc-tilt-2"), {
-  //     max: 10,
-  //     speed: 3000,
-  //   });
-  // }
+  // Tilt JS
+  let tilt = document.querySelectorAll(".wc-tilt");
+  let tilt_2 = document.querySelectorAll(".wc-tilt-2");
+
+  if (tilt) {
+    VanillaTilt.init(document.querySelectorAll(".wc-tilt"), {
+      max: 15,
+      speed: 3000,
+    });
+  }
+
+  if (tilt_2) {
+    VanillaTilt.init(document.querySelectorAll(".wc-tilt-2"), {
+      max: 10,
+      speed: 3000,
+    });
+  }
 
   // Home 16
   var shocase_list_16 = document.querySelectorAll(".showcase__content-16");
@@ -3445,8 +3419,8 @@ export const mainScript = () => {
   };
   let thumbSlider = new Swiper(thumbSliderSelector, thumbSliderOptions);
 
-  // mainSlider.controller.control = thumbSlider;
-  // thumbSlider.controller.control = mainSlider;
+  mainSlider.controller.control = thumbSlider;
+  thumbSlider.controller.control = mainSlider;
 
   /////////////////////////////////////////////////////
 
@@ -3492,8 +3466,8 @@ export const mainScript = () => {
   };
   let thumbSlider11 = new Swiper(thumbSliderSelector11, thumbSliderOptions11);
 
-  // mainSlider11.controller.control = thumbSlider11;
-  // thumbSlider11.controller.control = mainSlider11;
+  mainSlider11.controller.control = thumbSlider11;
+  thumbSlider11.controller.control = mainSlider11;
   /////////////////////////////////////////////////////
 
   // Job Details
@@ -3510,4 +3484,4 @@ export const mainScript = () => {
       },
     });
   }
-};
+})(jQuery);

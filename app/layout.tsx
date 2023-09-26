@@ -10,6 +10,7 @@ import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import React, { Suspense } from "react";
 import { sortMenu } from "@/utils/utils";
 import Script from "next/script";
+import Loading from "@/app/loading";
 
 export const metadata = {
   title: "Create Next App",
@@ -43,20 +44,61 @@ export default async function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin={"anonymous"}
         />
-        {/*<Script*/}
-        {/*  strategy={"afterInteractive"}*/}
-        {/*  src={`https://theonebureau.design/assets/js/jquery-3.6.0.min.js`}*/}
-        {/*  // onLoad={() => setLoad((prevState) => prevState++)}*/}
-        {/*/>*/}
-        {/*<Script*/}
-        {/*  strategy={"afterInteractive"}*/}
-        {/*  src={`https://theonebureau.design/assets/js/ScrollTrigger.min.js`}*/}
-        {/*  // onLoad={() => setLoad((prevState) => prevState++)}*/}
-        {/*/>*/}
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/jquery-3.6.0.min.js`}
+          // onLoad={() => setLoad((prevState) => prevState++)}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/ScrollTrigger.min.js`}
+          // onLoad={() => setLoad((prevState) => prevState++)}
+        />
         <Script
           strategy={"afterInteractive"}
           src={`https://theonebureau.design/assets/js/gsap.min.js`}
           // onLoad={() => setLoad((prevState) => prevState++)}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/bootstrap.bundle.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/swiper-bundle.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/counter.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/ScrollToPlugin.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`/assets/js/ScrollSmoother.min.js`}
+        />
+
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/SplitText.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/chroma.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/mixitup.min.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/vanilla-tilt.js`}
+        />
+        <Script
+          strategy={"afterInteractive"}
+          src={`https://theonebureau.design/assets/js/jquery.meanmenu.min.js`}
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
@@ -74,10 +116,11 @@ export default async function RootLayout({
         {/*<div id="smooth-wrapper">*/}
         {/*  <div id="smooth-content">*/}
         <main>
-          <Preloader />
+          {/*<Suspense fallback={Loading()}>*/}
           {children}
+          {/*</Suspense>*/}
         </main>
-        <Suspense>
+        <Suspense fallback={Loading()}>
           <Footer menus={sortedMenu} config={attributes} />
         </Suspense>
         {/*  </div>*/}

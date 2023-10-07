@@ -6,6 +6,7 @@
 .workflow {
   &__area {
     overflow: hidden;
+    background-color: white;
 
     .sec-title {
       &-wrapper {
@@ -16,10 +17,11 @@
 
     &-3 {
       overflow: hidden;
-      background-color: var(--pink-4);
-      padding-top: 60px;
+
+      //padding-top: 60px;
       direction: ltr;
 
+      background: linear-gradient(90deg, var(--white-2),  var(--white-7));
       @media #{$lg} {
         padding-top: 90px;
         background-color: var(--pink-3);

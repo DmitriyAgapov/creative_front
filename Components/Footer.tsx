@@ -18,7 +18,7 @@ export const  Footer = ({menus, config}:{menus:any[], config: {
 	}})  => {
 
 
-	return <footer className="footer__area-2 pt-130">
+	return <footer className="footer__area-2">
 		<div className="container">
 
 

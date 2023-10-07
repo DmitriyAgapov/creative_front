@@ -1,4 +1,30 @@
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+	--foreground-rgb: 176, 184, 175;
+	--background-start-rgb: 235, 232, 222;
+	--background-end-rgb: 212, 202, 180;
+  }
+}
+
+body {
+  color: rgb(var(--foreground));
+  background-color: var(--background);
+  //background: linear-gradient(
+  //    to bottom,
+  //    transparent,
+  //    rgb(var(--background-start-rgb))
+  //  )
+  // rgb(var(--background-end-rgb));
+
+}
+
 div.footer__middle-2 {
   padding: 3rem 0 1rem;
 }
@@ -59,7 +85,7 @@ li.footer__menu-item {
 }
 .solution__area-4 p {
 	max-width: initial;
-	color: var(--gray-2);
+	color: var(--foreground);
 	font-weight: 300;
 	font-size: 20px;
 	line-height: 1.4;
@@ -156,10 +182,8 @@ li.footer__menu-item {
 }
 
 .service__area-6.section_default {
-  background:  #EBE8DE;
+  background:  var(--background);
 
 
-   * {
-	color: black;
-  }
+ 
 }

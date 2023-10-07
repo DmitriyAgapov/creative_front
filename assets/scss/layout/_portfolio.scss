@@ -921,10 +921,13 @@
     }
 
     &-thumb {
-      @include img_anim(100%, 70vh, 130%);
+      //@include img_anim(100%, 90vh, auto);
 
       @media #{$xxxl} {
         padding-left: 100px;
+        img {
+          position: unset;
+        }
       }
 
       @media #{$lg} {
@@ -2230,7 +2233,7 @@
     }
 
     &-thumb {
-      @include img_anim(100%, 70vh, 130%);
+      @include img_anim(100%, 70vh, 120%);
 
       @media #{$xxxl} {
         padding-left: 100px;

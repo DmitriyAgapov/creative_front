@@ -27,6 +27,7 @@ export const SectionCta = ({
   Items,
   Uptitle,
 }: SectionProps) => {
+  console.log(link)
   return (
     <section className="cta__area">
       <div className="container line pt-140 pb-110">
@@ -38,11 +39,11 @@ export const SectionCta = ({
               <h2 className="cta__title title-anim">{title}</h2>
               <div className="btn_wrapper">
                 <a
-                  href={link?.link || "/"}
+                  href={link?.url || "/"}
                   className="wc-btn-primary btn-hover btn-item"
                 >
                   <span></span>
-                  {link?.text} <i className="fa-solid fa-arrow-right"></i>
+                  {link?.Text} <i className="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -108,6 +109,7 @@ export const SectionCase = ({
       {media && media.length >= 1 && (
         <div key={media[0].id} className="portfolio__detail-thumb">
           <Image
+              // fill={true}
             src={`${
               process.env.NODE_ENV === "development"
                 ? process.env.BACK_URL
@@ -190,24 +192,24 @@ export const SectionCase = ({
             </div>
           )}
 
-          <div className="block-gallery">
-            <img
-              src="assets/imgs/portfolio/detail/3.jpg"
-              alt="Portfolio Image"
-            />
-            <img
-              src="assets/imgs/portfolio/detail/4.jpg"
-              alt="Portfolio Image"
-            />
-          </div>
+          {/*<div className="block-gallery">*/}
+          {/*  <img*/}
+          {/*    src="assets/imgs/portfolio/detail/3.jpg"*/}
+          {/*    alt="Portfolio Image"*/}
+          {/*  />*/}
+          {/*  <img*/}
+          {/*    src="assets/imgs/portfolio/detail/4.jpg"*/}
+          {/*    alt="Portfolio Image"*/}
+          {/*  />*/}
+          {/*</div>*/}
 
-          <div className="block-thumb">
-            <img
-              src="assets/imgs/portfolio/detail/5.jpg"
-              alt="Portfolio Image"
-              data-speed="0.5"
-            />
-          </div>
+          {/*<div className="block-thumb">*/}
+          {/*  <img*/}
+          {/*    src="assets/imgs/portfolio/detail/5.jpg"*/}
+          {/*    alt="Portfolio Image"*/}
+          {/*    data-speed="0.5"*/}
+          {/*  />*/}
+          {/*</div>*/}
         </div>
       </div>
     </section>
@@ -221,15 +223,20 @@ export const SectionCases = ({
   Items,
   Uptitle,
 }: SectionProps) => {
+
   const Slide = (props: any) => {
-    // console.log('slide', props)
+    console.log(props.Image.data[0]?.attributes.url)
     return (
       <div className="swiper-slide">
         <div className="portfolio__slide-2">
           <div className="slide-img">
             <a href={props.Link[0].url}>
               <Image
-                src={props.image || "/assets/imgs/portfolio/2/1.jpg"}
+                src={props.Image.data[0] ? `${
+                    process.env.NODE_ENV === "development"
+                        ? process.env.BACK_URL
+                        : process.env.NODE_BACK
+                }${props.Image.data[0]?.attributes.url}` :  "/assets/imgs/portfolio/2/1.jpg"}
                 width={945}
                 height={1000}
                 alt={props.Title}
@@ -426,7 +433,7 @@ export const SectionSolutionPage = ({
                     className={" wc-btn-primary btn-hover"}
                     id={"offcanvas__area-contact_form-toggle"}
                   >
-                    To form
+                    Get Started Today
                   </a>
                 </div>
               </div>
@@ -555,7 +562,7 @@ export function SectionAboutUsSecondItem(props: {
   const brUptitle = props.Uptitle?.split(" ");
 
   return (
-    <div className="research__area wf_panel pt-150 section_about_us_second_item">
+    <div className="research__area wf_panel pt-12 mt-40 section_about_us_second_item">
       <div className="container inner_content">
         <div className="row">
           <div className="col-xxl-6 col-xl-6 col-lg-6">

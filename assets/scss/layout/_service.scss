@@ -467,16 +467,16 @@
 
         &__number span,
         a {
-          color: var(--white);
+          //color: var(--white);
         }
 
         &__title {
-          color: var(--white);
+          //color: var(--white);
         }
 
         &__link {
           p {
-            color: var(--white);
+            //color: var(--white);
 
             i {
               transform: translate(60px, -60px) rotate(-45deg);
@@ -618,7 +618,7 @@
         max-width: 550px;
         font-size: 18px;
         line-height: 1.4;
-        color: var(--gray-2);
+        //color: var(--gray-2);
         padding-bottom: 30px;
 
         @media #{$xl} {
@@ -627,7 +627,7 @@
       }
 
       ul {
-        @include feature(var(--white));
+        @include feature(var(--base));
         padding-bottom: 80px;
 
         @media #{$xxl} {
@@ -738,7 +738,7 @@
       font-weight: 500;
       font-size: 40px;
       line-height: 1.1;
-      color: var(--white);
+      color: var(--secondary);
       padding-bottom: 20px;
 
       @media #{$xl} {
@@ -860,7 +860,7 @@
       .service__number span,
       .service__title,
       .service__link p {
-        color: var(--white);
+        color: var(--secondary);
       }
     }
 
@@ -932,7 +932,7 @@
 
         &.active {
           a {
-            color: var(--white);
+            color: var(--secondary);
           }
         }
 
@@ -942,8 +942,8 @@
 
         a {
           font-weight: 400;
-          font-size: 22px;
-          line-height: 1.5;
+          font-size: 32px;
+          line-height: 1.25;
           color: var(--gray-2);
 
           @media #{$xl} {

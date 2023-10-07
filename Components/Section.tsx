@@ -27,7 +27,7 @@ export const SectionCta = ({
   Items,
   Uptitle,
 }: SectionProps) => {
-  console.log(link)
+
   return (
     <section className="cta__area">
       <div className="container line pt-140 pb-110">

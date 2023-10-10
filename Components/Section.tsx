@@ -929,8 +929,8 @@ export const SectionDefault = ({
             <div className="col-xxl-12">
               <div className="sec-title-wrapper  title-anim">
                 <h2 className="sec-title title-anim">
-                  {title.split(" ")[0]} <br />
-                  {title.split(" ")[1]}
+                  {title?.split(" ")[0]} <br />
+                  {title?.split(" ")[1]}
                 </h2>
               </div>
             </div>
@@ -1226,7 +1226,7 @@ export const SectionSLider = ({ sections }: any | []) => {
 };
 export default Section;
 
-export const ContactSection = async (): Promise<any, Element> => {
+export const ContactSection = async () => {
   const {
     data: {
       websiteConfiguration: {

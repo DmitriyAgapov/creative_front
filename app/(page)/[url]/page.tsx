@@ -215,6 +215,7 @@ const Page = ({
       </SectionAboutUs>
     ) : null;
   const result = [...allSections, slides];
+  // @ts-ignore
   url == "index" ? allSections.push(<ContactSection />) : null;
   return (
     <>

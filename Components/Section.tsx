@@ -1176,7 +1176,7 @@ function TeamItem(props: { index: number; item: any }) {
 export const SectionTeam = (props: SectionProps) => {
   // console.log(props)
   return (
-    <section className="team__area-7 section_team">
+    <section className="team__area-7 pb-130 section_team">
       <h2 className="team__title-7 title-anim">{props.title}</h2>
       <div className="container">
         <div className="row">

@@ -83,9 +83,7 @@ export const SectionCase = ({
   return (
     <section className="portfolio__detail">
       <div className="portfolio__detail-top">
-        <div className="container g-0 line pt-110 pb-130">
-          <span className="line-3"></span>
-
+        <div className="container g-0 line pt-110 pb-130 divide-y">
           <div className="row">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
               <div className="sec-title-wrapper">
@@ -134,8 +132,7 @@ export const SectionCase = ({
       )}
 
       <div className="portfolio__detail-content -mt-80">
-        <div className="container-md   g-0  pt-100 px-24 bg-white  relative z-50">
-          <span className="line-3"></span>
+        <div className="container-md divide-y  g-0  pt-100 px-24 bg-white  relative z-50">
           {blocks && (
             <div key={blocks[0].id} className="block-content">
               <div className="row ">
@@ -176,10 +173,10 @@ export const SectionCase = ({
               />
             </div>
           )}
-          <div className={"divide-y"} />
+
           {blocks && (
             <div key={blocks[1].id} className="block-content  pt-140">
-              <div className="row">
+              <div className="row ">
                 <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
                   <h2 className="portfolio__detail-title title-anim">
                     {blocks[1].Title}

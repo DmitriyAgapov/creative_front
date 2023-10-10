@@ -570,7 +570,7 @@ export function SectionAboutUsFirstItem(props: {
         <div className="row">
           <div className="col-xxl-12">
             <div className="choose-title-wrapper">
-              <h2 className="choose-title title-anim">
+              <h2 className="choose-title">
                 {brTitle.shift()}
                 <br />
                 {brTitle}

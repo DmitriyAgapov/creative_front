@@ -921,7 +921,7 @@
     }
 
     &-thumb {
-      //@include img_anim(100%, 90vh, auto);
+      @include img_anim(100%, 90vh, auto);
 
       @media #{$xxxl} {
         padding-left: 100px;

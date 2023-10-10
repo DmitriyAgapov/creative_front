@@ -17,17 +17,17 @@
     &-3 {
 
       @media #{$lg} {
-        background-color: var(--pink-4);
+        background-color: var(--white);
         padding: 100px 0;
       }
 
       @media #{$md} {
-        background-color: var(--pink-4);
+        background-color: var(--white);
         padding: 90px 0;
       }
 
       @media #{$sm} {
-        background-color: var(--pink-4);
+        background-color: var(--white);
         padding: 60px 0;
       }
 
@@ -45,7 +45,7 @@
         font-weight: 500;
         color: var(--black);
         text-transform: uppercase;
-        padding-bottom: 150px;
+        padding-bottom: 140px;
 
         @media #{$xxl} {
           padding-bottom: 60px;
@@ -224,7 +224,7 @@
 
   &__img {
     &-3 {
-      margin-top: 80px;
+
 
       @media #{$xxl} {
         margin-top: 0;

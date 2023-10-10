@@ -21,20 +21,20 @@
       //padding-top: 60px;
       direction: ltr;
 
-      background: linear-gradient(90deg, var(--white-2),  var(--white-7));
+      background: linear-gradient(90deg, var(--background),  var(--foreground));
       @media #{$lg} {
         padding-top: 90px;
-        background-color: var(--pink-3);
+        background-color: var(--white);
       }
 
       @media #{$md} {
         padding-top: 80px;
-        background-color: var(--pink-3);
+        background-color: var(--white);
       }
 
       @media #{$sm} {
         padding-top: 60px;
-        background-color: var(--pink-3);
+        background-color: var(--white);
       }
 
       .wf_panel {
@@ -245,7 +245,7 @@
 // Research Area
 .research {
   &__area {
-    background-color: var(--pink-3);
+    background-color: var(--white);
     background-image: url(../../imgs/shape/8.png);
     background-repeat: no-repeat;
     background-position: 200px calc(100% - 150px);

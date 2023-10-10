@@ -548,7 +548,7 @@ export function MenuItem({ item, ...props }: any) {
   };
   return (
     <li {...props}>
-      <a href={item.url}>{item.title}</a>
+      {item.url ? <a href={item.url}>{item.title}</a> : <a>{item.title}</a>}
       {item.childs ? (
         <ul className="main-dropdown">
           <SubItems items={item.childs} />

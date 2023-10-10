@@ -152,7 +152,12 @@ li.footer__menu-item {
 .development__wrapper ul {
 	grid-template-columns: 1fr;
 }
-
+.development__wrapper {
+  .solution-features {
+	display: flex;
+	gap: 2rem;
+  }
+}
 .price__amount p {
 	display: inline-block;
 	border-top: 1px solid var(--gray-5);
@@ -185,5 +190,5 @@ li.footer__menu-item {
   background:  var(--background);
 
 
- 
+
 }

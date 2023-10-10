@@ -3,6 +3,9 @@ import Image from "next/image";
 import React, { ReactElement } from "react";
 import { parseHtml } from "@/utils/utils";
 import Script from "next/script";
+import ContactForm from "@/Components/ContactForm/ContactForm";
+import getData from "@/utils/getData";
+import { webSiteConfig } from "@/utils/queries";
 interface SectionProps {
   title?: string;
   description?: any | string | ReactElement;
@@ -28,7 +31,6 @@ export const SectionCta = ({
   Items,
   Uptitle,
 }: SectionProps) => {
-
   // @ts-ignore
   return (
     <section className="cta__area">
@@ -41,14 +43,17 @@ export const SectionCta = ({
               <h2 className="cta__title title-anim">{title}</h2>
               <div className="btn_wrapper">
                 <a
-                    // @ts-ignore
-                  href={link?.url || "/"}
+                  // @ts-ignore
+                  // href={link?.url || "/"}
+                  id={"offcanvas__area-contact_form-toggle"}
                   className="wc-btn-primary btn-hover btn-item"
                 >
                   <span></span>
                   {
                     // @ts-ignore
-                    link?.Text} <i className="fa-solid fa-arrow-right"></i>
+                    link?.Text
+                  }{" "}
+                  <i className="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
             </div>
@@ -114,7 +119,7 @@ export const SectionCase = ({
       {media && media.length >= 1 && (
         <div key={media[0].id} className="portfolio__detail-thumb">
           <Image
-              // fill={true}
+            // fill={true}
             src={`${
               process.env.NODE_ENV === "development"
                 ? process.env.BACK_URL
@@ -228,20 +233,23 @@ export const SectionCases = ({
   Items,
   Uptitle,
 }: SectionProps) => {
-
   const Slide = (props: any) => {
-    console.log(props.Image.data[0]?.attributes.url)
+    console.log(props.Image.data[0]?.attributes.url);
     return (
       <div className="swiper-slide">
         <div className="portfolio__slide-2">
           <div className="slide-img">
             <a href={props.Link[0].url}>
               <Image
-                src={props.Image.data[0] ? `${
-                    process.env.NODE_ENV === "development"
-                        ? process.env.BACK_URL
-                        : process.env.NODE_BACK
-                }${props.Image.data[0]?.attributes.url}` :  "/assets/imgs/portfolio/2/1.jpg"}
+                src={
+                  props.Image.data[0]
+                    ? `${
+                        process.env.NODE_ENV === "development"
+                          ? process.env.BACK_URL
+                          : process.env.NODE_BACK
+                      }${props.Image.data[0]?.attributes.url}`
+                    : "/assets/imgs/portfolio/2/1.jpg"
+                }
                 width={945}
                 height={1000}
                 alt={props.Title}
@@ -348,7 +356,7 @@ export const SectionWhatWeAlsoDo = ({
   Uptitle,
 }: SectionProps) => {
   return (
-    <section className=" service-v5 pt-140 pb-140 what-we-also-do">
+    <section className=" service-v5 pt-140 what-we-also-do">
       <div className="container">
         <div className="row">
           <div className="col-xxl-5 col-xl-5 col-lg-6 col-md-6">
@@ -403,6 +411,7 @@ export const SectionSolutionPage = ({
   price,
   price_period,
 }: SectionSolutionPage) => {
+  console.log(Items);
   const Card = ({
     Title,
     List_item,
@@ -423,35 +432,51 @@ export const SectionSolutionPage = ({
   );
 
   return (
-    <section className="development__area section_solution_page">
-      <div className="container g-0  pt-130 pb-150">
+    <section className="development__area   pt-130 section_solution_page">
+      <div className="container g-0">
         <div className="line-3"></div>
         <div className="row">
           <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
             <div className="sec-title-wrapper">
               <h3 className="sec-sub-title title-anim">Solution:</h3>
               <h2 className="sec-title animation__char_come ">{title}</h2>
-              <div className="price__amount pt-4 d-inline">
-                <div className={"cursor-btn btn_wrapper"}>
-                  <a
-                    href={"#"}
-                    className={" wc-btn-primary btn-hover"}
-                    id={"offcanvas__area-contact_form-toggle"}
-                  >
-                    Get Started Today
-                  </a>
-                </div>
+              <div className="btn_wrapper">
+                <a href="#" className="wc-btn-primary btn-hover open_offcanvas">
+                  <span></span> Get Started
+                  <i className="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
+              {/*<div className="price__amount pt-4 d-inline">*/}
+              {/*  <div className={"cursor-btn btn_wrapper"}>*/}
+              {/*    <a*/}
+              {/*      href={"#"}*/}
+              {/*      className={" wc-btn-primary btn-hover"}*/}
+              {/*      id={"offcanvas__area-contact_form-toggle"}*/}
+              {/*    >*/}
+              {/*      Get Started Today*/}
+              {/*    </a>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
           </div>
           <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
             <div className="development__wrapper">
               <div
-                className="development__content"
+                className="development__content border-b-0 mb-4 pb-0"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
-
-              {Items?.map((item, index) => (
+              {Items && Items?.length > 0 && (
+                <div className={"solution-features mb-12"}>
+                  {Items?.filter(
+                    (value) =>
+                      value.__typename === "ComponentLayoutDefinitionTable",
+                  ).map((item) => <FeatureCounter key={item.id} item={item} />)}
+                </div>
+              )}
+              {Items?.filter(
+                (value) =>
+                  value.__typename !== "ComponentLayoutDefinitionTable",
+              ).map((item, index) => (
                 <Card
                   key={index}
                   Title={item.Title}
@@ -567,7 +592,7 @@ export function SectionAboutUsSecondItem(props: {
   const brUptitle = props.Uptitle?.split(" ");
 
   return (
-    <div className="research__area wf_panel pt-12 mt-40 section_about_us_second_item">
+    <div className="research__area wf_panel  pt-150 section_about_us_second_item">
       <div className="container inner_content">
         <div className="row">
           <div className="col-xxl-6 col-xl-6 col-lg-6">
@@ -643,8 +668,8 @@ export function SectionAboutUsFThirdItem(props: {
               {props.Items?.map((item) => {
                 return (
                   <div className="counter__item-3" key={item.index}>
-                    <h2 className="counter__number">{item.Title}</h2>
-                    {parseHtml(item.Description)}
+                    <h2 className="counter__number">{item.Term}</h2>
+                    {parseHtml(item.Text)}
                   </div>
                 );
               })}
@@ -678,7 +703,7 @@ export function SectionAboutUsFourthItem(props: {
               <div className="btn_wrapper">
                 <a
                   href="#"
-                  className="wc-btn-black btn-hover btn-item open_offcanvas"
+                  className="btn-item wc-btn-primary btn-hover open_offcanvas"
                 >
                   <span></span>Contact <br />
                   with us <i className="fa-solid fa-arrow-right"></i>
@@ -787,17 +812,18 @@ export const SectionPitch = ({
                   className="about__content text-anim"
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
-
-                <div className="cursor-btn btn_wrapper">
-                  <a
-                    className="btn-item wc-btn-primary btn-hover"
-                    // @ts-ignore
-                    href={link?.url || "/"}
-                  >
-                    <span></span> Explore Us{" "}
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+                {link?.url && (
+                  <div className="cursor-btn btn_wrapper">
+                    <a
+                      className="btn-item wc-btn-primary btn-hover"
+                      // @ts-ignore
+                      href={link?.url || "/"}
+                    >
+                      <span></span> Explore Us{" "}
+                      <i className="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -869,7 +895,57 @@ export const SectionScreen = ({
     </section>
   );
 };
-
+export const FeatureCounter = ({ item }: any) => {
+  return (
+    <div className={"counter-feature"} key={item.id}>
+      <dl>
+        <dt className={"counter__number text-6xl font-medium font-mono"}>
+          {item.Term}
+        </dt>
+        <dd className={"text-md font-thin "}>{item.Text}</dd>
+      </dl>
+    </div>
+  );
+};
+export const SectionDefault = ({
+  title,
+  description,
+  link,
+  Items,
+  Uptitle,
+  ...props
+}: SectionProps) => {
+  console.log(props);
+  return (
+    <section className="section_default">
+      {/*<Script*/}
+      {/*  id={"serv"}*/}
+      {/*  strategy={"afterInteractive"}*/}
+      {/*  dangerouslySetInnerHTML={{ __html: inlineScript }}*/}
+      {/*/>*/}
+      <div className="container">
+        <div className="container">
+          <div className="row">
+            <div className="col-xxl-12">
+              <div className="sec-title-wrapper  title-anim">
+                <h2 className="sec-title title-anim">
+                  {title.split(" ")[0]} <br />
+                  {title.split(" ")[1]}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div
+              className="col-xxl-12 my-16"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 const Section = ({
   title,
   description,
@@ -976,7 +1052,8 @@ const Section = ({
                 <ul className="service__list-6">
                   {Items?.map((item, index) => (
                     <li key={item.id} className={index == 0 ? "active" : ""}>
-                      <a href={`#service_${index}`}>
+                      <a href={`#service_${index + 1}`}>
+                        {console.log(item.Title.split(" ").length)}
                         {item.Title.split(" ")[0]} <br />
                         {item.Title.split(" ")[1]}
                       </a>
@@ -1022,8 +1099,8 @@ const Section = ({
                         className={`service__item-6 ${
                           index == 0 ? "has__service_animation" : ""
                         }`}
-                        id={`service_${index}`}
-                        data-secid={index}
+                        id={`service_${index + 1}`}
+                        data-secid={index + 1}
                       >
                         <div className="image-tab">
                           <img
@@ -1081,9 +1158,9 @@ function TeamItem(props: { index: number; item: any }) {
           <h3 className="tm-name">{props.item.FullName}</h3>
         </div>
         <h4 className="tm-role">{props.item.Position}</h4>
-        <div className="tm-link">
-          <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        {/*<div className="tm-link">*/}
+        {/*  <i className="fa-solid fa-arrow-right"></i>*/}
+        {/*</div>*/}
         <div
           className="team__hover-7"
           style={{ backgroundImage: "url(/assets/imgs/team/1.jpg)" }}
@@ -1149,24 +1226,32 @@ export const SectionSLider = ({ sections }: any | []) => {
 };
 export default Section;
 
-export const ContactSection = ({ contacts }: any) => {
+export const ContactSection = async (): Promise<any, Element> => {
+  const {
+    data: {
+      websiteConfiguration: {
+        data: { attributes },
+      },
+    },
+  } = await getData(webSiteConfig);
+  // console.log(attributes);
   return (
-    <section className="contact__area-6">
+    <section className="contact__area-6  bg-white">
       <div className="container g-0 line pt-120 pb-110">
         <span className="line-3"></span>
         <div className="row">
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div className="sec-title-wrapper">
               <h2 className="sec-title-2 animation__char_come">
-                Let’s get in touch
+                Let’s get in touch{" "}
               </h2>
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div className="contact__text">
               <p>
-                Great! We&amp;re excited to hear from you and let&amp;s start something
-                special togerter. call us for any inquery.
+                Great! We&amp;re excited to hear from you and let&amp;s start
+                something special togerter. call us for any inquery.{" "}
               </p>
             </div>
           </div>
@@ -1176,60 +1261,23 @@ export const ContactSection = ({ contacts }: any) => {
             <div className="contact__info">
               <h3 className="sub-title-anim-top animation__word_come">
                 Don&amp;t be afraid man ! <br />
-                say hello
+                say hello{" "}
               </h3>
               <ul>
                 <li>
-                  <a href={`tel:${contacts.PhoneNumber}`}>
-                    {contacts.PhoneNumber}
+                  <a href={`tel:${attributes.PhoneNumber}`}>
+                    {attributes.PhoneNumber}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
+                  <a href={`mailto:${attributes.email}`}>{attributes.email}</a>
                 </li>
-                <li>{contacts.Address}</li>
+                <li>{attributes.Address}</li>
               </ul>
             </div>
           </div>
           <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
-            <div className="contact__form">
-              <form action="assets/mail.php" method="POST">
-                <div className="row g-3">
-                  <div className="col-xxl-6 col-xl-6 col-12">
-                    <input type="text" name="name" placeholder="Name *" />
-                  </div>
-                  <div className="col-xxl-6 col-xl-6 col-12">
-                    <input type="email" name="email" placeholder="Email *" />
-                  </div>
-                </div>
-                <div className="row g-3">
-                  <div className="col-xxl-6 col-xl-6 col-12">
-                    <input type="tel" name="phone" placeholder="Phone" />
-                  </div>
-                  <div className="col-xxl-6 col-xl-6 col-12">
-                    <input type="text" name="subject" placeholder="Subject *" />
-                  </div>
-                </div>
-                <div className="row g-3">
-                  <div className="col-12">
-                    <textarea
-                      name="message"
-                      placeholder="Messages *"
-                    ></textarea>
-                  </div>
-                </div>
-                <div className="row g-3">
-                  <div className="col-12">
-                    <div className="btn_wrapper">
-                      <button className="wc-btn-primary btn-hover btn-item">
-                        <span></span> Send <br />
-                        Messages <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>

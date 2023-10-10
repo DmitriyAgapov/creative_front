@@ -1,4 +1,5 @@
 import Section, {
+  ContactSection,
   SectionAboutUs,
   SectionAboutUsFirstItem,
   SectionAboutUsFourthItem,
@@ -7,6 +8,7 @@ import Section, {
   SectionCase,
   SectionCases,
   SectionCta,
+  SectionDefault,
   SectionHowWeWork,
   SectionPitch,
   SectionProblems,
@@ -22,14 +24,19 @@ import getData from "@/utils/getData";
 import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Preloader } from "@/Components/Header";
+import ContactForm from "@/Components/ContactForm/ContactForm";
 
 //@ts-ignore
 const Page = ({
+  url,
   page: { attributes },
 }: {
+  url: string;
   page: { attributes: any };
 }): JSX.Element => {
+  console.log(url == "index");
   const allSections: any[] = [];
+
   const problemsWrapper: any[] = [];
   const Problems = () => (
     <section className={"problems__area-2"}>
@@ -176,10 +183,20 @@ const Page = ({
         break;
 
       default:
+        allSections.push(
+          <SectionDefault
+            title={section.attributes.Title}
+            description={section.attributes.Description}
+            Items={section.attributes.Items}
+            link={section.attributes.Link}
+            Uptitle={section.attributes.Uptitle}
+            {...section}
+          />,
+        );
         break;
     }
   });
-  if (problemsWrapper.length > 0) allSections.splice(2, 0, <Problems />);
+  if (problemsWrapper.length > 0) allSections.splice(3, 0, <Problems />);
   //@ts-ignore
 
   const slides =
@@ -198,7 +215,7 @@ const Page = ({
       </SectionAboutUs>
     ) : null;
   const result = [...allSections, slides];
-
+  url == "index" ? allSections.push(<ContactSection />) : null;
   return (
     <>
       {allSections} {slides} {team}
@@ -218,7 +235,7 @@ export default async function Pages({ params: { url } }) {
   return (
     <Suspense fallback={<Preloader />}>
       <Preloader />
-      <Page page={pages.data[0]} />
+      <Page url={url} page={pages.data[0]} />
     </Suspense>
   );
 }

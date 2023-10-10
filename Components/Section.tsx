@@ -590,7 +590,7 @@ export function SectionAboutUsSecondItem(props: {
   Uptitle: string;
 }) {
   const brUptitle = props.Uptitle?.split(" ");
-
+  console.log(props);
   return (
     <div className="research__area wf_panel  pt-150 section_about_us_second_item">
       <div className="container inner_content">
@@ -598,35 +598,38 @@ export function SectionAboutUsSecondItem(props: {
           <div className="col-xxl-6 col-xl-6 col-lg-6">
             <div className="sec-title-wrapper">
               <h2 className="sec-sub-title">
-                {brUptitle.shift()}
+                {brUptitle && brUptitle.shift()}
                 <br />
-                {brUptitle.map((item, index) => {
-                  if (index % 2 == 0) {
-                    return item;
-                  } else {
-                    return " " + item;
-                  }
-                })}
+                {brUptitle &&
+                  brUptitle.map((item, index) => {
+                    if (index % 2 == 0) {
+                      return item;
+                    } else {
+                      return " " + item;
+                    }
+                  })}
               </h2>
               <h3 className="sec-title">{props.title}</h3>
-              {parseHtml(props.description)}
+              {props.description && parseHtml(props.description)}
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6">
             <div className="research__list">
-              {props.Items?.map((item) => {
-                return (
-                  <div className="research__item" key={item.index}>
-                    <div className="research__number">
-                      <span>{item.Uptitle}</span>
+              {props.Items &&
+                props.Items?.length > 0 &&
+                props.Items?.map((item) => {
+                  return (
+                    <div className="research__item" key={item.index}>
+                      <div className="research__number">
+                        <span>{item.Uptitle}</span>
+                      </div>
+                      <div className="research__info">
+                        <h4 className="research__title">{item.Title}</h4>
+                        {item.Description && parseHtml(item.Description)}
+                      </div>
                     </div>
-                    <div className="research__info">
-                      <h4 className="research__title">{item.Title}</h4>
-                      {parseHtml(item.Description)}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -669,7 +672,7 @@ export function SectionAboutUsFThirdItem(props: {
                 return (
                   <div className="counter__item-3" key={item.index}>
                     <h2 className="counter__number">{item.Term}</h2>
-                    {parseHtml(item.Text)}
+                    {item.Text && parseHtml(item.Text)}
                   </div>
                 );
               })}

@@ -1,6 +1,6 @@
 /***************************************************
 ==================== JS INDEX ======================
- ****************************************************
+****************************************************
 00. Preloader
 01. Cursor Animations
 02. Offcanvas
@@ -83,8 +83,8 @@
   // 07. Data backgrond
   $("[data-background]").each(function () {
     $(this).css(
-      "background-image",
-      "url( " + $(this).attr("data-background") + "  )",
+        "background-image",
+        "url( " + $(this).attr("data-background") + "  )",
     );
   });
 
@@ -92,10 +92,7 @@
   // HERO - 9
 
   var testimonial_4 = new Swiper(".hero-9", {
-    pagination: {
-      el: ".swiper-pagination",
-      type: "fraction",
-    },
+
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -112,13 +109,13 @@
 
       renderFraction: function (currentClass, totalClass) {
         return (
-          '<span class="' +
-          currentClass +
-          '"></span>' +
-          ' <span><i class="fa-solid fa-minus increase-dash"></i></span> ' +
-          '<span class="' +
-          totalClass +
-          '"></span>'
+            '<span class="' +
+            currentClass +
+            '"></span>' +
+            ' <span><i class="fa-solid fa-minus increase-dash"></i></span> ' +
+            '<span class="' +
+            totalClass +
+            '"></span>'
         );
       },
     },
@@ -169,8 +166,8 @@
   if (scroll_top) {
     window.onscroll = function () {
       if (
-        document.body.scrollTop > 50 ||
-        document.documentElement.scrollTop > 50
+          document.body.scrollTop > 50 ||
+          document.documentElement.scrollTop > 50
       ) {
         scroll_top.style.display = "block";
       } else {
@@ -267,8 +264,8 @@
     if (header_bg) {
       window.onscroll = function () {
         if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
         ) {
           header_bg.style.background = "#121212";
           header_bg.style.setProperty("mix-blend-mode", "unset");
@@ -293,8 +290,8 @@
   if (header_bg_2) {
     window.onscroll = function () {
       if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
       ) {
         header_bg_2.style.background = "#121212";
         header_bg_2.classList.add("sticky-2");
@@ -318,8 +315,8 @@
   if (header_bg_3) {
     window.onscroll = function () {
       if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
       ) {
         header_bg_3.classList.add("sticky-3");
         if (scroll_top) {
@@ -341,8 +338,8 @@
   if (header_bg_5) {
     window.onscroll = function () {
       if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
       ) {
         header_bg_5.classList.add("sticky-5");
         if (scroll_top) {
@@ -515,8 +512,8 @@
   $(document).on("scroll", function () {
     $(".portfolio__item-6").each(function () {
       if (
-        $(this).position().top <= $(document).scrollTop() &&
-        $(this).position().top + $(this).outerHeight() > $(document).scrollTop()
+          $(this).position().top <= $(document).scrollTop() &&
+          $(this).position().top + $(this).outerHeight() > $(document).scrollTop()
       ) {
         var item_num = $(this).data("portfitem");
         $(".portfolio__current").html(item_num);
@@ -529,21 +526,21 @@
   /////////////////////////////////////////////////////
   // 16. Service 1
   $(".service__list a:nth-child(1)")
-    .addClass("active")
-    .siblings()
-    .removeClass("acitve");
+  .addClass("active")
+  .siblings()
+  .removeClass("acitve");
 
   $(".service__item").on("mousemove", function (e) {
     var service_id = $(this).data("service");
 
     $(".service__img.img-" + service_id)
-      .addClass("active")
-      .siblings()
-      .removeClass("active");
+    .addClass("active")
+    .siblings()
+    .removeClass("active");
     $(".shape-box-" + service_id)
-      .addClass("current")
-      .siblings()
-      .removeClass("current");
+    .addClass("current")
+    .siblings()
+    .removeClass("current");
 
     if (service_id != 1) {
       $(".service__list a:nth-child(1)").removeClass("active");
@@ -554,9 +551,9 @@
     var service_id = $(this).data("service");
 
     $(".service__list a:nth-child(" + service_id + ")")
-      .addClass("active")
-      .siblings()
-      .removeClass("active");
+    .addClass("active")
+    .siblings()
+    .removeClass("active");
   });
   /////////////////////////////////////////////////////
 
@@ -747,14 +744,14 @@
           zIndex: "1",
         });
         tl.to(
-          service_imagess[i],
-          {
-            opacity: 0,
-            duration: 1,
-            scale: 1.2,
-            ease: "power4.out",
-          },
-          "-=1",
+            service_imagess[i],
+            {
+              opacity: 0,
+              duration: 1,
+              scale: 1.2,
+              ease: "power4.out",
+            },
+            "-=1",
         );
       });
     }
@@ -771,19 +768,19 @@
     }
 
     // Active Nav
-    jQuery(document).on("scroll", function () {
-      jQuery(".service__item-6").each(function () {
+    $(document).on("scroll", function () {
+      $(".service__item-6").each(function () {
         if (
-          jQuery(this).position().top <= jQuery(document).scrollTop() &&
-          jQuery(this).position().top + jQuery(this).outerHeight() >
-            jQuery(document).scrollTop()
+            $(this).position().top <= $(document).scrollTop() &&
+            $(this).position().top + $(this).outerHeight() >
+            $(document).scrollTop()
         ) {
-          let sec_id = jQuery(this).data("secid");
+          var sec_id = $(this).data("secid");
 
-          jQuery(".service__list-6 li:nth-child(" + sec_id + ")")
-            .addClass("active")
-            .siblings()
-            .removeClass("active");
+          $(".service__list-6 li:nth-child(" + sec_id + ")")
+          .addClass("active")
+          .siblings()
+          .removeClass("active");
         }
       });
     });
@@ -796,17 +793,17 @@
     var workflow_section_3 = document.querySelector(".workflow__wrapper-3");
     if (workflow_section_3) {
       let duration = 1,
-        sections = gsap.utils.toArray(".wf_panel"),
-        sectionIncrement = duration / (sections.length - 1),
-        tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".workflow__wrapper-3",
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: "+=5000",
-          },
-        });
+          sections = gsap.utils.toArray(".wf_panel"),
+          sectionIncrement = duration / (sections.length - 1),
+          tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".workflow__wrapper-3",
+              pin: true,
+              scrub: 1,
+              start: "top top",
+              end: "+=5000",
+            },
+          });
 
       tl.to(sections, {
         xPercent: -100 * (sections.length - 1),
@@ -834,40 +831,40 @@
       });
 
       function addSectionCallbacks(
-        timeline,
-        { start, end, param, onEnter, onLeave, onEnterBack, onLeaveBack },
+          timeline,
+          { start, end, param, onEnter, onLeave, onEnterBack, onLeaveBack },
       ) {
         let trackDirection = (animation) => {
-            let onUpdate = animation.eventCallback("onUpdate"),
-              prevTime = animation.time();
-            animation.direction = animation.reversed() ? -1 : 1;
-            animation.eventCallback("onUpdate", () => {
-              let time = animation.time();
-              if (prevTime !== time) {
-                animation.direction = time < prevTime ? -1 : 1;
-                prevTime = time;
-              }
-              onUpdate && onUpdate.call(animation);
-            });
-          },
-          empty = (v) => v;
+              let onUpdate = animation.eventCallback("onUpdate"),
+                  prevTime = animation.time();
+              animation.direction = animation.reversed() ? -1 : 1;
+              animation.eventCallback("onUpdate", () => {
+                let time = animation.time();
+                if (prevTime !== time) {
+                  animation.direction = time < prevTime ? -1 : 1;
+                  prevTime = time;
+                }
+                onUpdate && onUpdate.call(animation);
+              });
+            },
+            empty = (v) => v;
         timeline.direction || trackDirection(timeline);
         start >= 0 &&
-          timeline.add(
+        timeline.add(
             () =>
-              ((timeline.direction < 0 ? onLeaveBack : onEnter) || empty)(
-                param,
-              ),
+                ((timeline.direction < 0 ? onLeaveBack : onEnter) || empty)(
+                    param,
+                ),
             start,
-          );
+        );
         end <= timeline.duration() &&
-          timeline.add(
+        timeline.add(
             () =>
-              ((timeline.direction < 0 ? onEnterBack : onLeave) || empty)(
-                param,
-              ),
+                ((timeline.direction < 0 ? onEnterBack : onLeave) || empty)(
+                    param,
+                ),
             end,
-          );
+        );
       }
     }
   }
@@ -875,18 +872,18 @@
 
   if (device_width > 100) {
     /////////////////////////////////////////////////////
-    // 24. Portfolio 5 Animation
-    let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
-      clamp = gsap.utils.clamp(-15, 15);
-    const smoother = ScrollSmoother.create({
-      smooth: 1.35,
-      effects: device_width < 1025 ? false : true,
-      smoothTouch: false,
-      normalizeScroll: false,
-      ignoreMobileResize: true,
-      onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
-      onStop: () => skewSetter(0),
-    });
+    // // 24. Portfolio 5 Animation
+    // let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
+    //   clamp = gsap.utils.clamp(-15, 15);
+    // const smoother = ScrollSmoother.create({
+    //   smooth: 1.35,
+    //   effects: device_width < 1025 ? false : true,
+    //   smoothTouch: false,
+    //   normalizeScroll: false,
+    //   ignoreMobileResize: true,
+    //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
+    //   onStop: () => skewSetter(0),
+    // });
 
     /////////////////////////////////////////////////////
 
@@ -974,15 +971,15 @@
       });
 
       const itemSplitted = new SplitText(splitTextLine2, { type: "words" }),
-        textNumWords = itemSplitted.words.length;
+          textNumWords = itemSplitted.words.length;
 
       gsap.delayedCall(0.05, function () {
         for (var i = 0; i < textNumWords; i++) {
           tl.from(
-            itemSplitted.words[i],
-            1,
-            { force3D: true, scale: Math.random() > 0.5 ? 0 : 2, opacity: 0 },
-            Math.random(),
+              itemSplitted.words[i],
+              1,
+              { force3D: true, scale: Math.random() > 0.5 ? 0 : 2, opacity: 0 },
+              Math.random(),
           );
         }
       });
@@ -1053,46 +1050,46 @@
     transformOrigin: "center bottom",
   });
   endTl.to(
-    chars,
-    {
-      yPercent: -20,
-      ease: "elastic",
-      stagger: 0.03,
-      duration: 0.8,
-    },
-    0.5,
-  );
-  endTl.to(
-    chars,
-    {
-      scaleY: 1,
-      ease: "elastic.out(2.5, 0.2)",
-      stagger: 0.03,
-      duration: 1.5,
-    },
-    0.5,
-  );
-  endTl.to(
-    chars,
-    {
-      color: (i, el, arr) => {
-        return endGradient(i / arr.length).hex();
+      chars,
+      {
+        yPercent: -20,
+        ease: "elastic",
+        stagger: 0.03,
+        duration: 0.8,
       },
-      ease: "power2.out",
-      stagger: 0.03,
-      duration: 0.3,
-    },
-    0.5,
+      0.5,
   );
   endTl.to(
-    chars,
-    {
-      yPercent: 0,
-      ease: "back",
-      stagger: 0.03,
-      duration: 0.8,
-    },
-    0.7,
+      chars,
+      {
+        scaleY: 1,
+        ease: "elastic.out(2.5, 0.2)",
+        stagger: 0.03,
+        duration: 1.5,
+      },
+      0.5,
+  );
+  endTl.to(
+      chars,
+      {
+        color: (i, el, arr) => {
+          return endGradient(i / arr.length).hex();
+        },
+        ease: "power2.out",
+        stagger: 0.03,
+        duration: 0.3,
+      },
+      0.5,
+  );
+  endTl.to(
+      chars,
+      {
+        yPercent: 0,
+        ease: "back",
+        stagger: 0.03,
+        duration: 0.8,
+      },
+      0.7,
   );
   endTl.to(chars, {
     color: "#c9f31d",
@@ -1104,14 +1101,14 @@
   /////////////////////////////////////////////////////
   // 32. Menu Text Animation
   document
-    .querySelectorAll(".menu-anim > li > a")
-    .forEach(
+  .querySelectorAll(".menu-anim > li > a")
+  .forEach(
       (button) =>
-        (button.innerHTML =
-          '<div class="menu-text"><span>' +
-          button.textContent.split("").join("</span><span>") +
-          "</span></div>"),
-    );
+          (button.innerHTML =
+              '<div class="menu-text"><span>' +
+              button.textContent.split("").join("</span><span>") +
+              "</span></div>"),
+  );
 
   setTimeout(() => {
     var menu_text = document.querySelectorAll(".menu-text span");
@@ -1278,47 +1275,47 @@
   gsap.set(".award__text-2", { opacity: 0, y: -500 });
 
   award_timeline.to(
-    ".award__text-2",
-    {
-      opacity: 1,
-      y: 0,
-      duration: 2,
-      ease: "bounce",
-    },
-    "-=1.5",
+      ".award__text-2",
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "bounce",
+      },
+      "-=1.5",
   );
 
   award_timeline.to(
-    ".award__text",
-    {
-      x: -100,
-      duration: 2,
-    },
-    "-=1",
+      ".award__text",
+      {
+        x: -100,
+        duration: 2,
+      },
+      "-=1",
   );
   award_timeline.to(
-    ".award__text-2",
-    {
-      x: -100,
-      duration: 2,
-    },
-    "-=1",
+      ".award__text-2",
+      {
+        x: -100,
+        duration: 2,
+      },
+      "-=1",
   );
   award_timeline.to(
-    ".award__text",
-    {
-      x: 0,
-      duration: 2,
-    },
-    "-=1",
+      ".award__text",
+      {
+        x: 0,
+        duration: 2,
+      },
+      "-=1",
   );
   award_timeline.to(
-    ".award__text-2",
-    {
-      x: 0,
-      duration: 2,
-    },
-    "-=1",
+      ".award__text-2",
+      {
+        x: 0,
+        duration: 2,
+      },
+      "-=1",
   );
   /////////////////////////////////////////////////////
 
@@ -1346,12 +1343,12 @@
       duration: 1,
     });
     portfolioline.to(
-      ".portfolio__text",
-      {
-        scale: 1,
-        duration: 1,
-      },
-      "+=2",
+        ".portfolio__text",
+        {
+          scale: 1,
+          duration: 1,
+        },
+        "+=2",
     );
   }
 
@@ -1570,7 +1567,7 @@
   gsap.set(".counter_animation .counter__anim", { y: -100, opacity: 0 });
   if (device_width < 1023) {
     const counterArray = gsap.utils.toArray(
-      ".counter_animation .counter__anim",
+        ".counter_animation .counter__anim",
     );
     counterArray.forEach((item, i) => {
       let counterTl = gsap.timeline({
@@ -1798,7 +1795,7 @@
   let service__items_3 = gsap.utils.toArray(".service_animation");
   let service__items_heading = gsap.utils.toArray(".service_animation h3");
   let service__items_content = gsap.utils.toArray(
-    ".service_animation .service__content-3",
+      ".service_animation .service__content-3",
   );
 
   service__items_3.forEach((service_item, i) => {
@@ -1825,17 +1822,17 @@
       },
     });
     service3_timeline.to(
-      service__items_content[i],
-      {
-        x: 0,
-        opacity: 1,
-        ease: "power2.out",
-        duration: 1.5,
-        stagger: {
-          each: 0.2,
+        service__items_content[i],
+        {
+          x: 0,
+          opacity: 1,
+          ease: "power2.out",
+          duration: 1.5,
+          stagger: {
+            each: 0.2,
+          },
         },
-      },
-      "-=1",
+        "-=1",
     );
   });
   /////////////////////////////////////////////////////
@@ -1899,21 +1896,21 @@
 
   gsap.set(".animation_from_top", { yPercent: -50, opacity: 0 });
   pricing_timeline.to(
-    ".animation_from_top",
-    {
-      yPercent: 0,
-      duration: 2,
-      opacity: 1,
-      ease: "power4.out",
-    },
-    "-=2",
+      ".animation_from_top",
+      {
+        yPercent: 0,
+        duration: 2,
+        opacity: 1,
+        ease: "power4.out",
+      },
+      "-=2",
   );
   /////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////
   // 53. Service 2 Animation
   let animation__services2 = gsap.utils.toArray(
-    ".animation__service-2 .service__item-2",
+      ".animation__service-2 .service__item-2",
   );
   gsap.set(animation__services2, {
     opacity: 0,
@@ -1999,27 +1996,27 @@
   // 55. Service 1 Animation
   let home1_services = gsap.utils.toArray(".animation_home1_service");
   let service__number = gsap.utils.toArray(
-    ".animation_home1_service .service__number span",
+      ".animation_home1_service .service__number span",
   );
   let service__title = gsap.utils.toArray(
-    ".animation_home1_service .service__title",
+      ".animation_home1_service .service__title",
   );
   let service__text = gsap.utils.toArray(
-    ".animation_home1_service .service__text p",
+      ".animation_home1_service .service__text p",
   );
   let service__link = gsap.utils.toArray(
-    ".animation_home1_service .service__link p",
+      ".animation_home1_service .service__link p",
   );
 
   home1_services.forEach((service, i) => {
     gsap.set(
-      [
-        service__number[i],
-        service__title[i],
-        service__text[i],
-        service__link[i],
-      ],
-      { opacity: 0, x: -50 },
+        [
+          service__number[i],
+          service__title[i],
+          service__text[i],
+          service__link[i],
+        ],
+        { opacity: 0, x: -50 },
     );
 
     let home1ServiceTl = gsap.timeline({
@@ -2037,31 +2034,31 @@
       duration: 1.2,
     });
     home1ServiceTl.to(
-      service__title[i],
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-      },
-      "-=1",
+        service__title[i],
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+        },
+        "-=1",
     );
     home1ServiceTl.to(
-      service__text[i],
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-      },
-      "-=1",
+        service__text[i],
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+        },
+        "-=1",
     );
     home1ServiceTl.to(
-      service__link[i],
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-      },
-      "-=1",
+        service__link[i],
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+        },
+        "-=1",
     );
   });
   /////////////////////////////////////////////////////
@@ -2069,7 +2066,7 @@
   /////////////////////////////////////////////////////
   // 56. Features 2 Animation
   let animation__feature2 = gsap.utils.toArray(
-    ".animation__feature2 .feature__item",
+      ".animation__feature2 .feature__item",
   );
   if (device_width < 1023) {
     animation__feature2.forEach((item, i) => {
@@ -2439,8 +2436,8 @@
   if (header_bg_7) {
     window.onscroll = function () {
       if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
       ) {
         header_bg_7.classList.add("sticky-7");
         if (scroll_top) {
@@ -2459,7 +2456,7 @@
   /////////////////////////////////////////////////////
   // 65. Service 7 Animation
   let animation_services_7 = gsap.utils.toArray(
-    ".animation_service_7 .service__item-7",
+      ".animation_service_7 .service__item-7",
   );
   gsap.set(animation_services_7, {
     opacity: 0,
@@ -2506,7 +2503,7 @@
   /////////////////////////////////////////////////////
   // 65. Service 7 Animation
   let animation_workflow_6 = gsap.utils.toArray(
-    ".animation_workflow_6 .workflow__item-4",
+      ".animation_workflow_6 .workflow__item-4",
   );
   if (animation_workflow_6) {
     if (device_width < 1023) {
@@ -2642,14 +2639,14 @@
     stagger: 0.2,
   });
   HomeDigital.from(
-    split_solutions.chars,
-    { duration: 1, x: 100, autoAlpha: 0, stagger: 0.1 },
-    "-=1",
+      split_solutions.chars,
+      { duration: 1, x: 100, autoAlpha: 0, stagger: 0.1 },
+      "-=1",
   );
   HomeDigital.from(
-    split_text_animation.words,
-    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-    "-=1",
+      split_text_animation.words,
+      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+      "-=1",
   );
 
   // Home page Hero Animation
@@ -2659,7 +2656,7 @@
   let creative = document.querySelector(".service__hero-right-2 .creative");
   let solution = document.querySelector(".service__hero-right-2 .solution");
   let heroContent = document.querySelector(
-    ".service__hero-right-2 .animate_content",
+      ".service__hero-right-2 .animate_content",
   );
 
   let split_creative = new SplitText(creative, { type: "chars" });
@@ -2673,14 +2670,14 @@
     stagger: 0.1,
   });
   homeCreative.from(
-    split_solution.chars,
-    { duration: 1, x: 70, autoAlpha: 0, stagger: 0.1 },
-    "-=1.5",
+      split_solution.chars,
+      { duration: 1, x: 70, autoAlpha: 0, stagger: 0.1 },
+      "-=1.5",
   );
   homeCreative.from(
-    split_herocontent.words,
-    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-    "-=1",
+      split_herocontent.words,
+      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+      "-=1",
   );
 
   // Home page Hero Animation
@@ -2706,20 +2703,20 @@
     stagger: 0.1,
   });
   homeAgency.from(
-    split_hero__subtitle.words,
-    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-    "-=1",
+      split_hero__subtitle.words,
+      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+      "-=1",
   );
 
   homeAgency.to(
-    ".experience",
-    {
-      y: 0,
-      opacity: 1,
-      duration: 2,
-      ease: "power2.out",
-    },
-    "-=1.5",
+      ".experience",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 2,
+        ease: "power2.out",
+      },
+      "-=1.5",
   );
 
   // Home 6 Hero Animation
@@ -2751,19 +2748,19 @@
     stagger: 0.1,
   });
   homeStratup.from(
-    split_hero6_desc.words,
-    { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
-    "-=1",
+      split_hero6_desc.words,
+      { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
+      "-=1",
   );
   homeStratup.to(
-    hero6_button,
-    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-    "-=1.5",
+      hero6_button,
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+      "-=1.5",
   );
   homeStratup.to(
-    hero6_image,
-    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-    "-=1",
+      hero6_image,
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+      "-=1",
   );
 
   /////////////////////////////////////////////////////
@@ -2939,13 +2936,13 @@
 
       renderFraction: function (currentClass, totalClass) {
         return (
-          '<span class="' +
-          currentClass +
-          '"></span>' +
-          ' <span><i class="fa-solid fa-minus increase-dash"></i></span> ' +
-          '<span class="' +
-          totalClass +
-          '"></span>'
+            '<span class="' +
+            currentClass +
+            '"></span>' +
+            ' <span><i class="fa-solid fa-minus increase-dash"></i></span> ' +
+            '<span class="' +
+            totalClass +
+            '"></span>'
         );
       },
     },
@@ -2996,7 +2993,7 @@
       const dx = event.pageX;
       const dy = event.clientY - contentBox.y;
       document.querySelector(
-        ".hover_8_img",
+          ".hover_8_img",
       ).style.transform = `translate(${dx}px, ${dy}px)`;
     }
     hover_8_wrap[0].addEventListener("mousemove", (event) => {
@@ -3014,7 +3011,7 @@
       const dx = event.pageX;
       const dy = event.clientY - contentBox.y;
       document.querySelector(
-        ".hover_8_img",
+          ".hover_8_img",
       ).style.transform = `translate(${dx}px, ${dy}px)`;
 
       console.log(event.pageX);
@@ -3032,7 +3029,7 @@
       const dx = event.pageX;
       const dy = event.clientY - contentBox.y;
       document.querySelector(
-        ".hover_8_img_2",
+          ".hover_8_img_2",
       ).style.transform = `translate(${dx}px, ${dy}px)`;
     }
     hover_8_wrap[1].addEventListener("mousemove", (event) => {
@@ -3172,11 +3169,11 @@
         function up(part, next) {
           part.appendChild(next);
           gsap
-            .to(part, { ...animOptions, y: -window.innerHeight })
-            .then(function () {
-              part.children[0].remove();
-              gsap.to(part, { duration: 0, y: 0 });
-            });
+          .to(part, { ...animOptions, y: -window.innerHeight })
+          .then(function () {
+            part.children[0].remove();
+            gsap.to(part, { duration: 0, y: 0 });
+          });
         }
 
         function down(part, next) {
@@ -3252,13 +3249,13 @@
     window.addEventListener("mousedown", mousedown, false);
     window.addEventListener("touchstart", mousedown, false);
     window.addEventListener(
-      "touchmove",
-      function (e) {
-        if (clicked) {
-          endY = e.touches[0].clientY || e.targetTouches[0].clientY;
-        }
-      },
-      false,
+        "touchmove",
+        function (e) {
+          if (clicked) {
+            endY = e.touches[0].clientY || e.targetTouches[0].clientY;
+          }
+        },
+        false,
     );
     window.addEventListener("touchend", mouseup, false);
     window.addEventListener("mouseup", mouseup, false);
@@ -3377,7 +3374,7 @@
   /////////////////////////////////////////////////////
   //
   let mainSliderSelector = ".main-slider",
-    thumbSliderSelector = ".thumb-slider";
+      thumbSliderSelector = ".thumb-slider";
 
   // Main Slider
   let mainSliderOptions = {
@@ -3431,7 +3428,7 @@
   /////////////////////////////////////////////////////
   // Home 11
   let mainSliderSelector11 = ".main-slider11",
-    thumbSliderSelector11 = ".thumb-slider11";
+      thumbSliderSelector11 = ".thumb-slider11";
 
   // Main Slider
   let mainSliderOptions11 = {

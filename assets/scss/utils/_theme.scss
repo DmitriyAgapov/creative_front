@@ -42,6 +42,7 @@ a {
   text-decoration: none;
   transition: all 0.3s;
   @include zi(1);
+  cursor: pointer;
 }
 
 button {

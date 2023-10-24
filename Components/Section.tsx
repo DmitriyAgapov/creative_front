@@ -8,6 +8,7 @@ import getData from "@/utils/getData";
 import { webSiteConfig } from "@/utils/queries";
 interface SectionProps {
   title?: string;
+  attributes?: any;
   description?: any | string | ReactElement;
   link?: {
     text: string;
@@ -32,6 +33,7 @@ export const SectionCta = ({
   Uptitle,
 }: SectionProps) => {
   // @ts-ignore
+
   return (
     <section className="cta__area">
       <div className="container line pt-140 pb-110">
@@ -83,7 +85,7 @@ export const SectionCase = ({
   return (
     <section className="portfolio__detail">
       <div className="portfolio__detail-top">
-        <div className="container g-0 line pt-110 pb-130 divide-y">
+        <div className="container g-0 line pt-110 pb-20 divide-y">
           <div className="row">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
               <div className="sec-title-wrapper">
@@ -131,8 +133,8 @@ export const SectionCase = ({
         </div>
       )}
 
-      <div className="portfolio__detail-content -mt-80">
-        <div className="container-md divide-y  g-0  pt-100 px-24 bg-white  relative z-50">
+      <div className="portfolio__detail-content">
+        <div className="container-md divide-y shadow  g-0  pt-100 px-24 bg-white  relative z-50">
           {blocks && (
             <div key={blocks[0].id} className="block-content">
               <div className="row ">
@@ -232,7 +234,7 @@ export const SectionCases = ({
   Uptitle,
 }: SectionProps) => {
   const Slide = (props: any) => {
-    console.log(props.Image.data[0]?.attributes.url);
+    // console.log(props.Image.data[0]?.attributes.url);
     return (
       <div className="swiper-slide">
         <div className="portfolio__slide-2">
@@ -409,7 +411,7 @@ export const SectionSolutionPage = ({
   price,
   price_period,
 }: SectionSolutionPage) => {
-  console.log(Items);
+  // console.log(Items);
   const Card = ({
     Title,
     List_item,
@@ -460,7 +462,7 @@ export const SectionSolutionPage = ({
           <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
             <div className="development__wrapper">
               <div
-                className="development__content border-b-0 mb-4 pb-0"
+                className="development__content border-b-0"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
               {Items && Items?.length > 0 && (
@@ -561,7 +563,7 @@ export function SectionAboutUsFirstItem(props: {
   Uptitle: string;
 }) {
   const brTitle = props.title?.split(" ");
-
+  console.log(brTitle)
   return (
     <div className="choose-wrapper wf_panel section_about_us_first_item">
       <div className="container">
@@ -569,9 +571,11 @@ export function SectionAboutUsFirstItem(props: {
           <div className="col-xxl-12">
             <div className="choose-title-wrapper">
               <h2 className="choose-title">
-                {brTitle.shift()}
+                {brTitle[0]}
+
                 <br />
-                {brTitle}
+                {brTitle[1] + " " + brTitle[2]}
+
               </h2>
             </div>
           </div>
@@ -588,7 +592,7 @@ export function SectionAboutUsSecondItem(props: {
   Uptitle: string;
 }) {
   const brUptitle = props.Uptitle?.split(" ");
-  console.log(props);
+  // console.log(props);
   return (
     <div className="research__area wf_panel  pt-150 section_about_us_second_item">
       <div className="container inner_content">
@@ -774,7 +778,9 @@ export const SectionPitch = ({
   link,
   Items,
   Uptitle,
+    ...props
 }: SectionProps) => {
+  console.log(props.attributes.Items[0].img.data.attributes.url);
   return (
     <section className="about__area">
       <div className="container line g-0 pt-140 pb-130">
@@ -788,18 +794,22 @@ export const SectionPitch = ({
             <div className="about__content-wrapper">
               <div className="about__img">
                 <div className="img-anim">
-                  <img
-                    src="/assets/imgs/home-7/top01.png"
+                  <Image
+                      width={props.attributes.Items[0].img.data.attributes.width}
+                      height={props.attributes.Items[0].img.data.attributes.height}
+                    src={process.env.NODE_BACK + props.attributes.Items[0].img.data.attributes.url}
                     alt="About Image"
                     data-speed="0.3"
                   />
                 </div>
 
                 <div className="about__img-right">
-                  <img
-                    src="/assets/imgs/home-7/top02.png"
-                    alt="About Image Right"
-                    data-speed="0.5"
+                  <Image
+                      width={props.attributes.Items[1].img.data.attributes.width}
+                      height={props.attributes.Items[1].img.data.attributes.height}
+                      src={process.env.NODE_BACK + props.attributes.Items[1].img.data.attributes.url}
+                      alt="About Image Right"
+                      data-speed="0.5"
                   />
                   <div className="shape">
                     <div className="secondary" data-speed="0.9"></div>
@@ -916,7 +926,7 @@ export const SectionDefault = ({
   Uptitle,
   ...props
 }: SectionProps) => {
-  console.log(props);
+
   return (
     <section className="section_default pt-140 pb-130">
       {/*<Script*/}
@@ -924,10 +934,10 @@ export const SectionDefault = ({
       {/*  strategy={"afterInteractive"}*/}
       {/*  dangerouslySetInnerHTML={{ __html: inlineScript }}*/}
       {/*/>*/}
-      <div className="container">
+
         <div className="container">
           <div className="row">
-            <div className="col-xxl-12">
+            <div className="col-xxl-8 pl-0">
               <div className="sec-title-wrapper  title-anim">
                 <h2 className="sec-title title-anim">
                   {title?.split(" ")[0]} <br />
@@ -938,12 +948,12 @@ export const SectionDefault = ({
           </div>
           <div className="row">
             <div
-              className="col-xxl-12 my-16"
+              className="col-xxl-8 my-12  pl-0"
               dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
         </div>
-      </div>
+
     </section>
   );
 };
@@ -1054,7 +1064,7 @@ const Section = ({
                   {Items?.map((item, index) => (
                     <li key={item.id} className={index == 0 ? "active" : ""}>
                       <a href={`#service_${index + 1}`}>
-                        {console.log(item.Title.split(" ").length)}
+                        {/*{console.log(item.Title.split(" ").length)}*/}
                         {item.Title.split(" ")[0]} <br />
                         {item.Title.split(" ")[1]}
                       </a>
@@ -1162,10 +1172,10 @@ function TeamItem(props: { index: number; item: any }) {
         {/*<div className="tm-link">*/}
         {/*  <i className="fa-solid fa-arrow-right"></i>*/}
         {/*</div>*/}
-        <div
-          className="team__hover-7"
-          style={{ backgroundImage: "url(/assets/imgs/team/1.jpg)" }}
-        ></div>
+        {/*<div*/}
+        {/*  className="team__hover-7"*/}
+        {/*  style={{ backgroundImage: "url(/assets/imgs/team/1.jpg)" }}*/}
+        {/*></div>*/}
       </div>
     </a>
   );
@@ -1251,8 +1261,9 @@ export const ContactSection = async () => {
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div className="contact__text">
               <p>
-                Great! We&amp;re excited to hear from you and let&amp;s start
-                something special togerter. call us for any inquery.{" "}
+                If you would like to work with us
+or just want to get in touch,
+we’d love to hear from you!{" "}
               </p>
             </div>
           </div>
@@ -1260,10 +1271,7 @@ export const ContactSection = async () => {
         <div className="row contact__btm">
           <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
             <div className="contact__info">
-              <h3 className="sub-title-anim-top animation__word_come">
-                Don&amp;t be afraid man ! <br />
-                say hello{" "}
-              </h3>
+
               <ul>
                 <li>
                   <a href={`tel:${attributes.PhoneNumber}`}>

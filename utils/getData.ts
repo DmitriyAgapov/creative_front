@@ -5,7 +5,7 @@ export const getData = async (query: string, variables: {} = {}) => {
 	// console.log(uri)
 	//@ts-ignore
 	const res = await fetch(uri, {
-		 cache: 'no-store',
+		next: { revalidate: 60},
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json"

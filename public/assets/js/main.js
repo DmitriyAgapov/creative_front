@@ -771,16 +771,16 @@
     }
 
     // Active Nav
-    $(document).on("scroll", function () {
-      $(".service__item-6").each(function () {
+    jQuery(document).on("scroll", function () {
+      jQuery(".service__item-6").each(function () {
         if (
-          $(this).position().top <= $(document).scrollTop() &&
-          $(this).position().top + $(this).outerHeight() >
-            $(document).scrollTop()
+          jQuery(this).position().top <= jQuery(document).scrollTop() &&
+          jQuery(this).position().top + jQuery(this).outerHeight() >
+            jQuery(document).scrollTop()
         ) {
-          var sec_id = $(this).data("secid");
+          let sec_id = jQuery(this).data("secid");
 
-          $(".service__list-6 li:nth-child(" + sec_id + ")")
+          jQuery(".service__list-6 li:nth-child(" + sec_id + ")")
             .addClass("active")
             .siblings()
             .removeClass("active");
@@ -875,18 +875,18 @@
 
   if (device_width > 100) {
     /////////////////////////////////////////////////////
-    // // 24. Portfolio 5 Animation
-    // let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
-    //   clamp = gsap.utils.clamp(-15, 15);
-    // const smoother = ScrollSmoother.create({
-    //   smooth: 1.35,
-    //   effects: device_width < 1025 ? false : true,
-    //   smoothTouch: false,
-    //   normalizeScroll: false,
-    //   ignoreMobileResize: true,
-    //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
-    //   onStop: () => skewSetter(0),
-    // });
+    // 24. Portfolio 5 Animation
+    let skewSetter = gsap.quickTo(".portfolio__item-5 img", "skewY"),
+      clamp = gsap.utils.clamp(-15, 15);
+    const smoother = ScrollSmoother.create({
+      smooth: 1.35,
+      effects: device_width < 1025 ? false : true,
+      smoothTouch: false,
+      normalizeScroll: false,
+      ignoreMobileResize: true,
+      onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -80)),
+      onStop: () => skewSetter(0),
+    });
 
     /////////////////////////////////////////////////////
 

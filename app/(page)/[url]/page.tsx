@@ -34,7 +34,7 @@ const Page = ({
   url: string;
   page: { attributes: any };
 }): JSX.Element => {
-  console.log(url == "index");
+  // console.log(url == "index");
   const allSections: any[] = [];
 
   const problemsWrapper: any[] = [];
@@ -67,6 +67,7 @@ const Page = ({
             title={section.attributes.Title}
             description={section.attributes.Description}
             link={section.attributes.Link}
+              {...section}
           />,
         );
         break;
@@ -183,6 +184,7 @@ const Page = ({
         break;
 
       default:
+        console.log('section', section);
         allSections.push(
           <SectionDefault
             title={section.attributes.Title}

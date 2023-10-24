@@ -878,6 +878,11 @@
       }
     }
 
+    &-content {
+      background-image: linear-gradient(180deg, transparent, #ebe8de 40%, #ebe8de);
+      z-index: 22;
+      position: relative;
+    }
     &-info {
       height: 100%;
       display: flex;
@@ -955,6 +960,10 @@
         img {
           position: unset;
         }
+      }
+      & + .portfolio__detail-content {
+        margin-top: -44rem;
+        padding-top: 10rem;
       }
     }
 

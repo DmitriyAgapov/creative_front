@@ -28,9 +28,9 @@
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 80px;
-    padding-bottom: 35px;
-    margin-bottom: 30px;
+    grid-gap: 0 80px;
+    //padding-bottom: 35px;
+    margin-bottom: 2rem;
     border-bottom: 1px solid var(--black-3);
     @include zi(1);
 
@@ -56,6 +56,9 @@
     p {
       font-size: 18px;
       line-height: 1.4;
+      &:nth-child(3) {
+        grid-column: 1/-1;
+      }
     }
   }
 
@@ -97,5 +100,12 @@
     img {
       width: 100%;
     }
+  }
+}
+.counter-feature {
+  flex: 1;
+  dd {
+    max-width: 14rem;
+    margin-top: .75rem;
   }
 }

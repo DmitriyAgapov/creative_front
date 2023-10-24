@@ -723,9 +723,9 @@ export const mainScript = () => {
       },
     });
 
-    let service_images = gsap.utils.toArray(".service__image");
-    let service_imagess = gsap.utils.toArray(".service__image img");
-    let service_items = gsap.utils.toArray(".service__item-6");
+    var service_images = gsap.utils.toArray(".service__image");
+    var service_imagess = gsap.utils.toArray(".service__image img");
+    var service_items = gsap.utils.toArray(".service__item-6");
 
     if (service_items) {
       service_items.forEach((image, i) => {
@@ -756,6 +756,7 @@ export const mainScript = () => {
 
     let navItems = gsap.utils.toArray(".service__list-6 li a");
     if (navItems) {
+      console.log(navItems);
       navItems.forEach((nav) => {
         nav.addEventListener("click", (e) => {
           e.preventDefault();
@@ -771,11 +772,11 @@ export const mainScript = () => {
 
     // Active Nav
     $(document).on("scroll", function () {
+      var params = $(this).position().top + $(this).outerHeight();
       $(".service__item-6").each(function () {
         if (
           $(this).position().top <= $(document).scrollTop() &&
-          $(this).position().top + $(this).outerHeight() >
-            $(document).scrollTop()
+          params > $(document).scrollTop()
         ) {
           var sec_id = $(this).data("secid");
 

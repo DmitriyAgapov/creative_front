@@ -241,6 +241,7 @@ export const SectionCases = ({
           <div className="slide-img">
             <a href={props.Link[0].url}>
               <Image
+
                 src={
                   props.Image.data[0]
                     ? `${
@@ -250,8 +251,9 @@ export const SectionCases = ({
                       }${props.Image.data[0]?.attributes.url}`
                     : "/assets/imgs/portfolio/2/1.jpg"
                 }
-                width={945}
-                height={1000}
+
+                width={640}
+                height={814}
                 alt={props.Title}
               />
             </a>
@@ -780,7 +782,7 @@ export const SectionPitch = ({
   Uptitle,
     ...props
 }: SectionProps) => {
-  console.log(props.attributes.Items[0].img.data.attributes.url);
+  // console.log(props.attributes.Items[0].img.data.attributes.url);
   return (
     <section className="about__area">
       <div className="container line g-0 pt-140 pb-130">
@@ -1062,7 +1064,7 @@ const Section = ({
               <div className="left-content">
                 <ul className="service__list-6">
                   {Items?.map((item, index) => (
-                    <li key={item.id} className={index == 0 ? "active" : ""}>
+                    <li key={item.id} className={index == 0  ? "active" : ""}>
                       <a href={`#service_${index + 1}`}>
                         {/*{console.log(item.Title.split(" ").length)}*/}
                         {item.Title.split(" ")[0]} <br />
@@ -1247,7 +1249,7 @@ export const ContactSection = async () => {
   } = await getData(webSiteConfig);
   // console.log(attributes);
   return (
-    <section className="contact__area-6  bg-white">
+    <section className="contact__area-6  bg-white h-full flex items-center">
       <div className="container g-0 line pt-120 pb-110">
         <span className="line-3"></span>
         <div className="row">

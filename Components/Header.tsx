@@ -44,6 +44,7 @@ export const Offcanvas = async () => {
           <div className="offcanvas__logo">
             <a href={"/"}>
               <Image
+                  className={'w-16'}
                 width={attributes.logo.data.attributes.width}
                 height={attributes.logo.data.attributes.height}
                 src={`${
@@ -570,7 +571,7 @@ export const HorizontalHeader = ({
       <>
         <header className="header__area-3">
           <div className="header__inner-3">
-            <div className="header__logo-2">
+            <div className="header__logo-2  w-40 lg:w-40 mx-auto">
               {/*<Link href={"/"}*/}
               {/*	className="logo-dark"><Image src={"assets/imgs/logo/logo-black.png"}*/}
               {/*	alt="Site Logo"/></Link>*/}
@@ -612,7 +613,7 @@ export const HorizontalHeader = ({
                 ))}
               </ul>
             </div>
-            <div className="header__nav-icon-3">
+            <div className="header__nav-icon-3 absolute">
               <button id="open_offcanvas">
                 <Image src={menuBlack} alt="Menubar Icon" />
               </button>

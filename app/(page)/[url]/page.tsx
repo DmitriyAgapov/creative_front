@@ -184,7 +184,7 @@ const Page = ({
         break;
 
       default:
-        console.log('section', section);
+        // console.log('section', section);
         allSections.push(
           <SectionDefault
             title={section.attributes.Title}

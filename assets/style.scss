@@ -195,3 +195,11 @@ li.footer__menu-item {
 section:first-of-type {
   background-color: white;
 }
+
+.form__errors {
+  margin-top: -2rem;
+  color: red;
+  display: block;
+  font-weight: 400;
+  font-size: small;
+}

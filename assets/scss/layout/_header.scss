@@ -68,11 +68,14 @@
     }
 
     &-3 {
-      position: fixed;
-      width: 100%;
+      position: absolute;
       top: 0;
-      z-index: 9999;
-
+      left: 0;
+      right: 0;
+      z-index: 999;
+      width: 100%;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--white-2);
       &.sticky-3 {
         background-color: var(--white);
         border-bottom: 1px solid var(--white-2);
@@ -156,7 +159,7 @@
       }
 
       @media #{$sm} {
-        padding: 20px 15px;
+        padding: 10px 15px;
       }
     }
   }

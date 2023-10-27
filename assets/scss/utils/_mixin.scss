@@ -119,7 +119,7 @@
 
   img {
     position: absolute;
-    bottom: 0;
+    bottom: initial;
     object-fit: cover;
     width: 100%;
     height: $height2;

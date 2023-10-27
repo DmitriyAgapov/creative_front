@@ -316,8 +316,8 @@
           z-index: unset;
         }
       }
-
-      height: 100vh;
+      //max-height: 600px;
+      //height: 100vh;
 
       @media (max-width: 1400px) {
         height: auto;
@@ -453,14 +453,22 @@
 
       .slide {
         &-img {
-          padding-right: 15px;
-
+          display: flex;
+          justify-content: end;
+          justify-self: end;
+          max-width: 768px;
+          width: 100%;
           @media #{$sm} {
             padding-right: 0;
           }
 
           img {
             width: 100%;
+          }
+          a {
+            display: flex;
+            width: 100%;
+            justify-content: end;
           }
         }
 

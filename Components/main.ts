@@ -729,7 +729,7 @@ export const mainScript = () => {
 
     if (service_items) {
       service_items.forEach((image, i) => {
-        console.log(service_images[i].img);
+        // console.log(service_images[i].img);
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: image,
@@ -756,7 +756,7 @@ export const mainScript = () => {
 
     let navItems = gsap.utils.toArray(".service__list-6 li a");
     if (navItems) {
-      console.log(navItems);
+      // console.log(navItems);
       navItems.forEach((nav) => {
         nav.addEventListener("click", (e) => {
           e.preventDefault();
@@ -1213,7 +1213,7 @@ export const mainScript = () => {
   } else {
     var hero_btn = document.querySelector(".hero__text-2 #btn_wrapper");
   }
-  console.log(hero_btn);
+  // console.log(hero_btn);
   tHero.from(
     hero_btn,
     {

@@ -3,8 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
-import menuBlack from "@/assets/imgs/icon/menu-black.png";
-import { sortMenu } from "@/utils/utils";
 import { ContactSection } from "@/Components/Section";
 
 export const Preloader = () => {
@@ -44,7 +42,7 @@ export const Offcanvas = async () => {
           <div className="offcanvas__logo">
             <a href={"/"}>
               <Image
-                  className={'w-16'}
+                className={"w-16"}
                 width={attributes.logo.data.attributes.width}
                 height={attributes.logo.data.attributes.height}
                 src={`${
@@ -559,72 +557,6 @@ export function MenuItem({ item, ...props }: any) {
   );
 }
 
-export const HorizontalHeader = ({
-  menus,
-  config,
-}: {
-  menus: any[];
-  config: any[];
-}) => {
-  if (menus.length > 0) {
-    return (
-      <>
-        <header className="header__area-3">
-          <div className="header__inner-3">
-            <div className="header__logo-2  w-40 lg:w-40 mx-auto">
-              {/*<Link href={"/"}*/}
-              {/*	className="logo-dark"><Image src={"assets/imgs/logo/logo-black.png"}*/}
-              {/*	alt="Site Logo"/></Link>*/}
-              <a href={"/"} className="logo-dark">
-                <Image
-                  // @ts-ignore
-                  width={config.logo.data.attributes.width / 2}
-                  // @ts-ignore
-                  height={config.logo.data.attributes.height / 2}
-                  // @ts-ignore
-                  src={`${
-                    process.env.NODE_ENV === "development"
-                      ? process.env.BACK_URL
-                      : process.env.NODE_BACK
-                  }${config.logo.data.attributes.url}`}
-                  alt="Site Logo"
-                />
-              </a>
-              <a href={"/"} className="logo-light">
-                <Image
-                  // @ts-ignore
-                  width={config.logo.data.attributes.width}
-                  // @ts-ignore
-                  height={config.logo.data.attributes.height}
-                  // @ts-ignore
-                  src={`${
-                    process.env.NODE_ENV === "development"
-                      ? process.env.BACK_URL
-                      : process.env.NODE_BACK
-                  }${config.logo.data.attributes.url}`}
-                  alt="Site Logo"
-                />
-              </a>
-            </div>
-            <div className="header__nav-2">
-              <ul className="main-menu-3 menu-anim">
-                {menus.map((item: any) => (
-                  <MenuItem key={item.id} item={item.attributes} />
-                ))}
-              </ul>
-            </div>
-            <div className="header__nav-icon-3 absolute">
-              <button id="open_offcanvas">
-                <Image src={menuBlack} alt="Menubar Icon" />
-              </button>
-            </div>
-          </div>
-        </header>
-      </>
-    );
-  }
-  return null;
-};
 function Header() {
   return (
     <header className="header__area">

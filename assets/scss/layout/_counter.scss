@@ -28,7 +28,7 @@
 
       @media #{$sm} {
         background-color: var(--white);
-        padding: 60px 0;
+        padding: 20px 0;
       }
 
       .sec-title-wrapper {
@@ -103,7 +103,9 @@
 
       @media #{$sm} {
         align-items: flex-start;
-        gap: 50px 40px;
+
+        padding-bottom: 60px;
+		gap:32px;
       }
     }
   }

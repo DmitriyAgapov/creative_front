@@ -292,6 +292,15 @@
     @media #{$sm} {
       padding-left: 8px;
       padding-right: 8px;
+      display: block;
+      &.footer__menu-item:not(&:first-child, &:last-child) {
+        margin: 2rem 0;
+        text-align: center;
+        a {
+          text-align: center;
+        }
+      }
+
     }
 
     a {
@@ -303,6 +312,17 @@
       text-transform: capitalize;
 
       @include menu_anim_footer(var(--black-2), 24px);
+      @media #{$sm} {
+        text-align: center;
+      .menu-text {
+
+          justify-content: center;
+        }
+      }
+    }
+    .main-dropdown {
+      padding: 8px 0;
+      width: initial;
     }
   }
 

@@ -29,6 +29,7 @@
     height: 100%;
 
     @media #{$sm} {
+      max-width: initial;
       padding-top: 30px;
     }
 
@@ -51,6 +52,7 @@
 
     @media #{$sm} {
       padding-bottom: 50px;
+      display: none;
     }
 
     h3 {
@@ -99,7 +101,7 @@
       position: relative;
       z-index: 1;
       background: transparent;
-      margin-bottom: 35px;
+      //margin-bottom: 35px;
 
       @media #{$lg} {
         padding: 10px 0;

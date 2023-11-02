@@ -1,10 +1,8 @@
 import "./globals.scss";
 import Footer from "@/Components/Footer";
-import {
-  HorizontalHeader,
-  OffcanvasContact,
-  Preloader,
-} from "@/Components/Header";
+
+import { HorizontalHeader } from "@/Components/HorizontalHeader";
+import { OffcanvasContact, Preloader } from "@/Components/Header";
 import getData from "@/utils/getData";
 import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import React, { Suspense } from "react";
@@ -35,6 +33,7 @@ export default async function RootLayout({
     },
   } = await getData(webSiteConfig);
   const sortedMenu = sortMenu(data);
+
   return (
     <html lang="en">
       <head>

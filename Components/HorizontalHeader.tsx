@@ -1,12 +1,9 @@
 "use client";
-import Link from "next/link";
-import getData from "@/utils/getData";
-import { mainMenuList, webSiteConfig } from "@/utils/queries";
 import Image from "next/image";
 import menuBlack from "@/assets/imgs/icon/menu-black.png";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
-function MenuItem({ item }: any) {
+function MenuItem({ item, className }: any) {
   const SubItems = ({
     items,
   }: {
@@ -27,14 +24,107 @@ function MenuItem({ item }: any) {
     <li>
       <a href={item.url}>{item.title}</a>
       {item.childs ? (
-        <ul className="main-dropdown">
+        <ul className={className}>
           <SubItems items={item.childs} />
         </ul>
       ) : null}
     </li>
   );
 }
+export const HorizontalHeader = ({
+  menus,
+  config,
+  action,
+}: {
+  menus: any[];
+  config: any;
+  action?: Event;
+}) => {
+  const [modalMenu, setModalMenu] = useState(false);
 
+  if (menus.length > 0) {
+    return (
+      <>
+        <header className="header__area-3">
+          <div className="header__inner-3">
+            <div className="header__logo-2  w-40 lg:w-40">
+              {/*<Link href={"/"}*/}
+              {/*	className="logo-dark"><Image src={"assets/imgs/logo/logo-black.png"}*/}
+              {/*	alt="Site Logo"/></Link>*/}
+              <a href={"/"} className="logo-dark">
+                <Image
+                  // @ts-ignore
+                  width={config.logo.data.attributes.width / 2}
+                  // @ts-ignore
+                  height={config.logo.data.attributes.height / 2}
+                  // @ts-ignore
+                  src={`${
+                    process.env.NODE_ENV === "development"
+                      ? process.env.NEXT_PUBLIC_NODE_BACK
+                      : process.env.NEXT_PUBLIC_NODE_BACK
+                  }${config.logo.data.attributes.url}`}
+                  alt="Site Logo"
+                />
+              </a>
+              <a href={"/"} className="logo-light">
+                <Image
+                  // @ts-ignore
+                  width={config.logo.data.attributes.width}
+                  // @ts-ignore
+                  height={config.logo.data.attributes.height}
+                  // @ts-ignore
+                  src={`${
+                    process.env.NODE_ENV === "development"
+                      ? process.env.NEXT_PUBLIC_NODE_BACK
+                      : process.env.NEXT_PUBLIC_NODE_BACK
+                  }${config.logo.data.attributes.url}`}
+                  alt="Site Logo"
+                />
+              </a>
+            </div>
+            <div className="header__nav-2">
+              <ul className="main-menu-3 menu-anim">
+                {menus.map((item: any) => (
+                  <MenuItem
+                    key={item.id}
+                    className={"main-dropdown"}
+                    item={item.attributes}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div className="header__nav-icon-3 ">
+              <div
+                className={"burger block lg:hidden"}
+                data-open={modalMenu ? "open" : "closed"}
+                onClick={() => setModalMenu((prevState) => !prevState)}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div
+                className={"modalMenu"}
+                data-visible={modalMenu ? "visible" : "hidden"}
+              >
+                <ul className={"modalMenu__wrapper"}>
+                  {menus.map((item: any) => (
+                    <MenuItem
+                      key={item.id}
+                      className={"main-dropdown"}
+                      item={item.attributes}
+                    />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </header>
+      </>
+    );
+  }
+  return null;
+};
 // const HorizontalHeader = () => {
 // 	const [data, setData] = useState([]);
 // 	// const memoizedMenu = useMemo(async () => {

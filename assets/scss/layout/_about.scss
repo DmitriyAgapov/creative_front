@@ -222,10 +222,12 @@
 
       @media #{$md} {
         padding-left: 0;
+        padding-bottom: 40px;
       }
 
       @media #{$sm} {
         padding-left: 0;
+        padding-bottom: 0;
       }
     }
   }
@@ -286,12 +288,17 @@
   }
 
   &__img {
+
     img {
       width: 100%;
       overflow: hidden;
+      @media #{$sm} {
+        display: none;
+      }
     }
 
     &-right {
+
       position: absolute;
       right: 0;
       top: 280px;
@@ -303,9 +310,9 @@
       }
 
       @media #{$sm} {
-        position: relative;
-        top: 30px;
-        right: unset;
+        position: absolute;
+        bottom: 80px;
+        right: 20px;
       }
 
       img {

@@ -134,6 +134,9 @@
       }
 
       .location {
+        @media #{$sm} {
+          text-align: center;
+        }
         h3 {
           font-weight: 400;
           font-size: 22px;
@@ -731,11 +734,16 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
+    flex-wrap: wrap;
     @media #{$sm} {
       justify-content: center;
+      flex-wrap: wrap;
+      display: block;
     }
+    @media #{$lg} {
 
+      gap: 2rem;
+    }
     &-2 {
       height: 100%;
       display: flex;

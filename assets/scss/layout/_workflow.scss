@@ -34,7 +34,7 @@
 
       @media #{$sm} {
         padding-top: 60px;
-        background-color: var(--white);
+        background: var(--white);
       }
 
       .wf_panel {
@@ -382,7 +382,7 @@
 
   &__list {
     @media #{$sm} {
-      padding-bottom: 35px;
+      //padding-bottom: 35px;
     }
   }
 

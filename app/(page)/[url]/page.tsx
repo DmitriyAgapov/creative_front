@@ -67,14 +67,14 @@ const Page = ({
             title={section.attributes.Title}
             description={section.attributes.Description}
             link={section.attributes.Link}
-              {...section}
+            {...section}
           />,
         );
         break;
       case "problem" as string:
         // allSections.push(<SectionProblems title={section.attributes.Title} description={section.attributes.Description} Items={section.attributes.Items}/>);
         problemsWrapper.push(
-          <div className={"swiper-slide"}>
+          <div className={"swiper-slide "} style={{ opacity: 0 }}>
             {" "}
             <SectionProblems
               className={"problems__slide-2"}

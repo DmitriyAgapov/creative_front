@@ -27,10 +27,7 @@ const ScriptsInner = (): any => {
   }, []);
   return (
     <>
-      <Script
-        strategy={"afterInteractive"}
-        src={`https://theonebureau.design/assets/js/main.js`}
-      />
+      <Script strategy={"afterInteractive"} src={`/assets/js/main.js`} />
     </>
     //     </Suspense>
     //   )}

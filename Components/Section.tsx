@@ -85,7 +85,7 @@ export const SectionCase = ({
   return (
     <section className="portfolio__detail">
       <div className="portfolio__detail-top">
-        <div className="container g-0 line pt-110 pb-20 divide-y">
+        <div className="container g-0  pt-110 pb-6 lg:pb-20 divide-y">
           <div className="row">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
               <div className="sec-title-wrapper">
@@ -134,7 +134,7 @@ export const SectionCase = ({
       )}
 
       <div className="portfolio__detail-content">
-        <div className="container-md divide-y shadow  g-0  pt-100 px-24 bg-white  relative z-50">
+        <div className="container-md divide-y shadow  g-0  pt-100 lg:px-24 bg-white  relative z-50">
           {blocks && (
             <div key={blocks[0].id} className="block-content">
               <div className="row ">
@@ -150,7 +150,7 @@ export const SectionCase = ({
                         __html: blocks[0].Description,
                       }}
                     />
-                    <ul>
+                    <ul className={"mt-6"}>
                       {blocks[0].List_item?.map((item: any) => (
                         <li key={item.id}>+ {item.Title}</li>
                       ))}
@@ -241,7 +241,6 @@ export const SectionCases = ({
           <div className="slide-img">
             <a href={props.Link[0].url}>
               <Image
-
                 src={
                   props.Image.data[0]
                     ? `${
@@ -251,7 +250,6 @@ export const SectionCases = ({
                       }${props.Image.data[0]?.attributes.url}`
                     : "/assets/imgs/portfolio/2/1.jpg"
                 }
-
                 width={640}
                 height={814}
                 alt={props.Title}
@@ -565,7 +563,7 @@ export function SectionAboutUsFirstItem(props: {
   Uptitle: string;
 }) {
   const brTitle = props.title?.split(" ");
-  console.log(brTitle)
+  console.log(brTitle);
   return (
     <div className="choose-wrapper wf_panel section_about_us_first_item">
       <div className="container">
@@ -577,7 +575,6 @@ export function SectionAboutUsFirstItem(props: {
 
                 <br />
                 {brTitle[1] + " " + brTitle[2]}
-
               </h2>
             </div>
           </div>
@@ -749,10 +746,10 @@ export const SectionProblems = ({
 }: SectionProps) => {
   // const [];
   return (
-    <section className={`career__benefits section_problems ${className}`}>
+    <section
+      className={`career__benefits section_problems ${className} h-full`}
+    >
       <div className="container  g-0 pt-100 pb-100">
-        <span className="line-3"></span>
-
         <div className="row">
           <div className="col-xxl-7 col-xl-7 col-lg-7 problems__text">
             <div className="slide-content">
@@ -780,12 +777,12 @@ export const SectionPitch = ({
   link,
   Items,
   Uptitle,
-    ...props
+  ...props
 }: SectionProps) => {
   // console.log(props.attributes.Items[0].img.data.attributes.url);
   return (
     <section className="about__area">
-      <div className="container line g-0 pt-140 pb-130">
+      <div className="container line g-0 pt-100 pb-130">
         <span className="line-3"></span>
         <div className="row">
           <div className="col-xxl-12">
@@ -797,9 +794,14 @@ export const SectionPitch = ({
               <div className="about__img">
                 <div className="img-anim">
                   <Image
-                      width={props.attributes.Items[0].img.data.attributes.width}
-                      height={props.attributes.Items[0].img.data.attributes.height}
-                    src={process.env.NODE_BACK + props.attributes.Items[0].img.data.attributes.url}
+                    width={props.attributes.Items[0].img.data.attributes.width}
+                    height={
+                      props.attributes.Items[0].img.data.attributes.height
+                    }
+                    src={
+                      process.env.NODE_BACK +
+                      props.attributes.Items[0].img.data.attributes.url
+                    }
                     alt="About Image"
                     data-speed="0.3"
                   />
@@ -807,11 +809,16 @@ export const SectionPitch = ({
 
                 <div className="about__img-right">
                   <Image
-                      width={props.attributes.Items[1].img.data.attributes.width}
-                      height={props.attributes.Items[1].img.data.attributes.height}
-                      src={process.env.NODE_BACK + props.attributes.Items[1].img.data.attributes.url}
-                      alt="About Image Right"
-                      data-speed="0.5"
+                    width={props.attributes.Items[1].img.data.attributes.width}
+                    height={
+                      props.attributes.Items[1].img.data.attributes.height
+                    }
+                    src={
+                      process.env.NODE_BACK +
+                      props.attributes.Items[1].img.data.attributes.url
+                    }
+                    alt="About Image Right"
+                    data-speed="0.5"
                   />
                   <div className="shape">
                     <div className="secondary" data-speed="0.9"></div>
@@ -928,7 +935,6 @@ export const SectionDefault = ({
   Uptitle,
   ...props
 }: SectionProps) => {
-
   return (
     <section className="section_default pt-140 pb-130">
       {/*<Script*/}
@@ -937,25 +943,24 @@ export const SectionDefault = ({
       {/*  dangerouslySetInnerHTML={{ __html: inlineScript }}*/}
       {/*/>*/}
 
-        <div className="container">
-          <div className="row">
-            <div className="col-xxl-8 pl-0">
-              <div className="sec-title-wrapper  title-anim">
-                <h2 className="sec-title title-anim">
-                  {title?.split(" ")[0]} <br />
-                  {title?.split(" ")[1]}
-                </h2>
-              </div>
+      <div className="container   g-0 ">
+        <div className="row">
+          <div className="col-xxl-8">
+            <div className="sec-title-wrapper  title-anim">
+              <h2 className="sec-title title-anim">
+                {title?.split(" ")[0]} <br />
+                {title?.split(" ")[1]}
+              </h2>
             </div>
           </div>
-          <div className="row">
-            <div
-              className="col-xxl-8 my-12  pl-0"
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
-          </div>
         </div>
-
+        <div className="row">
+          <div
+            className="col-xxl-8 my-12"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        </div>
+      </div>
     </section>
   );
 };
@@ -1058,13 +1063,13 @@ const Section = ({
       {/*  dangerouslySetInnerHTML={{ __html: inlineScript }}*/}
       {/*/>*/}
       <div className="container">
-        <div className="row inherit-row">
+        <div className="row">
           <div className="col-xxl-12">
             <div className="content-wrapper">
               <div className="left-content">
                 <ul className="service__list-6">
                   {Items?.map((item, index) => (
-                    <li key={item.id} className={index == 0  ? "active" : ""}>
+                    <li key={item.id} className={index == 0 ? "active" : ""}>
                       <a href={`#service_${index + 1}`}>
                         {/*{console.log(item.Title.split(" ").length)}*/}
                         {item.Title.split(" ")[0]} <br />
@@ -1117,7 +1122,7 @@ const Section = ({
                       >
                         <div className="image-tab">
                           <img
-                            src="/assets/imgs/service/1.jpg"
+                            src={`/assets/imgs/home-7/spec${index + 1}.png`}
                             alt="Service Image"
                           />
                         </div>
@@ -1186,7 +1191,7 @@ function TeamItem(props: { index: number; item: any }) {
 export const SectionTeam = (props: SectionProps) => {
   // console.log(props)
   return (
-    <section className="team__area-7 pb-130 section_team">
+    <section className="team__area-7 pt-120 pb-130 section_team">
       <h2 className="team__title-7 title-anim">{props.title}</h2>
       <div className="container">
         <div className="row">
@@ -1227,7 +1232,7 @@ export const SectionSLider = ({ sections }: any | []) => {
       <div className="swiper portfolio__main-slider">
         <div className="swiper-wrapper portfolio__main-wrapper">
           {sections.map((section: {}, index: number) => (
-            <div key={index} className="swiper-slide">
+            <div key={index} className="swiper-slide test">
               <SectionProblems {...section} className={cl[index]} />
             </div>
           ))}
@@ -1249,23 +1254,22 @@ export const ContactSection = async () => {
   } = await getData(webSiteConfig);
   // console.log(attributes);
   return (
-    <section className="contact__area-6  bg-white h-full flex items-center">
-      <div className="container g-0 line pt-120 pb-110">
+    <section className="contact__area-6  bg-white h-full z-20 flex items-center">
+      <div className="container g-0 pt-120 pb-120 ">
         <span className="line-3"></span>
         <div className="row">
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-12">
             <div className="sec-title-wrapper">
               <h2 className="sec-title-2 animation__char_come">
                 Let’s get in touch{" "}
               </h2>
             </div>
           </div>
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-12">
             <div className="contact__text">
               <p>
-                If you would like to work with us
-or just want to get in touch,
-we’d love to hear from you!{" "}
+                If you would like to work with us or just want to get in touch,
+                we’d love to hear from you!{" "}
               </p>
             </div>
           </div>
@@ -1273,7 +1277,6 @@ we’d love to hear from you!{" "}
         <div className="row contact__btm">
           <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
             <div className="contact__info">
-
               <ul>
                 <li>
                   <a href={`tel:${attributes.PhoneNumber}`}>

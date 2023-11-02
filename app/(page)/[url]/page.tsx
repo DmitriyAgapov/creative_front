@@ -42,9 +42,9 @@ export async function generateMetadata(
   } = pages.data[0];
 
   return {
-    title: metaTitle,
-    description: metaDescription,
-    keywords: keywords,
+    title: metaTitle || "Creative Solution",
+    description: metaDescription || "Creative Solution desc",
+    keywords: keywords || "Creative Solution key",
   };
 }
 //@ts-ignore

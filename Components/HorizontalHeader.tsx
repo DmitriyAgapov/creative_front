@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import menuBlack from "@/assets/imgs/icon/menu-black.png";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 function MenuItem({ item, className }: any) {
   const SubItems = ({
@@ -25,7 +25,7 @@ function MenuItem({ item, className }: any) {
       <a
         href={item.url}
         style={{ cursor: !item.url ? "initial" : "pointer" }}
-        onClick={(event: Event) => !item.url && event.preventDefault()}
+        onClick={(event: any) => !item.url && event.preventDefault()}
       >
         {item.title}
       </a>

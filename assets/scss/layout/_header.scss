@@ -445,9 +445,9 @@
   }
 }
 .modalMenu {
-  display: block;
+  display: flex;
   position: fixed;
-  top: 108px;
+  top: 109px;
   z-index: -1;
   left: 0;
   bottom: 0;
@@ -456,8 +456,7 @@
   opacity: 0;
   width: 100lvw;
   //margin: 0 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
+  padding: 25px 50px;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -473,6 +472,24 @@
     transform-origin: 0 0;
 
     transition: all 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    .main-dropdown {
+      opacity: 1;
+      position: relative;
+      visibility: initial;
+      width: initial;
+      padding: 10px 0;
+      top: initial;
+      background: none;
+      li {
+        opacity: 1;
+        font-size: large;
+      }
+      a {
+        color: var(--secondary);
+
+        padding: 4px 6px;
+      }
+    }
   }
 }
 body:has(* [data-visible="visible"]) {
@@ -485,6 +502,7 @@ body:has(* [data-visible="visible"]) {
   width: 40px;
   height: 24px;
   z-index: 1;
+  cursor: pointer;
 
   -webkit-user-select: none;
   user-select: none;
@@ -534,9 +552,10 @@ body:has(* [data-visible="visible"]) {
   }
 }
 .modalMenu__wrapper {
+  margin: auto 0;
   li {
     //text-align: center;
-    font-size: xx-large;
+    font-size: x-large;
 
   }
 }

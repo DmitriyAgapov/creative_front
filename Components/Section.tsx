@@ -120,6 +120,7 @@ export const SectionCase = ({
         <div key={media[0].id} className="portfolio__detail-thumb">
           <Image
             // fill={true}
+            quality={90}
             src={`${
               process.env.NODE_ENV === "development"
                 ? process.env.BACK_URL
@@ -134,7 +135,7 @@ export const SectionCase = ({
       )}
 
       <div className="portfolio__detail-content">
-        <div className="container-md divide-y shadow  g-0  pt-100 lg:px-24 bg-white  relative z-50">
+        <div className="container-md divide-y   g-0  pt-100 lg:px-24 bg-white  relative z-50">
           {blocks && (
             <div key={blocks[0].id} className="block-content">
               <div className="row ">

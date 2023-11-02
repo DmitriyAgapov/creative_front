@@ -22,7 +22,13 @@ function MenuItem({ item, className }: any) {
   };
   return (
     <li>
-      <a href={item.url}>{item.title}</a>
+      <a
+        href={item.url}
+        style={{ cursor: !item.url ? "initial" : "pointer" }}
+        onClick={(event: Event) => !item.url && event.preventDefault()}
+      >
+        {item.title}
+      </a>
       {item.childs ? (
         <ul className={className}>
           <SubItems items={item.childs} />
@@ -47,7 +53,7 @@ export const HorizontalHeader = ({
       <>
         <header className="header__area-3">
           <div className="header__inner-3">
-            <div className="header__logo-2  w-40 lg:w-40">
+            <div className="header__logo-2  w-24 lg:w-40">
               {/*<Link href={"/"}*/}
               {/*	className="logo-dark"><Image src={"assets/imgs/logo/logo-black.png"}*/}
               {/*	alt="Site Logo"/></Link>*/}

@@ -917,11 +917,11 @@
 
         @media #{$md} {
           grid-template-columns: 1fr 1fr;
-          grid-gap: 20px 50px;
+          grid-gap: 10px 50px;
         }
 
         @media #{$sm} {
-          grid-gap: 20px 50px;
+          grid-gap: 10px 50px;
           flex-wrap: wrap;
           padding-left: 1rem;
           li {
@@ -957,7 +957,7 @@
     }
 
     &-thumb {
-      @include img_anim(100%, 90vh, auto);
+      @include img_anim(100%, 800px, auto);
 
       @media #{$xxxl} {
         padding-left: 100px;
@@ -985,7 +985,7 @@
       }
 
       @media #{$sm} {
-        @include img_anim(100%, auto, auto);
+        @include img_anim(100%, 400px, auto);
 
         position: unset;
         margin: 0 -3rem;
@@ -995,7 +995,7 @@
         }
       }
       & + .portfolio__detail-content {
-        margin-top: -44rem;
+        margin-top: -34rem;
         padding-top: 10rem;
         @media #{$md} {
           font-size: 30px;

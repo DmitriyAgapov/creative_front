@@ -26,8 +26,7 @@ export const getData = async (query: string, variables: {} = {}) => {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-  const data = await res.json();
   // console.log(data)
-  return data;
+  return await res.json();
 };
-export default getData
+export default getData;

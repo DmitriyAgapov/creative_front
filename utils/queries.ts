@@ -1,4 +1,4 @@
-export const mainPage:string = `query Page {
+export const mainPage: string = `query Page {
   page(id: 1) {
     data {
       id
@@ -81,8 +81,8 @@ export const mainPage:string = `query Page {
     }
   }
 }
-`
-export const aboutPage:string = `query Page {
+`;
+export const aboutPage: string = `query Page {
   page(id: 2) {
     data {
       id
@@ -171,8 +171,8 @@ export const aboutPage:string = `query Page {
     }
   }
 }
-`
-export const solutionPage:string = `query Page($id: ID) {
+`;
+export const solutionPage: string = `query Page($id: ID) {
   page(id: $id) {
     data {
       id
@@ -257,8 +257,8 @@ export const solutionPage:string = `query Page($id: ID) {
     }
   }
 }
-`
-export const pagesUrl:string = `query AllPages {
+`;
+export const pagesUrl: string = `query AllPages {
   pages {
     data {
       attributes {
@@ -266,8 +266,8 @@ export const pagesUrl:string = `query AllPages {
       }
     }
   }
-}`
-export const pagesQuery:string = `query Page($url: String!) {
+}`;
+export const pagesQuery: string = `query Page($url: String!) {
   pages(
     filters: {
       url: {
@@ -371,8 +371,8 @@ export const pagesQuery:string = `query Page($url: String!) {
       }
     }
   }
-}`
-export const webSiteConfig:string = `query WebSiteConfig {
+}`;
+export const webSiteConfig: string = `query WebSiteConfig {
   websiteConfiguration {
     data {
       id
@@ -394,8 +394,40 @@ export const webSiteConfig:string = `query WebSiteConfig {
     } 
     }
   }
-}`
-export const mainMenuList:string = `query MainMenu {
+}`;
+export const pageMeta: string = `query PageMeta ($url: String!) {
+  pages(
+    filters: {
+      url: {
+        eq: $url
+      }}) {
+    data {
+     attributes {
+      Meta {
+        metaTitle
+        metaDescription
+        keywords
+        id
+        metaSocial {
+          title
+          description          
+          socialNetwork
+          image {
+            data {
+              attributes {
+                width
+                height
+                url
+              }
+            }
+          }
+        }
+      }
+    } 
+    }
+  }
+}`;
+export const mainMenuList: string = `query MainMenu {
   menusMenuItems {
     data {
       id
@@ -412,4 +444,4 @@ export const mainMenuList:string = `query MainMenu {
     }
   }
 }
-`
+`;

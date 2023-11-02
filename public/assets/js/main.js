@@ -735,7 +735,7 @@
           scrollTrigger: {
             trigger: image,
             scrub: 1,
-            start: "top top-=600",
+            start: "top top-=800",
             markers: false,
           },
         });

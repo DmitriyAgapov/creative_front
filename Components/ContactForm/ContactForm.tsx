@@ -2,6 +2,7 @@
 import styles from "./ContactForm.module.scss";
 import * as Yup from "yup";
 import "yup-phone";
+
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const DisplayingErrorMessagesSchema = Yup.object().shape({
@@ -111,7 +112,7 @@ const ContactForm = ({
         !isSubmitting ? (
           <div className={styles.ContactForm + " " + "contact__form"}>
             <form onSubmit={handleSubmit}>
-              <div className="row lg:py-1 md:g-3">
+              <div className="row lg:py-1 md:g-3 py-0">
                 <div className="col-xxl-4 col-xl-4 col-12 relative  lg:pb-6">
                   <Field
                     type="text"
@@ -154,7 +155,7 @@ const ContactForm = ({
                 </div>
               </div>
 
-              <div className="row py-4 g-3">
+              <div className="row py-2 md:g-3">
                 <div className="col-12 relative  pb-2">
                   <Field
                     name="message"
@@ -168,11 +169,11 @@ const ContactForm = ({
                   </span>
                 </div>
               </div>
-              <div className="row py-4 g-3">
+              <div className="row py-0 md:g-3">
                 <div className="col-12">
-                  <div className="btn_wrapper mx-auto">
+                  <div className="btn_wrapper mx-auto md:mt-36 md:h-48 w-32 h-32 md:w-48">
                     <button
-                      className={`wc-btn-primary btn-hover btn-item`}
+                      className={`wc-btn-primary btn-hover btn-item w-32 h-32 md:w-40 md:h-40`}
                       onClick={() =>
                         validateForm().then(() => console.log("blah"))
                       }

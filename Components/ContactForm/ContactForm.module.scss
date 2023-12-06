@@ -1,3 +1,8 @@
 .ContactForm {
 	box-sizing: border-box;
+  input {
+	@media  screen and (max-width: 767px) {
+	  margin-bottom: 8px;
+	}
+  }
 }

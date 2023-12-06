@@ -937,7 +937,7 @@ export const SectionDefault = ({
   ...props
 }: SectionProps) => {
   return (
-    <section className="section_default pt-140 pb-130">
+    <section className="section_default  pb-130">
       {/*<Script*/}
       {/*  id={"serv"}*/}
       {/*  strategy={"afterInteractive"}*/}
